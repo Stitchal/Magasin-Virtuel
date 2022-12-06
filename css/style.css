@@ -9,6 +9,11 @@ header{
     margin: 0 25%;
 }
 
+.menu{
+    display: flex;
+}
+
+
 main{
     width: 50%;
     background-color: rgb(247, 247, 247);
@@ -83,3 +88,40 @@ td {
     text-align: center;
     border: 1px solid #333;
 }
+
+
+/* Quand taille ecran > 768 px*/
+@media screen and (max-width: 768px) {
+    .menu {
+      flex-direction: column;
+      
+
+    }
+  }
+
+/* Quand la taille de l'ecran < 768px  */
+  @media screen and (min-width: 768px) {
+    .menu {
+      flex-direction: row;
+      display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+    }
+  }
+
+
+  form{
+    width: 50%;
+    text-align: center;
+    margin: 0 25%;
+    padding: 5%;
+    background-color: rgb(247, 247, 247);
+  }
+
+  p{
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+  }

@@ -5,6 +5,8 @@ if (!isset($_SESSION)) {
     $_SESSION['prenom']='';
     $_SESSION['nb']=0;
   }
+
+require_once('index.html');
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +24,7 @@ if (!isset($_SESSION)) {
 
             $_SESSION['nom'] = $_POST['nom'];
             $_SESSION['prenom'] = $_POST['prenom'];
+            $_SESSION['email'] = $_POST['email'];
 
                 if ((isset($_SESSION)) && (($_POST['nom'] != '') || ($_POST['prenom'] != ''))){
                 echo "Une session est créée pour <br>".$_SESSION['nom']." ".$_SESSION['prenom'];
@@ -46,6 +49,9 @@ if (!isset($_SESSION)) {
                         <input type="text" name="prenom" id="prenom">
                     </p>
 
+                    <p>
+                        <label for="email">Email</label>
+                        <input type="text" name="email" id="email">
                     <p>
                         <input type="submit" value="Envoyer">
                     </p>

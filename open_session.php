@@ -5,6 +5,8 @@ if (!isset($_SESSION)) {
     $_SESSION['prenom']='';
     $_SESSION['nb']=0;
   }
+
+require_once('index.html');
 ?>
 
 <!DOCTYPE html>
