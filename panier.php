@@ -7,7 +7,7 @@
 </head>
 <body>
     <header>
-        <h1>Articles</h1>
+        <h1>Panier</h1>
     </header>
     <main>
         <nav>
