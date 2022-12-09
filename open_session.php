@@ -57,7 +57,7 @@ require_once('index.html');
 </p>
 
 <p>
-    <a href="index.html?">Retourner au menu principal</a>
+    <a href="articles.php?">Retourner au menu principal</a>
 </p>
 
 </body>

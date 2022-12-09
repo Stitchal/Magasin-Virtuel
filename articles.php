@@ -7,11 +7,11 @@
 </head>
 <body>
     <header>
-        <h1>Article</h1>
+        <h1>Articles</h1>
     </header>
     <main>
         <nav>
-            <ul>
+        <ul class="menu">
                 <li><a href="articles.php">Articles</a></li>
                 <li><a href="open_session.php" action="open_session.php">Créer un compte</a></li>
                 <li><a href="connexion.php">Connexion</a></li>
