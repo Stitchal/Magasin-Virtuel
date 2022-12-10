@@ -14,9 +14,11 @@ require_once('index.html');
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
     <title>Ouvrir une session</title>
 </head>
 <body>
+    <main>
 
 <p>
     <?php  
@@ -39,30 +41,37 @@ require_once('index.html');
         }
             ?>
                 <form method="post" action="open_session.php">
-                    <p>
+                    <fieldset>
                         <label for="nom">Nom</label>
-                        <input type="text" name="nom" id="nom">
-                    </p>
+                        <input placeholder="Nom" type="text" name="nom" id="nom" required>
+                    </fieldset>
 
-                    <p>
+                    <fieldset>
                         <label for="prenom">Prénom</label>
-                        <input type="text" name="prenom" id="prenom">
-                    </p>
+                        <input placeholder="Prénom" type="text" name="prenom" id="prenom" required>
+                    </fieldset>
 
-                    <p>
+                    <fieldset>
                         <label for="email">Email</label>
-                        <input type="text" name="email" id="email">
-                    <p>
-                        <input type="submit" value="Envoyer">
-                    </p>
+                        <input placeholder="Adresse email" type="text" name="email" id="email" required>
+                    </fieldset>
+                    <fieldset class="fieldsetResterConnecte">
+                        <input type="checkbox">
+                        <label class="resterConnecte">Rester connecté</label>
+                    </fieldset>
+                    <fieldset>
+                        <input type="submit" value="Connexion">
+                    </fieldset>
                 </form>
             <?php
     ?>
 </p>
 
-<p>
-    <a href="articles.php?">Retourner au menu principal</a>
-</p>
+<div class="createCompte">
+    <p>Nouveau chez nomSite ?</p>
+    <p><a href="open_session.php" title="Cliquez ici pour vous créer un compte">Créez votre compte</a></p>
+</div>
+    </main>
 
 </body>
 </html>

@@ -7,10 +7,7 @@
 body {
     width: 50%;
     margin: 0 25%;
-}
-
-.menu{
-    display: flex;
+    background-color: rgb(247, 247, 247)
 }
 
 
@@ -23,48 +20,64 @@ h1{
 }
 
 nav{
-    display: flex;
     width: 100%;
-    margin: 0 auto;
-    margin-bottom: 5%;
+    height: 4em;
+    margin: 0 0 5% 0;
+    background-color: #212529;
 }
 
 nav ul{
-    list-style-type:none;
+    height: 4em;
+}
+
+nav ul li:first-child{
+    float: left;
 }
 
 nav ul li{
+    height: 100%;
+    float: right;
+    display: float;
     list-style-type:none;
-    padding: 1em 0;
 }
 
-ul{
-    font-family:'Trebuchet MS';
-    /*background-color: #212529;*/
-}
 
 nav ul li a{
+    display: block;
     text-decoration: none;
     color: white;
-    padding: 1em 5em;
+    padding: 1.42em 6vh;
+    min-width: 25%;
     background-color: #212529;
-    transition-duration: 0.3s;
+    transition-duration: 0.4s;
 }
 
 nav ul li a:hover{
-    /*color: white;
-    border-color: white;*/
     background-color: rgb(41, 101, 212);
-    color: white;
+    color: #212529;
     transition-duration: 0.3s;
 }
 
-a{
-    font-size: 100%;
-    text-decoration: none;
-    background-color: rgb(158, 185, 235);
-    color: white;
-    /*background-color: cornflowerblue;*/
+.articles{
+    font-weight: bold;
+    color: rgb(41, 101, 212);
+    border-bottom: 0.2em solid rgb(41, 101, 212);
+    padding: 1.3em 6vh;
+
+}
+
+.connexion{
+    font-weight: bold;
+    color: rgb(41, 101, 212);
+    border-bottom: 0.2em solid rgb(41, 101, 212);
+    padding: 1.3em 6vh;
+}
+
+.panier{
+    font-weight: bold;
+    color: rgb(41, 101, 212);
+    border-bottom: 0.2em solid rgb(41, 101, 212);
+    padding: 1.3em 6vh;
 }
 
 table {
@@ -80,14 +93,119 @@ td {
 }
 
 form{
-    /*width: 50%;
-    text-align: center;
+    width: 50%;
     margin: 0 25%;
-    padding: 5%;
-    background-color: rgb(247, 247, 247);*/
+    background-color: rgb(247, 247, 247);
   }
 
-p{
-    text-align: center;
+fieldset{
+    border: 0;
+}
+
+input[type=text],
+textarea {
+    display: inline-block;
+    background: white;
+    border: 1px solid #212529;
+    border-radius: 0.2em;
+    width: 45%;
+    margin: 5% 25% 0% 25%;
+    padding: 1em;
+    transition-duration: 0.2s;
+}
+
+
+input[type="text"]:hover,
+textarea{
+    background-color: rgb(241, 241, 241);
+    border: 1px solid rgb(41, 101, 212);
+}
+
+input[type="text"]:focus,
+textarea{
+    transition-duration: 0.2s;
+    background-color: rgb(236, 236, 236);
+    border: 1px solid rgb(41, 101, 212);
+}
+
+fieldset > input[type=text]:valid {
+    border-color: green;
+    border-width: 2px;
+}
+
+/*
+input[type="text"]::before {
+    content: attr(placeholder);
+    white-space: pre;
+    content: "Nom : "!important;
+    color: grey;
+}
+
+input[type="text"]:focus::before {
+    content: "Nom : "!important;
+}*/
+
+fieldset label{
+    display: none;
+    /*font-size: large;
+    width: 15%;
+    margin-left:15%;
+    margin-top: 1em;
+    display: inline-block;
+    border: 1px solid red;*/
+}
+
+fieldset label.resterConnecte{
+    display: inline-block;
+}
+
+.fieldsetResterConnecte{
+    
+    margin-top: 5%;
+    width: 40%;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+input[type=submit]{
+    display: inline-block;
     font-weight: bold;
-  }
+    margin-top: 5%;
+    padding: 1em;
+    background-color: #212529;
+    color: white;
+    border: 0;
+    width: 40%;
+    border-radius: 0.5em;
+    margin-left: 30%;
+    margin-right: 30%;
+    transition-duration: 0.3s;
+    margin-bottom: 5%;
+    border: 2px solid white;
+}
+
+input[type=submit]:hover{
+    background-color: rgb(41, 101, 212);
+    color: #212529;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    border: 2px solid #212529;
+}
+
+.createCompte{
+    display: block;
+    /*width: 40%;
+    margin-left: 30%;
+    margin-right: 30%;*/
+    text-align: center;
+}
+
+.createCompte p a{
+    color: #212529;
+    text-decoration: none;
+}
+
+.createCompte p a:hover{
+    color:rgb(41, 101, 212);
+    text-decoration:underline;
+}

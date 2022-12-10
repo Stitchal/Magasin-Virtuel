@@ -14,6 +14,7 @@ require_once('index.html');
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
     <title>Ouvrir une session</title>
 </head>
 <body>
@@ -38,26 +39,22 @@ require_once('index.html');
         }
             ?>
                 <form method="post" action="open_session.php">
-                    <p>
+                    <fieldset>
                         <label for="nom">Nom</label>
-                        <input type="text" name="nom" id="nom">
-                    </p>
+                        <input placeholder="Entrez votre nom" type="text" name="nom" id="nom" required>
+                    </fieldset>
 
-                    <p>
+                    <fieldset>
                         <label for="prenom">Prénom</label>
-                        <input type="text" name="prenom" id="prenom">
-                    </p>
+                        <input placeholder="Entrez votre prénom" type="text" name="prenom" id="prenom" required>
+                    </fieldset>
 
-                    <p>
-                        <input type="submit" value="Envoyer">
-                    </p>
+                    <fieldset>
+                        <input type="submit" value="S'inscrire">
+                    </fieldset>
                 </form>
             <?php
     ?>
-</p>
-
-<p>
-    <a href="articles.php?">Retourner au menu principal</a>
 </p>
 
 </body>
