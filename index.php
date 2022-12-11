@@ -4,6 +4,12 @@
         //$_SESSION['prenom'] = '';
         //$_SESSION['nb'] = 0;
     //}
+
+    if(isset($_GLOBALS['page'])) {
+        $page = $_GLOBALS['page'];
+    } else {
+        $page = 'index.php';
+    }
 ?>
 
 <!DOCTYPE html>
@@ -42,10 +48,26 @@
                         <li><a href="connexion.php" title="Cliquez ici pour vous connecter">Se connecter</a></li>
                     <?php elseif($GLOBALS["page"] == "compte.php") : ?> <!-- Si on est sur la page compte-->
                         <li><a href="deconnexion.php" title="Cliquez ici pour vous déconnecter"><img src="img/deconnexion.png" alt="image deconnexion" id="imgDeconnexion"></a></li>
+                        <li> <button class="buttonMenu" title = "fleche" onclick="showMenu()"> <img src="img/flecheHaute.png" alt="image fleche" id="imgFleche"></button>
+                        <!-- Sous-menu -->
+                        <div class="sousMenu">
+                            <a href="#">Option 1</a>
+                            <a href="#">Option 2</a>
+                        </div>
+                        </li>
                         <li><a href="compte.php" class="compte" title="Cliquez ici pour accéder à votre compte"><img src="img/compte.png" alt="image compte" id="imgCompte"></a> </li>
+
 
                     <?php else : ?> <!-- Si on est pas sur la page déconnexion ou compte -->
                         <li><a href="deconnexion.php" title="Cliquez ici pour vous déconnecter"><img src="img/deconnexion.png" alt="image deconnexion" id="imgDeconnexion"></a></li>
+                        <!-- Bouton pour afficher/masquer le sous-menu -->
+                        <li> <button class="buttonMenu" onclick="showMenu()" title = "fleche"> <img src="img/flecheHaute.png" alt="image fleche" id="imgFleche"></button>
+                        <!-- Sous-menu -->
+                        <div class="sousMenu" id="sousMenu">
+                            <a href="#">Option 1</a><br>
+                            <a href="#">Option 2</a><br>
+                        </div>
+                        </li>
                         <li> <a href="compte.php" title="Cliquez ici pour accéder à votre compte"><img src="img/compte.png" alt="image compte" id="imgCompte"></a> </li> 
                         
 
@@ -54,6 +76,26 @@
             </ul>
         </nav>
 </body>
+
+
+<script>
+  // Fonction pour afficher/masquer le sous-menu
+  function showMenu() {
+    var menu = document.getElementById("sousMenu");
+    if (menu.className === "sousMenu") {
+      menu.className += " show";
+    } else {
+      menu.className = "sousMenu";
+    }
+
+    var image = document.getElementById("imgFleche");
+    if (image.src.match("flecheHaute")) {
+      image.src = "img/flecheBasse.png";
+    } else {
+      image.src = "img/flecheHaute.png";
+    }
+  }
+</script>
 
 </html>
 
