@@ -9,7 +9,8 @@ if (!isset($_SESSION)) {
     $_SESSION['nb']=0;
   }
 
-require_once('index.html');
+$GLOBALS["page"] = "open_connexion.php";
+require_once('index.php');
 ?>
 
 <!DOCTYPE html>
@@ -24,13 +25,14 @@ require_once('index.html');
 
 <p>
     <?php  
-        if ((isset ($_POST['nom'])) && isset($_POST['prenom'])){
+        if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email'])){
 
             $_SESSION['nom'] = $_POST['nom'];
             $_SESSION['prenom'] = $_POST['prenom'];
+            $_SESSION['email'] = $_POST['email'];
 
-                if ((isset($_SESSION)) && (($_POST['nom'] != '') || ($_POST['prenom'] != ''))){
-                echo "Une session est créée pour <br>".$_SESSION['nom']." ".$_SESSION['prenom'];
+                if ((isset($_SESSION)) && (($_POST['nom'] != '') || ($_POST['prenom'] != '') || ($_POST['email'] != ''))){
+                echo "Une session est créée pour <br>".$_SESSION['nom']." ".$_SESSION['prenom']." ".$_SESSION['email'];
                 $SID = session_create_id();	
                 echo "<br>SID : ".session_id();
                 session_commit();

@@ -1,8 +1,25 @@
 <?php
 
 session_start();
+$GLOBALS["page"] = "connexion.php";
+$compteCree = 0;
 
+if (!empty($_POST['nom']) and !empty($_POST['prenom'])){
+    $_SESSION['nom'] = $_POST['nom'];
+    $_SESSION['prenom'] = $_POST['prenom'];
+    $_SESSION['email'] = $_POST['email'];
+    header('Location: articles.php');
+    exit;
+}
 require_once('index.php');
+include("connexionBDD.php");
+require_once('connexionBDD.php');
+
+
+
+// Souvent on identifie cet objet par la variable $conn ou $db
+//$mysqlConnection = new PDO('mysql:host=linserv-info01.campus.unice.fr;port=5432;dbname=alexis.rosset@univ-cotedazur.fr', 'ra103059', 'ra103059');
+
 ?>
 
 <!DOCTYPE html>
@@ -15,58 +32,34 @@ require_once('index.php');
 </head>
 <body>
     <main>
+        <form method="post">
+            <fieldset>
+                <label for="nom">Nom</label>
+                <input placeholder="Nom" type="text" name="nom" id="nom" required>
+            </fieldset>
 
-<p>
-    <?php  
-        if ((isset ($_POST['nom'])) && isset($_POST['prenom'])){
+            <fieldset>
+                <label for="prenom">Prénom</label>
+                <input placeholder="Prénom" type="text" name="prenom" id="prenom" required>
+            </fieldset>
 
-            $_SESSION['nom'] = $_POST['nom'];
-            $_SESSION['prenom'] = $_POST['prenom'];
-            $_SESSION['email'] = $_POST['email'];
-
-                if ((isset($_SESSION)) && (($_POST['nom'] != '') || ($_POST['prenom'] != ''))){
-                echo "Une session est créée pour <br>".$_SESSION['nom']." ".$_SESSION['prenom'];
-                $SID = session_create_id();	
-                echo "<br>SID : ".session_id();
-                session_commit();
-            } 
-                else {
-                    echo "Le nom est le prenom sont vides <br>";
-                    echo "Aucune session n'a été créée.";
-            }
-        }
-            ?>
-                <form method="post" action="open_session.php">
-                    <fieldset>
-                        <label for="nom">Nom</label>
-                        <input placeholder="Nom" type="text" name="nom" id="nom" required>
-                    </fieldset>
-
-                    <fieldset>
-                        <label for="prenom">Prénom</label>
-                        <input placeholder="Prénom" type="text" name="prenom" id="prenom" required>
-                    </fieldset>
-
-                    <fieldset>
-                        <label for="email">Email</label>
-                        <input placeholder="Adresse email" type="text" name="email" id="email" required>
-                    </fieldset>
-                    <fieldset class="fieldsetResterConnecte">
-                        <input type="checkbox">
-                        <label class="resterConnecte">Rester connecté</label>
-                    </fieldset>
-                    <fieldset>
-                        <input type="submit" value="Connexion">
-                    </fieldset>
-                </form>
-            <?php
-    ?>
-</p>
-
-<div class="createCompte">
-    <p>Nouveau chez nomSite ?</p>
-    <p><a href="open_session.php" title="Cliquez ici pour vous créer un compte">Créez votre compte</a></p>
-</div>
+            <fieldset>
+                <label for="email">Email</label>
+                <input placeholder="Adresse email" type="text" name="email" id="email" required>
+            </fieldset>
+            <fieldset class="fieldsetResterConnecte">
+                <input type="checkbox">
+                <label class="resterConnecte">Rester connecté</label>
+            </fieldset>
+            <fieldset>
+                <input type="submit" value="Connexion">
+            </fieldset>
+        </form>
+        
+        <div class="createCompte">
+            <p>Nouveau chez nomSite ?</p>
+            <p><a href="open_session.php" title="Cliquez ici pour vous créer un compte">Créez votre compte</a></p>
+        </div>
     </main>
 
 </body>

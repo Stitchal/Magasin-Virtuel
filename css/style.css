@@ -52,6 +52,7 @@ nav ul li a{
     transition-duration: 0.4s;
 }
 
+
 nav ul li a:hover{
     background-color: rgb(41, 101, 212);
     color: #212529;
@@ -79,6 +80,14 @@ nav ul li a:hover{
     border-bottom: 0.2em solid rgb(41, 101, 212);
     padding: 1.3em 6vh;
 }
+
+.compte{
+    font-weight: bold;
+    color: rgb(41, 101, 212);
+    border-bottom: 0.2em solid rgb(41, 101, 212);
+    padding: 1.3em 6vh;
+}
+
 
 table {
     width: 100%;
@@ -231,3 +240,40 @@ footer p a{
 footer p a:hover{
     color: rgb(224, 224, 224);
 }
+
+#imgDeconnexion{
+    width: 0.9em;
+    height: 0.9em;
+}
+
+#imgPanier{
+    width: 1em;
+    height: 0.9em;
+}
+
+#imgCompte{
+    height: 0.9em;
+}
+
+ /* Style the dropdown menu */
+ .sousMenu {
+    position: relative;
+    display: inline-block;
+  }
+
+  .sousMenu-content {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    background-color: #f1f1f1;
+    animation: slideDown 0.5s;
+  }
+
+  @keyframes slideDown {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }

@@ -1,9 +1,15 @@
 <?php
-    session_start();
-    $GLOBALS["page"] = "panier.php";
-    require_once('index.php');
-?>
+session_start();
+$GLOBALS["page"] = "deconnexion.php";
+require_once('index.php');
 
+// Unset all session variables
+$_SESSION = array();
+
+// Destroy the session
+session_destroy();
+
+?>
 
 <!DOCTYPE html>
 <html LANG="fr">
@@ -15,8 +21,7 @@
 </head>
 <body>
     <main>
-    
-        <h1>Panier</h1>
+        <p>Vous êtes déconnecté</p>
     </main>
 </body>
 </html>

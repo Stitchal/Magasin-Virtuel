@@ -1,5 +1,6 @@
 <?php
     session_start();
+    $GLOBALS["page"] = "articles.php";
     require_once('index.php');
 ?>
 
