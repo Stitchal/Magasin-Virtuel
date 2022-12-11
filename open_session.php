@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 if (!isset($_SESSION)) {
     session_start();
     $_SESSION['nom']='';
@@ -38,7 +41,7 @@ require_once('index.html');
             }
         }
             ?>
-                <form method="post" action="open_session.php">
+                <form method="post" action="articles.php">
                     <fieldset>
                         <label for="nom">Nom</label>
                         <input placeholder="Entrez votre nom" type="text" name="nom" id="nom" required>

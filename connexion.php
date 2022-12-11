@@ -1,12 +1,8 @@
 <?php
-if (!isset($_SESSION)) {
-    session_start();
-    $_SESSION['nom']='';
-    $_SESSION['prenom']='';
-    $_SESSION['nb']=0;
-  }
 
-require_once('index.html');
+session_start();
+
+require_once('index.php');
 ?>
 
 <!DOCTYPE html>
