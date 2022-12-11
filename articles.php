@@ -13,7 +13,7 @@
                 <li><a href="articles.php" class="articles" title="Cliquez ici pour voir les articles">Articles</a></li>
                 <!--<li><a href="open_session.php" action="open_session.php">Créer un compte</a></li>-->
                 <li><a href="panier.php" title="Cliquez ici pour consulter votre panier">Panier</a></li>
-                <li><a href="connexion.php" title="Cliquez ici pour vous connecter">Connexion</a></li>
+                <li><a href="connexion.php" title="Cliquez ici pour vous connecter">Se connecter</a></li>
             </ul>
         </nav>
         <h1>Articles</h1>
@@ -42,5 +42,8 @@
             </tbody>
         </table>
     </main>
+    <footer>
+        <p>Développé par <a href="mailto:alexis.rosset@etu.univ-cotedazur.fr">Alexis Rosset</a> et <a href="mailto:leo.quelis@etu.univ-cotedazur.fr">Léo Quélis</a> - 2022-2023</p>
+    </footer>
 </body>
 </html>
