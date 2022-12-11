@@ -5,28 +5,34 @@
 }
 
 body {
-    width: 50%;
-    margin: 0 25%;
+    width: 100%;
     background-color: rgb(247, 247, 247)
 }
 
 
 main{
-    background-color: rgb(247, 247, 247);
+    width: 60%;
+    margin: 0 20%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    background-color: rgb(243, 243, 243);
+    min-height: 100vh;
 }
 
 h1{
+    color: #212529;
     text-align: center;
 }
 
 nav{
     width: 100%;
     height: 4em;
-    margin: 0 0 5% 0;
     background-color: #212529;
 }
 
 nav ul{
+    width: 60%;
+    margin: 0 20%;
     height: 4em;
 }
 
@@ -46,7 +52,7 @@ nav ul li a{
     display: block;
     text-decoration: none;
     color: white;
-    padding: 1.42em 6vh;
+    padding: 1.42em;
     min-width: 25%;
     background-color: #212529;
     transition-duration: 0.4s;
@@ -63,7 +69,7 @@ nav ul li a:hover{
     font-weight: bold;
     color: rgb(41, 101, 212);
     border-bottom: 0.2em solid rgb(41, 101, 212);
-    padding: 1.3em 6vh;
+    padding: 1.3em 1.42em;
 
 }
 
@@ -71,21 +77,19 @@ nav ul li a:hover{
     font-weight: bold;
     color: rgb(41, 101, 212);
     border-bottom: 0.2em solid rgb(41, 101, 212);
-    padding: 1.3em 6vh;
+    padding: 1.3em 1.42em;
 }
 
 .panier{
-    font-weight: bold;
     color: rgb(41, 101, 212);
     border-bottom: 0.2em solid rgb(41, 101, 212);
-    padding: 1.3em 6vh;
+    padding: 1.3em 1.42em;
 }
 
 .compte{
-    font-weight: bold;
     color: rgb(41, 101, 212);
     border-bottom: 0.2em solid rgb(41, 101, 212);
-    padding: 1.3em 6vh;
+    padding: 1.3em 1.42em;
 }
 
 
@@ -104,7 +108,6 @@ td {
 form{
     width: 50%;
     margin: 0 25%;
-    background-color: rgb(247, 247, 247);
   }
 
 fieldset{
@@ -139,7 +142,7 @@ textarea{
 
 fieldset > input[type=text]:valid {
     border-color: green;
-    border-width: 2px;
+    border-width: 1px;
 }
 
 /*
@@ -222,7 +225,6 @@ input[type=submit]:hover{
 footer{
     width: 100%;
     height: 4em;
-    margin: 5% 0 0 0;
     background-color: #212529;
 }
 
@@ -242,17 +244,51 @@ footer p a:hover{
 }
 
 #imgDeconnexion{
-    width: 0.9em;
+    text-align: center;
     height: 0.9em;
 }
 
-#imgPanier{
-    width: 1em;
+a img#imgPanier{
+    text-align: center;
     height: 0.9em;
 }
 
 #imgCompte{
+    text-align: center;
     height: 0.9em;
+}
+
+.divCompte{
+    margin: 5% 25% 0 25%;
+    max-width: 50%;
+    padding: 3%;
+}
+
+.divCompte p{
+    color: #212529;
+}
+
+.divCompte table{
+    height: auto;
+    border-collapse: collapse;
+    padding:0;
+}
+
+.divCompte table tr td{
+    padding: 1em 0;
+    border: 0;
+    margin:0;
+    border-bottom: 1px solid rgb(133, 133, 133);
+    color: #212529;
+    text-align: left;
+}
+
+.divCompte table tr:first-child td{
+    padding-top: 0;
+}
+
+.divCompte table tr td:first-child{
+    color:rgb(133, 133, 133);
 }
 
  /* Style the dropdown menu */

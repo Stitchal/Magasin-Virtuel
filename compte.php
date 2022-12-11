@@ -18,9 +18,21 @@
 </head>
 <body>
     <main>
-            <p> Nom : <?php echo $_SESSION['nom'] ?> </p>
-            <p> Prenom : <?php echo $_SESSION['prenom'] ?> </p>
-            <p> Mail : <?php echo $_SESSION['email'] ?> </p>
+            <h1>Vue d'ensemble du compte</h1>
+            <div class="divCompte">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Prénom nom</td>
+                        <td><?php echo $_SESSION['prenom'] ?> <?php echo $_SESSION['nom'] ?></td>
+                    </tr>
+                    <tr>
+                        <td>Adresse e-mail</td>
+                        <td><?php echo $_SESSION['email'] ?></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
     </main>
 </body>
 </html>
