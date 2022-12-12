@@ -47,7 +47,6 @@
                     <?php if($GLOBALS["page"] == "deconnexion.php") : ?> <!-- Si on est sur la page déconnexion -->
                         <li><a href="connexion.php" title="Cliquez ici pour vous connecter">Se connecter</a></li>
                     <?php elseif($GLOBALS["page"] == "compte.php") : ?> <!-- Si on est sur la page compte-->
-                        <li><a href="deconnexion.php" title="Cliquez ici pour vous déconnecter"><img src="img/deconnexion.png" alt="image deconnexion" id="imgDeconnexion"></a></li>
                         <li> <button class="buttonMenu" title = "fleche" onclick="showMenu()"> <img src="img/flecheHaute.png" alt="image fleche" id="imgFleche"></button>
                         <!-- Sous-menu -->
                         <div class="sousMenu">
@@ -55,7 +54,6 @@
                             <a href="#">Option 2</a>
                         </div>
                         </li>
-                        <li><a href="compte.php" class="compte" title="Cliquez ici pour accéder à votre compte"><img src="img/compte.png" alt="image compte" id="imgCompte"></a> </li>
 
 
                     <?php else : ?> <!-- Si on est pas sur la page déconnexion ou compte -->
@@ -64,8 +62,8 @@
                         <li> <button class="buttonMenu" onclick="showMenu()" title = "fleche"> <img src="img/flecheHaute.png" alt="image fleche" id="imgFleche"></button>
                         <!-- Sous-menu -->
                         <div class="sousMenu" id="sousMenu">
-                            <a href="#">Option 1</a><br>
-                            <a href="#">Option 2</a><br>
+                            <a href="compte.php">Mon compte</a>
+                            <a href="deconnexion.php">Se déconnecter</a>
                         </div>
                         </li>
                         <li> <a href="compte.php" title="Cliquez ici pour accéder à votre compte"><img src="img/compte.png" alt="image compte" id="imgCompte"></a> </li> 
