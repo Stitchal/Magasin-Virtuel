@@ -22,6 +22,10 @@
 </head>
 <body>  
         <nav>
+            <input type="checkbox" id="bouton" />
+                <label for="bouton">
+                    <img src="img/iconeMenu.png" alt="Ouvrir le menu" id="boutonMenu" title="Menu" />
+                    </label>
             <ul class="menu">
                 <?php if($GLOBALS["page"] == "articles.php") : ?> <!-- Si on est sur la page articles.php -->
                     <li><a href="articles.php"  class="articles" title="Cliquez ici pour voir les articles">Articles</a></li>
@@ -47,24 +51,16 @@
                     <?php if($GLOBALS["page"] == "deconnexion.php") : ?> <!-- Si on est sur la page déconnexion -->
                         <li><a href="connexion.php" title="Cliquez ici pour vous connecter">Se connecter</a></li>
                     <?php elseif($GLOBALS["page"] == "compte.php") : ?> <!-- Si on est sur la page compte-->
-                        <li> <button class="buttonMenu" title = "fleche" onclick="showMenu()"> <img src="img/flecheHaute.png" alt="image fleche" id="imgFleche"></button>
-                        <!-- Sous-menu -->
-                        <div class="sousMenu">
-                            <a href="#">Option 1</a>
-                            <a href="#">Option 2</a>
-                        </div>
-                        </li>
-
-
+                        <li> <a href="compte.php" title="Cliquez ici pour accéder à votre compte" class="compte"><img src="img/compte.png" alt="image compte" id="imgCompte"></a> </li> 
                     <?php else : ?> <!-- Si on est pas sur la page déconnexion ou compte -->
                         <li><a href="deconnexion.php" title="Cliquez ici pour vous déconnecter"><img src="img/deconnexion.png" alt="image deconnexion" id="imgDeconnexion"></a></li>
                         <!-- Bouton pour afficher/masquer le sous-menu -->
-                        <li> <button class="buttonMenu" onclick="showMenu()" title = "fleche"> <img src="img/flecheHaute.png" alt="image fleche" id="imgFleche"></button>
+                        <li><button class="buttonMenu" onclick="showMenu()" title = "fleche"> <img src="img/flecheHaute.png" alt="image fleche" id="imgFleche"> Mon profil</button>
                         <!-- Sous-menu -->
-                        <div class="sousMenu" id="sousMenu">
-                            <a href="compte.php">Mon compte</a>
-                            <a href="deconnexion.php">Se déconnecter</a>
-                        </div>
+                            <div class="sousMenu" id="sousMenu">
+                                <a href="compte.php">Mon compte</a>
+                                <a href="deconnexion.php">Se déconnecter <img src="img/deconnexion.png" alt="image deconnexion" id="imgDeconnexion"></a>
+                            </div>
                         </li>
                         <li> <a href="compte.php" title="Cliquez ici pour accéder à votre compte"><img src="img/compte.png" alt="image compte" id="imgCompte"></a> </li> 
                         
@@ -92,6 +88,10 @@
     } else {
       image.src = "img/flecheHaute.png";
     }
+  }
+
+  function showDiv() {
+    document.getElementById("myDiv").style.display = "block";
   }
 </script>
 
