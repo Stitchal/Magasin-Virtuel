@@ -16,6 +16,11 @@
         position: absolute;
         margin-top: 5.5em;
     }
+    input[type="checkbox"]:checked + label img#boutonMenu + ul.menu li{
+        display: flex;
+        width: 50em;
+        background-color: green;
+    }
 
 /*
     nav ul li{

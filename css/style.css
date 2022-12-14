@@ -381,7 +381,7 @@ nav input{
 }
 
 #boutonMenu {
-    position: fixed;
+    position: float;
     /*z-index en 2 pour qu'il passe devant le menu*/
     z-index: 2;
     width: 8em;
@@ -399,10 +399,19 @@ input[type="checkbox"]:checked + label img#boutonMenu{
     background-color: rgb(41, 101, 212);
 }
 
-input[type="checkbox"]:checked + label img#boutonMenu + ul.menu li{
+input[type="checkbox"]:checked + label + ul.menu li{
     display: flex;
     width: 50em;
     background-color: green;
+}
+
+input[type="checkbox"]:checked + label + ul.menu{
+    display: float;
+}
+
+input[type="checkbox"]:checked + label + ul.menu li{
+    display: flex;
+    float: left;
 }
 
 #boutonMenu:hover{
