@@ -23,9 +23,9 @@
 <body>  
         <nav>
             <input type="checkbox" id="bouton" />
-                <label for="bouton">
-                    <img src="img/iconeMenu.png" alt="Ouvrir le menu" id="boutonMenu" title="Menu" />
-                    </label>
+            <label for="bouton">
+                <img src="img/iconeMenu.png" alt="Ouvrir le menu" id="boutonMenu" title="Menu" />
+            </label>
             <ul class="menu">
                 <?php if($GLOBALS["page"] == "articles.php") : ?> <!-- Si on est sur la page articles.php -->
                     <li><a href="articles.php"  class="articles" title="Cliquez ici pour voir les articles">Articles</a></li>

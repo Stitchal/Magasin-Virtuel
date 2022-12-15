@@ -9,6 +9,11 @@ $_SESSION = array();
 // Destroy the session
 session_destroy();
 
+if (empty($_SESSION['nom']) and empty($_SESSION['prenom'])){
+    header('Location: articles.php');
+    exit;
+}
+
 ?>
 
 <!DOCTYPE html>
