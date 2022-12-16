@@ -41,7 +41,7 @@
         </table>
     </main>
     <footer>
-        <p>Développé par <a href="mailto:alexis.rosset@etu.univ-cotedazur.fr">Alexis Rosset</a> et <a href="mailto:leo.quelis@etu.univ-cotedazur.fr">Léo Quélis</a> - 2022-2023</p>
+        <p>Développé par <a href="mailto:alexis.rosset@etu.univ-cotedazur.fr">Alexis Rosset</a> et <a href="mailto:leo.quelis@etu.univ-cotedazur.fr">Léo Quelis</a> - 2022-2023</p>
     </footer>
 </body>
 </html>

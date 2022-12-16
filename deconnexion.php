@@ -1,7 +1,6 @@
 <?php
 session_start();
-$GLOBALS["page"] = "deconnexion.php";
-require_once('index.php');
+
 
 // Unset all session variables
 $_SESSION = array();
@@ -13,6 +12,9 @@ if (empty($_SESSION['nom']) and empty($_SESSION['prenom'])){
     header('Location: articles.php');
     exit;
 }
+
+$GLOBALS["page"] = "deconnexion.php";
+require_once('index.php');
 
 ?>
 
