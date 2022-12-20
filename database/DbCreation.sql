@@ -8,18 +8,7 @@ DROP TABLE IF EXISTS fournisseur CASCADE;
 DROP TABLE IF EXISTS client CASCADE;
 DROP TABLE IF EXISTS personne CASCADE;
 
---creer un type personne
-CREATE OR REPLACE TYPE personne_type AS OBJECT (
-    nom VARCHAR(50),
-    prenom VARCHAR(50),
-    mail VARCHAR(50) ,
-    mdp VARCHAR(50) 
-);
-
---créer un type client qui hérite de la table personne
-CREATE TABLE PERSONNE OF personne_type;
-
-
+DROP TYPE IF EXISTS tabProd CASCADE;
 
 
 --créer une table personne 
@@ -39,10 +28,7 @@ CREATE TABLE client (
 --créer une table administrateur qui hérite de la table personne
 CREATE TABLE fournisseur (
     id INT NOT NULL AUTO_INCREMENT,
-    nom VARCHAR(50) NOT NULL,
-    prenom VARCHAR(50) NOT NULL,
-    mail VARCHAR(50) NOT NULL,
-    mdp VARCHAR(50) NOT NULL,
+    infos VARCHAR(100),
     PRIMARY KEY (id)
 ) INHERITS (personne);
 
@@ -67,34 +53,61 @@ CREATE OR REPLACE TYPE produit_t AS OBJECT (
     refMarque INT
 )
 
+CREATE TABLE produit OF produit_t;
+
 CREATE TYPE produit_varray AS varray(30) OF produit_t;
 
-CREATE TABLE FACTURATION(
+CREATE TABLE Facturation(
     id integer,
-    produit produit_varray
+    produit produit_varray,
+    dateFact date,
+    nomAcheteur varchar(50),
+    prenomAcheteur varchar(50),
+    emailAcheteur varchar(50),
+    prixTotal decimal(10,2)
 );
 
 
 --créer une table produit
-CREATE TABLE produit (
+--CREATE TABLE produit (
+--    id INT NOT NULL AUTO_INCREMENT,
+--    nom VARCHAR(50) NOT NULL,
+--    prixPublic DECIMAL(10,2) NOT NULL,
+--    prixAchat DECIMAL(10,2) NOT NULL,
+--    taille VARCHAR(50),
+--    couleur VARCHAR(50) NOT NULL,
+--    image VARCHAR(50),
+--    icone VARCHAR(50),
+--    titre VARCHAR(50) NOT NULL,
+--    refMarque INT NOT NULL,
+--    PRIMARY KEY (id),
+--    FOREIGN KEY (refMarque) REFERENCES marque(id)
+--);
+
+--créer une table gestion_stock
+CREATE TABLE gestion_stock (
     id INT NOT NULL AUTO_INCREMENT,
-    nom VARCHAR(50) NOT NULL,
-    prixPublic DECIMAL(10,2) NOT NULL,
-    prixAchat DECIMAL(10,2) NOT NULL,
-    taille VARCHAR(50),
-    couleur VARCHAR(50) NOT NULL,
-    image VARCHAR(50),
-    icone VARCHAR(50),
-    titre VARCHAR(50) NOT NULL,
-    refMarque INT NOT NULL,
+    refProduit INT NOT NULL,
+    refFournisseur INT NOT NULL,
+    quantite INT NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (refMarque) REFERENCES marque(id)
+    FOREIGN KEY (refProduit) REFERENCES produit(id),
+    FOREIGN KEY (refFournisseur) REFERENCES fournisseur(id)
 );
 
+--créer une table vente
+CREATE TABLE vente (
+    id INT NOT NULL AUTO_INCREMENT,
+    chiffreAffaire INT NOT NULL,
+    PRIMARY KEY (id),
+);
 
-
---créer un tableau de type produit
-CREATE OR REPLACE TYPE tabProd IS VARRAY(50) of produit_type;
+--créer une table Achat
+CREATE TABLE achat (
+    id INT NOT NULL AUTO_INCREMENT,
+    montantAchat INT NOT NULL,
+    PRIMARY KEY (id),
+);
 
 
 
