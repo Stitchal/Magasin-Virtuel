@@ -6,7 +6,6 @@
         $result = ConnexionDB::getInstance()->querySelect($sql);
         $nbProduct = count($result);
 
-        #mettre du html
         for ($i = 1; $i <= $nbProduct; $i++) {
             $nom = "SELECT nom FROM product WHERE id = $i";
             $result = ConnexionDB::getInstance()->querySelect($nom);
