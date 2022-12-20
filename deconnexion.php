@@ -8,12 +8,6 @@ $_SESSION = array();
 
 // Destroy the session
 session_destroy();
-
-if (empty($_SESSION['nom']) and empty($_SESSION['prenom'])){
-    header('Location: articles.php');
-    exit;
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -28,5 +22,11 @@ if (empty($_SESSION['nom']) and empty($_SESSION['prenom'])){
     <main>
         <p>Vous êtes déconnecté</p>
     </main>
+    <?php
+    if (empty($_POST['nom']) and empty($_POST['prenom'])){
+        header('Location: articles.php');
+        exit;
+    }
+    ?>
 </body>
 </html>
