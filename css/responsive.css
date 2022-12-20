@@ -1,44 +1,31 @@
 
 @media only screen and (max-width: 1200px) {
+    *{
+        font-size: large;
+    }
+
     main{
         width: 70%;
         margin: 0 15%;
     }
 
-    nav ul{
-        width: 70%;
-        margin: 0 15%;
-        height: 4em;
+    label#labelMenu{
+        width: auto;
     }
 
     nav {
-        display: block;
-        position: absolute;
-        margin-top: 5.5em;
+        height: 0;
+        position: fixed;
+        margin-bottom: 8em;
     }
-    /*
-    input[type="checkbox"]:checked + label img#boutonMenu + ul.menu li{
-        display: flex;
-        width: 3em;
-        background-color: green;
-    }/*
 
-/*
-    nav ul li{
-        height: 100%;
-        display: block;
-    }*/
+    form{
+        width: 80%;
+        margin: 0 10%;
+    }
 
     label{
         width: 8em;
-    }
-
-    input[type="checkbox"] + label{
-        width: 0;
-        height: 0;
-        border: 1px solid red;
-        padding: 0;
-        margin: 0;
     }
 
     ul.menu li{
@@ -56,10 +43,35 @@
     nav input{
         display: block;
     }
+    
+    #boutonMenu{
+        width: 4em;
+        border-radius: 0.5em;
+    }
+
+    ul.menu{
+        display: inline-block;
+        margin: 0;
+    }
   }
 
 @media only screen and (max-width: 1000px) {
+    *{
+        font-size: x-large;
+    }
+
     main{
+        width: 80%;
+        margin: 0 10%;
+    }
+
+    nav {
+        height: 0;
+        position: fixed;
+        margin-bottom: 8em;
+    }
+
+    form{
         width: 80%;
         margin: 0 10%;
     }
@@ -76,5 +88,10 @@
     
     nav input{
         display: block;
+    }
+
+    #boutonMenu{
+        width: 8em;
+        border-radius: 1em;
     }
   }

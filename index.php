@@ -10,6 +10,7 @@
     } else {
         $page = 'index.php';
     }
+    $isMediaQueries = 0;
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +24,7 @@
 <body>  
         <nav>
             <input type="checkbox" id="bouton" />
-            <label for="bouton">
+            <label id = "labelMenu" for="bouton">
                 <img src="img/iconeMenu.png" alt="Ouvrir le menu" id="boutonMenu" title="Menu" />
             </label>
             <ul class="menu">
@@ -55,15 +56,20 @@
                     <?php else : ?> <!-- Si on est pas sur la page déconnexion ou compte -->
                         <li><a href="deconnexion.php" title="Cliquez ici pour vous déconnecter"><img src="img/deconnexion.png" alt="image deconnexion" id="imgDeconnexion"></a></li>
                         <!-- Bouton pour afficher/masquer le sous-menu -->
-                        <li><button class="buttonMenu" onclick="showMenu()" title = "fleche"> <img src="img/flecheHaute.png" alt="image fleche" id="imgFleche"> Mon profil</button>
-                        <!-- Sous-menu -->
-                            <div class="sousMenu" id="sousMenu">
-                                <a href="compte.php">Mon compte</a>
-                                <a href="deconnexion.php">Se déconnecter <img src="img/deconnexion.png" alt="image deconnexion" id="imgDeconnexion"></a>
-                            </div>
-                        </li>
-                        <li> <a href="compte.php" title="Cliquez ici pour accéder à votre compte"><img src="img/compte.png" alt="image compte" id="imgCompte"></a> </li> 
                         
+                        <script>
+                            isMediaQueries();
+                        </script>
+                            <?php if ($isMediaQueries == 0):  ?>
+                                <li><button class="buttonMenu" onclick="showMenu()" title = "fleche"> <img src="img/flecheHaute.png" alt="image fleche" id="imgFleche"> Mon profil</button>
+                                <!-- Sous-menu -->
+                                    <div class="sousMenu" id="sousMenu">
+                                        <a href="compte.php">Mon compte</a>
+                                        <a href="deconnexion.php">Se déconnecter <img src="img/deconnexion.png" alt="image deconnexion" id="imgDeconnexion"></a>
+                                    </div>
+                                </li>
+                                <li> <a href="compte.php" title="Cliquez ici pour accéder à votre compte"><img src="img/compte.png" alt="image compte" id="imgCompte"></a> </li> 
+                            <?php endif; ?>
 
                     <?php endif; ?>
                 <?php endif; ?>
@@ -92,6 +98,19 @@
 
   function showDiv() {
     document.getElementById("myDiv").style.display = "block";
+  }
+
+  function isMediaQueries(){
+    if (!(window.matchMedia("(max-width: 1200px)").matches)) {
+        <?php
+        $isMediaQueries = 1;
+        ?>
+    }
+    else {
+        <?php
+        $isMediaQueries = 0;
+        ?>
+    }
   }
 </script>
 

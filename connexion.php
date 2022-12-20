@@ -32,6 +32,7 @@ require_once('connexionBDD.php');
 </head>
 <body>
     <main>
+        <h1>Connectez-vous</h1>
         <form method="post">
             <fieldset>
                 <label for="nom">Nom</label>
