@@ -1,13 +1,18 @@
 <?php
 session_start();
-$GLOBALS["page"] = "deconnexion.php";
-require_once('index.php');
+
 
 // Unset all session variables
 $_SESSION = array();
 
 // Destroy the session
 session_destroy();
+
+if (empty($_SESSION['nom']) and empty($_SESSION['prenom'])){
+    header('Location: articles.php');
+    exit;
+}
+
 ?>
 
 <!DOCTYPE html>

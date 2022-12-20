@@ -1,0 +1,14 @@
+installer application xampp
+
+lancer apache et mysql sur XAMPP
+
+effacer le contenu du dossier C:/xampp/htdocs
+
+mettre dans htdocs le code du projet à test
+
+pour accéder à la db, on peut utiliser localhost/phpmyadmin
+
+pour essayer on utilise localhost/ et après on clique sur le fichier
+
+
+Sinon hébergeur 000webhost fonctionne
