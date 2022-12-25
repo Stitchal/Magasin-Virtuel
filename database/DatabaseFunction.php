@@ -1,4 +1,5 @@
 <?php
+    
     require_once('Database.php');
 
     /**
@@ -99,6 +100,10 @@
             ':mdp' => $password
         );
         ConnexionDB::getInstance()->execute($sql, $params);
+    }
+
+    function addProductPanier($nom){
+        $_SESSION[$nom] += 1;
     }
 
     
