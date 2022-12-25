@@ -18,12 +18,20 @@
 
             if ($i % 2 == 1) {
                 echo "<tr>";
-            }
-            else{
+            }  
+
+            $img = "SELECT image FROM produit WHERE id = $i";
+            $res2 = ConnexionDB::getInstance()->querySelect($img);
+            print_r($res2[0]['image']);
+            $link = "img/".$res2[0]['image'];
+            echo $link;
+            echo "<td> "; echo "<img src=$link>" ; echo $result[0]['nom'];  echo "</td>";
+
+            if($i % 2 == 0){
                 echo "</tr>";
             }
+
             
-            echo "<td>"; echo $result[0]['nom'];  echo "</td>";
         }
     }
 
