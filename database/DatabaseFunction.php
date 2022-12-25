@@ -1,5 +1,5 @@
 <?php
-
+    require_once('Database.php');
 
     /**
      * script pour faire apparaitre les produits par rapport à ceux de la base de données
@@ -8,12 +8,12 @@
 
     function generateProduct(){
         ConnexionDB::getInstance();
-        $sql = "SELECT id FROM product";
+        $sql = "SELECT id FROM produit";
         $result = ConnexionDB::getInstance()->querySelect($sql);
         $nbProduct = count($result);
 
         for ($i = 1; $i <= $nbProduct; $i++) {
-            $nom = "SELECT nom FROM product WHERE id = $i";
+            $nom = "SELECT nom FROM produit WHERE id = $i";
             $result = ConnexionDB::getInstance()->querySelect($nom);
 
             if ($i % 2 == 1) {
@@ -23,7 +23,7 @@
                 echo "</tr>";
             }
             
-            echo "<td> $nom </td>";
+            echo "<td>"; echo $result[0]['nom'];  echo "</td>";
         }
     }
 
@@ -59,19 +59,38 @@
      * Vérifie si le client existe dans la base de données
      *
      * @param [type] $email
-     * @param [type] $mdp
+     * @param [type] $nom
+     * @param [type] $prenom
      * @return boolean
      */
-    function checkClientExistant($email, $mdp){
+    function checkClientExistant($email, $nom, $prenom){
         ConnexionDB::getInstance();
-        $sql = "SELECT * FROM client WHERE email = $email AND password = $mdp";
-        $result = ConnexionDB::getInstance()->querySelect($sql);
+        $sql = "SELECT id FROM client WHERE mail = :mail AND nom = :nom AND prenom = :prenom";
+        $params = array(
+            ':mail' => $email,
+            ':nom' => $nom,
+            ':prenom' => $prenom
+        );
+
+        $result = ConnexionDB::getInstance()->querySelect($sql, $params);
         if (count($result) == 0) {
             return false;
         }
         else{
             return true;
         }
+    }
+
+    function createClient($nom, $prenom, $email, $password){
+        ConnexionDB::getInstance();
+        $sql = "INSERT INTO client (nom, prenom, mail, mdp) VALUES (:nom, :prenom, :mail, :mdp)";
+        $params = array(
+            ':nom' => $nom,
+            ':prenom' => $prenom,
+            ':mail' => $email,
+            ':mdp' => $password
+        );
+        ConnexionDB::getInstance()->execute($sql, $params);
     }
 
     

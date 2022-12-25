@@ -2,6 +2,7 @@
     session_start();
     $GLOBALS["page"] = "articles.php";
     require_once('index.php');
+    require_once('database/DatabaseFunction.php');
 ?>
 
 <!DOCTYPE html>
@@ -21,22 +22,7 @@
                     <td>article1</td>
                     <td>article2</td>
                 </tr>
-                <tr>
-                    <td>article3</td>
-                    <td>article4</td>
-                </tr>
-                <tr>
-                    <td>article5</td>
-                    <td>article6</td>
-                </tr>
-                <tr>
-                    <td>article7</td>
-                    <td>article8</td>
-                </tr>
-                <tr>
-                    <td>article9</td>
-                    <td>article10</td>
-                </tr>
+                <?php generateProduct() ?>
             </tbody>
         </table>
     </main>

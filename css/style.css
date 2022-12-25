@@ -170,6 +170,7 @@ fieldset > input[type=text]:valid {
     border-width: 1px;
 }
 
+
 fieldset label{
     display: none;
     /*font-size: large;

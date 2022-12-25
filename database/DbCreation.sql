@@ -106,7 +106,7 @@ CREATE TABLE vente (
 CREATE TABLE achat (
     id INT NOT NULL AUTO_INCREMENT,
     montantAchat INT NOT NULL,
-    PRIMARY KEY (id),
+    PRIMARY KEY (id)
 );
 
 

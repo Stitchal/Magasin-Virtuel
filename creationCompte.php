@@ -1,31 +1,21 @@
 <?php
+    require_once('database/DatabaseFunction.php');
+    require_once('index.php');
 
-session_start();
-$GLOBALS["page"] = "connexion.php";
-$compteCree = 0;
-
-require_once('database/DatabaseFunction.php');
-
-if (!empty($_POST['nom']) and !empty($_POST['prenom'])){
-    if(checkClientExistant($_POST['email'], $_POST['nom'], $_POST['prenom'])){
-        $_SESSION['nom'] = $_POST['nom'];
-        $_SESSION['prenom'] = $_POST['prenom'];
-        $_SESSION['email'] = $_POST['email'];
-        header('Location: articles.php');
-        exit;
+    if(!empty($_POST['nom']) and !empty($_POST['prenom']) and !empty($_POST['mdp']) and !empty($_POST['email'])){
+        if(!checkClientExistant($_POST['email'], $_POST['nom'], $_POST['prenom'])){
+            createClient($_POST['nom'], $_POST['prenom'], $_POST['mdp'], $_POST['email']);
+            $_SESSION['nom'] = $_POST['nom'];
+            $_SESSION['prenom'] = $_POST['prenom'];
+            $_SESSION['email'] = $_POST['email'];
+            header('Location: articles.php');
+            exit;
+        }
+        else{
+            header('Location: creationCompte.php');
+            exit;
+        }
     }
-    else{
-        header('Location: creationCompte.php');
-        exit;
-    }
-   
-}
-require_once('index.php');
-
-
-
-// Souvent on identifie cet objet par la variable $conn ou $db
-//$mysqlConnection = new PDO('mysql:host=linserv-info01.campus.unice.fr;port=5432;dbname=alexis.rosset@univ-cotedazur.fr', 'ra103059', 'ra103059');
 
 ?>
 
@@ -35,11 +25,11 @@ require_once('index.php');
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <title>Ouvrir une session</title>
+    <title>Créer un compte </title>
 </head>
 <body>
     <main>
-        <h1>Connectez-vous</h1>
+        <h1>Inscrivez-vous</h1>
         <form method="post">
             <fieldset>
                 <label for="nom">Nom</label>
@@ -51,6 +41,10 @@ require_once('index.php');
                 <input placeholder="Prénom" type="text" name="prenom" id="prenom" required>
             </fieldset>
 
+            <fieldset>
+                <label for="mdp">Mot de passe</label>
+                <input placeholder="Mot de passe" type="password" name="mdp" id="mdp" required>
+            </fieldset>
             <fieldset>
                 <label for="email">Email</label>
                 <input placeholder="Adresse email" type="text" name="email" id="email" required>
