@@ -106,6 +106,23 @@
         $_SESSION[$nom] += 1;
     }
 
+    //TODO -> corriger la fonction en concordance avec la base de données
+    function checkStockProduct($productName, $number){
+        ConnexionDB::getInstance();
+        $sql = "SELECT stock FROM produit WHERE nom = :nom";
+        $params = array(
+            ':nom' => $productName
+        );
+
+        $result = ConnexionDB::getInstance()->querySelect($sql, $params);
+        if ($result[0]['stock'] >= $number) {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     
 
     
