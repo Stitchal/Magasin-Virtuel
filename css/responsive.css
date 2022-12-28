@@ -1,12 +1,13 @@
-
+/*a mettre a jour*/
 @media only screen and (max-width: 1200px) {
     *{
         font-size: large;
     }
 
     main{
-        width: 70%;
-        margin: 0 15%;
+        width: 95%;
+        margin: 0 2.5%;
+        background-color: rgb(247, 247, 247);
     }
 
     label#labelMenu{
@@ -55,20 +56,22 @@
     }
   }
 
+/*actif*/
 @media only screen and (max-width: 1000px) {
     *{
         font-size: x-large;
     }
 
     main{
-        width: 80%;
-        margin: 0 10%;
+        width: 95%;
+        margin: 0 2.5%;
+        background-color: rgb(247, 247, 247);
     }
 
     nav {
-        height: 0;
+        height: 7%;
         position: fixed;
-        margin-bottom: 8em;
+        margin-bottom: 8%;
     }
 
     form{
@@ -77,21 +80,40 @@
     }
 
     nav ul{
-        width: 80%;
+        background-image: url('img/iconeMenu.png');
+        width: auto;
+        height: auto;
         margin: 0 10%;
-        height: 4em;
+    }
+
+    nav > input[type="checkbox"]:checked + label + ul{
+        border: 3px solid red;
+    }
+
+    nav ul > li a{
+        width: 50%;
+        background-color: #212529;
     }
 
     img#boutonMenu{
         display: block;
+        border-radius: 1em;
+    }
+
+    nav > label > img#boutonMenu{
+        width: 6em;
+        max-height: 90%;
     }
     
     nav input{
         display: block;
     }
+    
+    #haut_page img{
+        width: 5em;
+    }
 
-    #boutonMenu{
-        width: 8em;
-        border-radius: 1em;
+    div#haut_page img:hover{
+        width: 5.1em;
     }
   }

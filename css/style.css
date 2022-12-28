@@ -36,7 +36,6 @@ nav{
 }
 
 nav ul{
-    width: 60%;
     margin: 0 20%;
     height: 4em;
 }
@@ -386,7 +385,7 @@ nav input{
     z-index: 1;
     border-width: 0;
     background-color: #212529;
-    border: solid 1px blue;
+    border: solid 1px #212529;
 }
 
 label:hover {
@@ -408,12 +407,46 @@ input[type="checkbox"]:checked + label + ul.menu li{
 }
 
 #boutonMenu:hover{
-    border: solid 1px orange;
+    border: solid 1px white;
 }
 
 #bouton{
     display: none;
 }
 
+label#labelMenu{
+    width: 0;
+}
 
-    
+#haut_page img{
+    position: fixed;
+    bottom: 3%;
+    right: 3%;
+    width: 3em;
+    transition-duration: 0.1s;
+    background-color: #212529;
+    padding: 0.2em;
+    border-radius: 1em;
+
+    /*background-image: url('../img/fleche_haut.png');*/
+}
+
+/*div#haut_page{
+    background-color: red;
+    border: 1px solid #212529;
+    margin-left: 50%;
+    width: 5%;
+    height: 5%;
+    display: float;
+    transition-duration: 0.4s;
+}*/
+
+div#haut_page img:hover{
+    transition-duration: 0.1s;
+    background-color: rgb(41, 101, 212);
+    width: 3.1em;
+}
+
+#haut_page:hover{
+    cursor: pointer;
+}

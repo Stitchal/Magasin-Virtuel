@@ -69,6 +69,8 @@ require_once('index.php');
             <p><a href="open_session.php" title="Cliquez ici pour vous créer un compte">Créez votre compte</a></p>
         </div>
     </main>
-
+    <a href="#"title="Cliquez ici pour retourner en haut de la page">
+        <div id="haut_page"><img src="img/flecheHaut.png" alt="image fleche haut"></a></div>
+    </a>
 </body>
 </html>

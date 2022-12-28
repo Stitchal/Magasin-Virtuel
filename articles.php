@@ -132,6 +132,8 @@ require_once('database/Database.php');
         </tbody>
 
   </main>
+    <a href="#"title="Cliquez ici pour retourner en haut de la page">
+          <div id="haut_page"><img src="img/flecheHaut.png" alt="image fleche haut"></a></div>
+    </a>
 </body>
-
 </html>
