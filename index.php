@@ -11,6 +11,8 @@
         $page = 'index.php';
     }
     $isMediaQueries = 0;
+
+    require_once('database/DatabaseFunction.php');
 ?>
 
 <!DOCTYPE html>
@@ -48,18 +50,26 @@
                     <?php endif ?>
 
                 <?php else : ?> <!-- Si on est connecté --> 
-
-                    <?php if($GLOBALS["page"] == "deconnexion.php") : ?> <!-- Si on est sur la page déconnexion -->
-                        <li><a href="connexion.php" title="Cliquez ici pour vous connecter">Se connecter</a></li>
-                    <?php elseif($GLOBALS["page"] == "compte.php") : ?> <!-- Si on est sur la page compte-->
-                        <li> <a href="compte.php" title="Cliquez ici pour accéder à votre compte" class="compte"><img src="img/compte.png" alt="image compte" id="imgCompte"></a> </li> 
-                    <?php else : ?> <!-- Si on est pas sur la page déconnexion ou compte -->
+                    <?php if(checkAdmin($_SESSION['nom'])): ?><!-- Si on est admin-->
+                        <li><a href="adminArticle.php" title="Cliquez pour voir les articles">ADMIN Articles</a></li>
+                        <?php if($GLOBALS["page"] == "deconnexion.php") : ?> <!-- Si on est sur la page déconnexion -->
+                            <li><a href="connexion.php" title="Cliquez ici pour vous connecter">Se connecter</a></li>
+                        <?php elseif($GLOBALS["page"] == "compte.php") : ?> <!-- Si on est sur la page compte-->
+                            <li> <a href="compte.php" title="Cliquez ici pour accéder à votre compte" class="compte"><img src="img/compte.png" alt="image compte" id="imgCompte"></a> </li> 
+                        <?php else : ?> <!-- Si on est pas sur la page déconnexion ou compte -->
                         <li><a href="deconnexion.php" title="Cliquez ici pour vous déconnecter"><img src="img/deconnexion.png" alt="image deconnexion" id="imgDeconnexion"></a></li>
-                        <!-- Bouton pour afficher/masquer le sous-menu -->
-                        
-                        <script>
-                            isMediaQueries();
-                        </script>
+                        <?php endif; ?>
+                    <?php else : ?> <!-- Si on est pas admin-->
+                        <?php if($GLOBALS["page"] == "deconnexion.php") : ?> <!-- Si on est sur la page déconnexion -->
+                            <li><a href="connexion.php" title="Cliquez ici pour vous connecter">Se connecter</a></li>
+                        <?php elseif($GLOBALS["page"] == "compte.php") : ?> <!-- Si on est sur la page compte-->
+                            <li> <a href="compte.php" title="Cliquez ici pour accéder à votre compte" class="compte"><img src="img/compte.png" alt="image compte" id="imgCompte"></a> </li> 
+                        <?php else : ?> <!-- Si on est pas sur la page déconnexion ou compte -->
+                            <li><a href="deconnexion.php" title="Cliquez ici pour vous déconnecter"><img src="img/deconnexion.png" alt="image deconnexion" id="imgDeconnexion"></a></li>
+                            <!-- Bouton pour afficher/masquer le sous-menu -->
+                            <script>
+                                isMediaQueries();
+                            </script>
                             <?php if ($isMediaQueries == 0):  ?>
                                 <li><button class="buttonMenu" onclick="showMenu()" title = "fleche"> <img src="img/flecheHaute.png" alt="image fleche" id="imgFleche"> Mon profil</button>
                                 <!-- Sous-menu -->
@@ -70,7 +80,7 @@
                                 </li>
                                 <li> <a href="compte.php" title="Cliquez ici pour accéder à votre compte"><img src="img/compte.png" alt="image compte" id="imgCompte"></a> </li> 
                             <?php endif; ?>
-
+                        <?php endif; ?>
                     <?php endif; ?>
                 <?php endif; ?>
             </ul>

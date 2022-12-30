@@ -4,7 +4,7 @@
 
 class ConnexionDB {
 
-private static $dsn     = "mysql:host=localhost;dbname=td6";
+private static $dsn     = "mysql:host=localhost;dbname=magasinvirtuel";
 private static $login   = "root";
 private static $password  = "";
 

@@ -6,6 +6,8 @@
         header('Location: articles.php');
         exit;
     }
+
+    require_once('database/DatabaseFunction.php');
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +31,10 @@
                     <tr>
                         <td>Adresse e-mail</td>
                         <td><?php echo $_SESSION['email'] ?></td>
+                    </tr>
+                    <tr>
+                        <td>est admin</td>
+                        <td><?php echo checkAdmin($_SESSION['nom']) ?></td>
                     </tr>
                 </tbody>
             </table>
