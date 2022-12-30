@@ -137,14 +137,14 @@
     }
 
     function deleteArticle($nomProduit){
-        ConnexionDB::getInstance();
+        $db = ConnexionDB::getInstance();
         $sql = "DELETE FROM produit WHERE nom = :nomProduit";
         $params = array(
-            ':nom' => $nomProduit
+            ':nomProduit' => $nomProduit
         );
-        ConnexionDB::getInstance()->execute($sql, $params);
-
+        $db->execute($sql, $params);
     }
+    
 
     
 

@@ -2,10 +2,13 @@
 session_start();
 $GLOBALS["page"] = "adminArticle.php";
 echo $_SESSION["suppr"];
-require_once('database/Database.php');
+require_once('database/databaseFunction.php');
+
+
 if (isset($_POST['oui'])){
      $_SESSION['oui'] = $_POST['oui'];
-     deleteArticle($_SESSION["suppr"]);
+     $nom = $_SESSION["suppr"];
+     deleteArticle($nom);
     header('Location: adminArticle.php');
     exit;
 }
