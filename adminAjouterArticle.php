@@ -50,7 +50,7 @@ require_once('database/Database.php');
 
         <fieldset>
             <label for="couleur">couleur</label>
-            <input placeholder="couleur" type="text" name="couleur" id="couleur" required>
+            <input placeholder = "couleur" type="color" name="couleur" id="couleur" required>
         </fieldset>
         
         <fieldset>
@@ -77,6 +77,7 @@ require_once('database/Database.php');
             <input type="submit" value="ajouter l'article">
         </fieldset>
     </form>
+    <p><a href="adminArticle.php" title="Cliquez ici pour retourner à la page des articles">Retourner à la page des articles</a></p>
   </main>
   
     <a href="#"title="Cliquez ici pour retourner en haut de la page">

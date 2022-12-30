@@ -33,8 +33,8 @@
                         <td><?php echo $_SESSION['email'] ?></td>
                     </tr>
                     <tr>
-                        <td>est admin</td>
-                        <td><?php echo checkAdmin($_SESSION['nom']) ?></td>
+                        <td> Statut </td>
+                        <td><?php if(checkAdmin($_SESSION['nom'])) : echo "admin" ?> <?php else : echo "pas admin"?> <?php endif; ?> </td>
                     </tr>
                 </tbody>
             </table>

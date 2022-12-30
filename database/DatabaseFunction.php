@@ -130,12 +130,20 @@
             ':nom' => $nom
         );
         $result = ConnexionDB::getInstance()->querySelect($sql, $params);
-        echo "resultat fonction check admin : ";
-        echo $result[0];
-        if($result == '1'){
+        if($result[0]['isAdmin'] == '1'){
             return true;
         }
         return false;
+    }
+
+    function deleteArticle($nomProduit){
+        ConnexionDB::getInstance();
+        $sql = "DELETE FROM produit WHERE nom = :nomProduit";
+        $params = array(
+            ':nom' => $nomProduit
+        );
+        ConnexionDB::getInstance()->execute($sql, $params);
+
     }
 
     

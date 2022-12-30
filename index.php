@@ -30,24 +30,23 @@
                 <img src="img/iconeMenu.png" alt="Ouvrir le menu" id="boutonMenu" title="Menu" />
             </label>
             <ul class="menu">
-                <?php if($GLOBALS["page"] == "articles.php") : ?> <!-- Si on est sur la page articles.php -->
-                    <li><a href="articles.php"  class="articles" title="Cliquez ici pour voir les articles">Articles</a></li>
-                <?php else : ?> <!-- On est pas sur la page article.php -->
-                    <li><a href="articles.php"  title="Cliquez ici pour voir les articles">Articles</a></li>
-                <?php endif ?>
-
-                <?php if($GLOBALS["page"] == "panier.php") : ?> <!-- Si on est sur la page panier.php -->
-                    <li><a href="panier.php" class="panier" title="Cliquez ici pour consulter votre panier"><img src="img/panier.png" alt="image panier" id="imgPanier"></a></li>
-                <?php else : ?> <!-- Si on est pas sur la page panier.php -->
-                    <li><a href="panier.php" title="Cliquez ici pour consulter votre panier"><img src="img/panier.png" alt="image panier" id="imgPanier"></a></li>
-                <?php endif ?>
-
                 <?php if(empty($_SESSION['nom']) || empty($_SESSION['prenom'])) :  ?> <!-- Si l'on n'est pas connecté -->
-                    <?php if($GLOBALS["page"] == "connexion.php") : ?><!-- Si on est sur la page connexion-->
-                        <li><a href="connexion.php" class="connexion" title="Cliquez ici pour vous connecter">Se connecter</a></li>
-                    <?php else : ?><!-- Si on est pas sur la page connexion-->
-                        <li><a href="connexion.php" title="Cliquez ici pour vous connecter">Se connecter</a></li>
-                    <?php endif ?>
+                    <?php if($GLOBALS["page"] == "articles.php") : ?> <!-- Si on est sur la page articles.php -->
+                        <li><a href="articles.php"  class="articles" title="Cliquez ici pour voir les articles">Articles</a></li>
+                    <?php else : ?> <!-- On est pas sur la page article.php -->
+                        <li><a href="articles.php"  title="Cliquez ici pour voir les articles">Articles</a></li>
+                        <?php if($GLOBALS["page"] == "connexion.php") : ?><!-- Si on est sur la page connexion-->
+                            <li><a href="connexion.php" class="connexion" title="Cliquez ici pour vous connecter">Se connecter</a></li>
+                        <?php else : ?><!-- Si on est pas sur la page connexion-->
+                            <li><a href="connexion.php" title="Cliquez ici pour vous connecter">Se connecter</a></li>
+                            
+                            <?php if($GLOBALS["page"] == "panier.php") : ?> <!-- Si on est sur la page panier.php -->
+                                <li><a href="panier.php" class="panier" title="Cliquez ici pour consulter votre panier"><img src="img/panier.png" alt="image panier" id="imgPanier"></a></li>
+                            <?php else : ?> <!-- Si on est pas sur la page panier.php -->
+                                <li><a href="panier.php" title="Cliquez ici pour consulter votre panier"><img src="img/panier.png" alt="image panier" id="imgPanier"></a></li>
+                            <?php endif ?>
+                        <?php endif; ?>
+                    <?php endif; ?>
 
                 <?php else : ?> <!-- Si on est connecté --> 
                     <?php if(checkAdmin($_SESSION['nom'])): ?><!-- Si on est admin-->
@@ -57,22 +56,22 @@
                         <?php elseif($GLOBALS["page"] == "compte.php") : ?> <!-- Si on est sur la page compte-->
                             <li> <a href="compte.php" title="Cliquez ici pour accéder à votre compte" class="compte"><img src="img/compte.png" alt="image compte" id="imgCompte"></a> </li> 
                         <?php else : ?> <!-- Si on est pas sur la page déconnexion ou compte -->
-                        <li><a href="deconnexion.php" title="Cliquez ici pour vous déconnecter"><img src="img/deconnexion.png" alt="image deconnexion" id="imgDeconnexion"></a></li>
+                            <li><a href="deconnexion.php" title="Cliquez ici pour vous déconnecter"><img src="img/deconnexion.png" alt="image deconnexion" id="imgDeconnexion"></a></li>
+                            <li><a href="compte.php" title="Cliquez ici pour accéder à votre compte" class="compte"><img src="img/compte.png" alt="image compte" id="imgCompte"></a> </li> 
                         <?php endif; ?>
                     <?php else : ?> <!-- Si on est pas admin-->
-                        <?php if($GLOBALS["page"] == "deconnexion.php") : ?> <!-- Si on est sur la page déconnexion -->
-                            <li><a href="connexion.php" title="Cliquez ici pour vous connecter">Se connecter</a></li>
-                        <?php elseif($GLOBALS["page"] == "compte.php") : ?> <!-- Si on est sur la page compte-->
-                            <li> <a href="compte.php" title="Cliquez ici pour accéder à votre compte" class="compte"><img src="img/compte.png" alt="image compte" id="imgCompte"></a> </li> 
-                        <?php else : ?> <!-- Si on est pas sur la page déconnexion ou compte -->
-                            <li><a href="deconnexion.php" title="Cliquez ici pour vous déconnecter"><img src="img/deconnexion.png" alt="image deconnexion" id="imgDeconnexion"></a></li>
-                            <!-- Bouton pour afficher/masquer le sous-menu -->
-                            <script>
-                                isMediaQueries();
-                            </script>
-                            <?php if ($isMediaQueries == 0):  ?>
+                        <?php if($GLOBALS["page"] == "articles.php") : ?> <!-- Si on est sur la page articles.php -->
+                        <   li><a href="articles.php"  class="articles" title="Cliquez ici pour voir les articles">Articles</a></li>
+                        <?php else : ?> <!-- On est pas sur la page article.php -->
+                            <li><a href="articles.php"  title="Cliquez ici pour voir les articles">Articles</a></li>
+                            <?php if($GLOBALS["page"] == "deconnexion.php") : ?> <!-- Si on est sur la page déconnexion -->
+                                <li><a href="connexion.php" title="Cliquez ici pour vous connecter">Se connecter</a></li>
+                            <?php elseif($GLOBALS["page"] == "compte.php") : ?> <!-- Si on est sur la page compte-->
+                                <li> <a href="compte.php" title="Cliquez ici pour accéder à votre compte" class="compte"><img src="img/compte.png" alt="image compte" id="imgCompte"></a> </li> 
+                            <?php else : ?> <!-- Si on est pas sur la page déconnexion ou compte -->
+                                <li><a href="deconnexion.php" title="Cliquez ici pour vous déconnecter"><img src="img/deconnexion.png" alt="image deconnexion" id="imgDeconnexion"></a></li>
+                                <!-- Bouton pour afficher/masquer le sous-menu -->
                                 <li><button class="buttonMenu" onclick="showMenu()" title = "fleche"> <img src="img/flecheHaute.png" alt="image fleche" id="imgFleche"> Mon profil</button>
-                                <!-- Sous-menu -->
                                     <div class="sousMenu" id="sousMenu">
                                         <a href="compte.php">Mon compte</a>
                                         <a href="deconnexion.php">Se déconnecter <img src="img/deconnexion.png" alt="image deconnexion" id="imgDeconnexion"></a>
@@ -125,5 +124,3 @@
 </script>
 
 </html>
-
-

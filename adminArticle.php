@@ -4,7 +4,12 @@ $GLOBALS["page"] = "adminArticle.php";
 require_once('index.php');
 require_once('database/Database.php');
 
-?>
+
+if(isset($_POST["suppr"])){ 
+  $_SESSION['suppr'] = $_POST["suppr"];
+  header('Location: adminSupprimerArticle.php');
+  exit();}
+  ?>
 
 <!DOCTYPE html>
 <html LANG="fr">
@@ -55,11 +60,20 @@ require_once('database/Database.php');
             echo $result[0]["nom"];
             echo '</h1>';
             echo '<br>';
+            /*
             echo '<button> <img src="img/symboleMoins.png" id = "imageQuantiteMoins"></button>';
             echo '<p id="valeur"> <span id="chiffre">0 </span></p>';
-            echo '<button> <img src="img/symbolePlus.png" id="imageQuantitePlus"></button>';
+            echo '<button> <img src="img/symbolePlus.png" id="imageQuantitePlus"></button>';*/
+
+            echo '<form method = "post">';
+            echo '<fieldset>';
+            echo'<input name="suppr" type="submit" value = '.$nomProduit.' >';
+            echo '<fieldset>';
+            echo '</form>';
+            //echo '<button onclick="supprimer($nomProduit);" type="button" title="Cliquez ici pour supprimer un article">Supprimer l article</button>';
             echo '</td>';
 
+      
             if ($i % 2 == 0) {
               echo "</tr>";
             }
@@ -93,7 +107,7 @@ require_once('database/Database.php');
             }
           </style>
         </tbody>
-
+        <button>Envoyeradmin</button>;
   </main>
     <a href="#"title="Cliquez ici pour retourner en haut de la page">
           <div id="haut_page"><img src="img/flecheHaut.png" alt="image fleche haut"></a></div>

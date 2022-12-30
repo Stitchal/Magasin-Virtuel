@@ -26,7 +26,6 @@ require_once('database/Database.php');
 
       <table>
         <tbody>
-
           <?php
           ConnexionDB::getInstance();
           $sql = "SELECT id FROM produit";
@@ -130,7 +129,9 @@ require_once('database/Database.php');
             }
           </style>
         </tbody>
-
+            <p>QgeddgFFFFFFFFFFFFFFFFF</p>
+      <input type="text" name="name" id="name" required pattern="[A-Za-z]+">
+      <button>Envoyer</button>
   </main>
     <a href="#"title="Cliquez ici pour retourner en haut de la page">
           <div id="haut_page"><img src="img/flecheHaut.png" alt="image fleche haut"></a></div>

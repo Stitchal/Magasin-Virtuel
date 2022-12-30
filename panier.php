@@ -1,7 +1,15 @@
 <?php
     session_start();
+
+    if(isset($_SESSION['nom']) or $_SESSION['nom'] == ""){
+        header('Location: connexion.php');
+        exit();
+    }
+
     $GLOBALS["page"] = "panier.php";
     require_once('index.php');
+
+
 ?>
 
 
