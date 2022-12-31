@@ -24,21 +24,18 @@ require_once('database/Database.php');
         <tbody>
           <?php
           ConnexionDB::getInstance();
-          $sql = "SELECT id FROM produit";
+          $sql = "SELECT * FROM produit";
           $result = ConnexionDB::getInstance()->querySelect($sql);
-          $nbProduct = count($result);
-
-          for ($i = 1; $i <= $nbProduct; $i++) {
-            $nom = "SELECT nom FROM produit WHERE id = $i";
-            $result = ConnexionDB::getInstance()->querySelect($nom);
-
+          $i = 1;
+          foreach ($result as $article) {
+            $nomProduit = $article["nom"];
+            
             if ($i % 3 == 1) {
               echo "<tr>";
             }
 
-            $nomProduit = $result[0]["nom"];
             $_SESSION[$nomProduit] = 0;
-            $img = "SELECT image FROM produit WHERE id = $i";
+            $img = "SELECT image FROM produit WHERE nom = '$nomProduit'";
             $res2 = ConnexionDB::getInstance()->querySelect($img);
             //print_r($res2[0]['image']);
             $link = "img/" . $res2[0]['image'];
@@ -63,6 +60,7 @@ require_once('database/Database.php');
             if ($i % 3 == 0) {
               echo "</tr>";
             }
+            $i++;
           }
           ?>
 

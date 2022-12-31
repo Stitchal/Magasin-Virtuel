@@ -106,27 +106,26 @@ if(isset($_POST["suppr"])){
 
           <?php
           ConnexionDB::getInstance();
-          $sql = "SELECT id FROM produit";
-          $result = ConnexionDB::getInstance()->querySelect($sql);
-          $nbProduct = count($result);
+          $i = 1;
           $critere = "";
             if(isset($_SESSION['recherche'])){
                $critere = $_SESSION['recherche'];
                echo $critere;
+               $result = ConnexionDB::getInstance()->querySelect("SELECT * FROM produit WHERE nom LIKE '%$critere%'");
+            }
+            else{
+              $result = ConnexionDB::getInstance()->querySelect("SELECT * FROM produit");
             }
 
-          for ($i = 1; $i <= $nbProduct; $i++) {
-            if(verifyCritere($i, $critere)){
-              $nom = "SELECT nom FROM produit WHERE id = $i";
-            $result = ConnexionDB::getInstance()->querySelect($nom);
+            foreach ($result as $article) {
+              $nomProduit = $article["nom"];
 
             if ($i % 3 == 1) {
               echo "<tr>";
             }
 
-            $nomProduit = $result[0]["nom"];
             $_SESSION[$nomProduit] = 0;
-            $img = "SELECT image FROM produit WHERE id = $i";
+            $img = "SELECT image FROM produit WHERE nom = '$nomProduit'";
             $res2 = ConnexionDB::getInstance()->querySelect($img);
             //print_r($res2[0]['image']);
             $_SESSION[$nomProduit] = 0;
@@ -135,7 +134,7 @@ if(isset($_POST["suppr"])){
             echo '<td> ';
             echo "<img src=$link>";
             echo '<h2>';
-            echo $result[0]["nom"];
+            echo $nomProduit;
             echo '</h2>';
             /*
             echo '<button> <img src="img/symboleMoins.png" id = "imageQuantiteMoins"></button>';
@@ -154,9 +153,9 @@ if(isset($_POST["suppr"])){
             if ($i % 3 == 0) {
               echo "</tr>";
             }
+            $i++;
             }
             
-          }
           ?>
 
           <style>
