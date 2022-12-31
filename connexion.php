@@ -66,7 +66,7 @@ require_once('index.php');
         
         <div class="createCompte">
             <p>Nouveau chez nomSite ?</p>
-            <p><a href="open_session.php" title="Cliquez ici pour vous créer un compte">Créez votre compte</a></p>
+            <p><a href="creationCompte.php" title="Cliquez ici pour vous créer un compte">Créez votre compte</a></p>
         </div>
     </main>
     <a href="#"title="Cliquez ici pour retourner en haut de la page">

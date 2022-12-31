@@ -44,7 +44,7 @@
                                 <li><a href="panier.php" class="panier" title="Cliquez ici pour consulter votre panier"><img src="img/panier.png" alt="image panier" id="imgPanier"></a></li>
                             <?php else : ?> <!-- Si on est pas sur la page panier.php -->
                                 <li><a href="panier.php" title="Cliquez ici pour consulter votre panier"><img src="img/panier.png" alt="image panier" id="imgPanier"></a></li>
-                            <?php endif ?>
+                            <?php endif; ?>
                         <?php endif; ?>
                     <?php endif; ?>
 
@@ -71,13 +71,19 @@
                             <?php else : ?> <!-- Si on est pas sur la page déconnexion ou compte -->
                                 <li><a href="deconnexion.php" title="Cliquez ici pour vous déconnecter"><img src="img/deconnexion.png" alt="image deconnexion" id="imgDeconnexion"></a></li>
                                 <!-- Bouton pour afficher/masquer le sous-menu -->
+                                <!--
                                 <li><button class="buttonMenu" onclick="showMenu()" title = "fleche"> <img src="img/flecheHaute.png" alt="image fleche" id="imgFleche"> Mon profil</button>
                                     <div class="sousMenu" id="sousMenu">
                                         <a href="compte.php">Mon compte</a>
                                         <a href="deconnexion.php">Se déconnecter <img src="img/deconnexion.png" alt="image deconnexion" id="imgDeconnexion"></a>
                                     </div>
-                                </li>
+                                </li>-->
                                 <li> <a href="compte.php" title="Cliquez ici pour accéder à votre compte"><img src="img/compte.png" alt="image compte" id="imgCompte"></a> </li> 
+                                <?php if($GLOBALS["page"] == "panier.php") : ?> <!-- Si on est sur la page panier.php -->
+                                    <li><a href="panier.php" class="panier" title="Cliquez ici pour consulter votre panier"><img src="img/panier.png" alt="image panier" id="imgPanier"></a></li>
+                                <?php else : ?> <!-- Si on est pas sur la page panier.php -->
+                                    <li><a href="panier.php" title="Cliquez ici pour consulter votre panier"><img src="img/panier.png" alt="image panier" id="imgPanier"></a></li>
+                                <?php endif; ?>
                             <?php endif; ?>
                         <?php endif; ?>
                     <?php endif; ?>

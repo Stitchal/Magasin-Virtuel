@@ -1,9 +1,9 @@
 <?php
     session_start();
 
-    if(isset($_SESSION['nom']) or $_SESSION['nom'] == ""){
+    if(empty($_POST['nom'])){
         header('Location: connexion.php');
-        exit();
+        exit;
     }
 
     $GLOBALS["page"] = "panier.php";

@@ -57,10 +57,24 @@
         ConnexionDB::getInstance()->execute($sql);
     }
 
-    function addProduct($nom, $description, $prix, $image){
+    function addProduct($id , $nom, $prixPublic, $prixAchat, $taille, $couleur, $refMarque, $titre, $icone = "default.png", $image = "default.png"){
         ConnexionDB::getInstance();
-        $sql = "INSERT INTO produit (nom, description, prix, image) VALUES ($nom, $description, $prix, $image)";
-        ConnexionDB::getInstance()->execute($sql);
+
+        $sql = "INSERT INTO produit (id, nom, prixPublic, prixAchat, taille, couleur, refMarque, titre, icone, image) VALUES
+        (:id, :nom, :prixPublic, :prixAchat, :taille, :couleur, :marqueId, :titre, :icone, :image)";
+        $params = array(
+            ':id' => strval($id),
+            ':nom' => strval($nom),
+            ':prixPublic' => strval($prixPublic),
+            ':prixAchat' => strval($prixAchat),
+            ':taille' => strval($taille),
+            ':couleur' => strval($couleur),
+            ':marqueId' => strval($refMarque),
+            ':titre' => strval($titre),
+            ':icone' => strval($icone),
+            ':image' => strval($image)
+        );
+        ConnexionDB::getInstance()->execute($sql, $params);
     }
 
 
@@ -144,6 +158,26 @@
         );
         $db->execute($sql, $params);
     }
+
+    function verifyCritere($i, $critere){
+        if($critere == ""){
+            return true;
+        }
+
+        $db = ConnexionDB::getInstance();
+        $sql = "SELECT nom FROM produit WHERE id = :id";
+        $params = array(
+            ':id' => $i
+        );
+        $result = $db->querySelect($sql, $params);
+
+        if(strpos($result[0]['nom'], $critere) === false)
+            return false;
+        else
+            return true;
+    }
+
+    
     
 
     
