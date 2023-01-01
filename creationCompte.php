@@ -16,7 +16,6 @@
             exit;
         }
     }
-
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +28,7 @@
 </head>
 <body>
     <main>
-        <form method="post">
+        <form class="connexion_creercompte" method="post">
             <fieldset>
                 <label for="nom">Nom</label>
                 <input placeholder="Nom" type="text" name="nom" id="nom" required>
@@ -48,14 +47,13 @@
                 <label for="email">Email</label>
                 <input placeholder="Adresse email" type="mail" name="email" id="email" required>
             </fieldset>
-            <fieldset class="fieldsetResterConnecte">
-                <input type="checkbox">
-                <label class="resterConnecte">Rester connecté</label>
-            </fieldset>
             <fieldset>
                 <input type="submit" value="Créer votre compte">
             </fieldset>
         </form>
+        <div class="createCompte">
+            <p>Vous avez un compte ? <a href="connexion.php" title="Cliquez ici pour vous créer un compte">Connectez-vous</a></p>
+        </div>
     </main>
 
 </body>

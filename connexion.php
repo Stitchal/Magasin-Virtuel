@@ -46,7 +46,7 @@ require_once('index.php');
 </head>
 <body>
     <main>
-        <form method="post">
+        <form class="connexion_creercompte" method="post">
             <fieldset>
                 <label for="nom">Nom</label>
                 <input placeholder="Nom" type="text" name="nom" id="nom" required>

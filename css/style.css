@@ -16,7 +16,6 @@ main{
     margin: 0 20%;
     padding-top: 5%;
     padding-bottom: 5%;
-    background-color: white;
     min-height: 100vh;
 }
 
@@ -116,27 +115,84 @@ table {
     width: 100%;
 }
 
-td {
-    width: 50%;
-    height: 10%;
+td{
+    background-color: white;
+    border-width: 0px;
     text-align: center;
-    border: 1px solid #333;
+    display: inline-block;
+    width: calc(98%/3);
+    margin-top: 1%;
+}
+
+td:first-child{
+  margin-right: 1%;
+}
+
+td:last-child{
+  margin-left: 1%;
+}
+
+td > img{
+      width: 70%;
+      margin: 5% 0;
+    }
+
+#boutonRechercher img{
+  height: 1vh;
+  padding: 0 0.5em;
+}
+
+#boutonRechercher{
+  border: 1px solid grey;
+  display: float;
+  padding: 1%;
+  border-radius: 1em;
+  background-color: #212529;
+}
+
+#boutonRechercher:hover{
+    cursor: pointer;
+}
+
+#boutonRechercher:hover{
+  background-color: #2965D4;
+}
+
+input#inputRechercher{
+  margin:0;
+  display: inline-block;
+}
+
+input#inputRechercher{
+  height: 1vh;
+  width: 80%;
+  border: 1px solid grey;
+  border-radius: 1em;
+}
+
+form#formRecherche{
+  width: auto;
+  margin: 2%;
 }
 
 form{
-    background-color: #FAFAFA;
     width: 30%;
-    margin: 10% 35% 0 35%;
-    border: 1px solid #cccccc;
+    margin: 0% 35% 0 35%;
     padding-top: 5%;
     padding-bottom: 5%;
   }
+
+form.connexion_creercompte{
+    background-color: #FAFAFA;
+    border: 1px solid #cccccc;
+    margin-top: 10%
+}
 
 fieldset{
     border: 0;
 }
 
-input[type=text], input[type=password], input[type=mail], textarea {
+input[type=text], input[type=password], input[type=mail], input[type=search], textarea {
     font-size: small;
     display: inline-block;
     background: white;

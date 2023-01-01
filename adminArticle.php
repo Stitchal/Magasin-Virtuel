@@ -26,65 +26,7 @@ if(isset($_POST["suppr"])){
   <link rel="stylesheet" href="css/responsive.css">
   <title>ADMIN</title>
   <style>
-        td{
-            background-color: white;
-            border-width: 0px;
-            text-align: center;
-            display: inline-block;
-            width: calc(98%/3);
-            margin-top: 1%;
-        }
-
-        td:first-child{
-          margin-right: 1%;
-        }
-
-        td:last-child{
-          margin-left: 1%;
-        }
-
-        td > img{
-              width: 70%;
-              margin: 5% 0;
-            }
-
-        #boutonRechercher img{
-          height: 1vh;
-          padding: 0 0.5em;
-        }
-
-        #boutonRechercher{
-          border: 1px solid grey;
-          display: float;
-          padding: 1%;
-          border-radius: 1em;
-          background-color: #212529;
-        }
-
-        #boutonRechercher:hover{
-            cursor: pointer;
-        }
-
-        #boutonRechercher:hover{
-          background-color: #2965D4;
-        }
-
-        input#inputRechercher{
-          margin:0;
-          display: inline-block;
-        }
-
-        input#inputRechercher{
-          height: 1vh;
-          width: 80%;
-          border: 1px solid grey;
-          border-radius: 1em;
-        }
-
-        form#formRecherche{
-          width: auto;
-          margin: 2%;
-        }
+        
 
     </style>
 </head>
@@ -93,7 +35,7 @@ if(isset($_POST["suppr"])){
   <main>
     <h1>Articles en vente</h1>
   <form id="formRecherche" method = "post">
-  <input type="text" id="inputRechercher" name="inputRechercher" placeholder="Rechercher...">
+  <input type="search" id="inputRechercher" name="inputRechercher" placeholder="Rechercher...">
   <button id="boutonRechercher" name="boutonRechercher" type="submit"><img src="img/rechercher.png" alt="image ajouter article"></button>
 </form>
     <div class="article">
