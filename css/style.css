@@ -124,6 +124,7 @@ td {
 }
 
 form{
+    background-color: #FAFAFA;
     width: 30%;
     margin: 10% 35% 0 35%;
     border: 1px solid #cccccc;
@@ -135,7 +136,7 @@ fieldset{
     border: 0;
 }
 
-input[type=text], input[type=password], textarea {
+input[type=text], input[type=password], input[type=mail], textarea {
     font-size: small;
     display: inline-block;
     background: white;
@@ -148,13 +149,12 @@ input[type=text], input[type=password], textarea {
 }
 
 
-input[type="text"]:hover,
+input[type="text"]:hover, input[type=mail]:hover, input[type=password]:hover,
 textarea{
     background-color: rgb(241, 241, 241);
-    border: 1px solid rgb(41, 101, 212);
 }
 
-input[type="text"]:focus,
+input[type="text"]:focus, input[type="mail"]:focus, input[type="password"]:focus, 
 textarea{
     transition-duration: 0.2s;
     background-color: rgb(236, 236, 236);
@@ -166,7 +166,17 @@ fieldset:focus-within > input[type=text]:valid{
     background-color: rgb(236, 236, 236);
 }
 
-fieldset > input[type=text]:valid {
+fieldset:focus-within > input[type=mail]:valid{
+    transition-duration: 0.2s;
+    background-color: rgb(236, 236, 236);
+}
+
+fieldset:focus-within > input[type=password]:valid{
+    transition-duration: 0.2s;
+    background-color: rgb(236, 236, 236);
+}
+
+fieldset > input[type=text]:valid, input[type=mail]:valid, input[type=password]:valid {
     border-color: green;
     border-width: 1px;
 }
@@ -236,6 +246,7 @@ input[type=submit]:hover{
 }
 
 .createCompte{
+    background-color: #FAFAFA;
     width: 28%;
     margin: 3% 35% 0 35%;
     padding: 1%;

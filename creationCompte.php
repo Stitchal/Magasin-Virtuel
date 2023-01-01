@@ -46,7 +46,7 @@
             </fieldset>
             <fieldset>
                 <label for="email">Email</label>
-                <input placeholder="Adresse email" type="text" name="email" id="email" required>
+                <input placeholder="Adresse email" type="mail" name="email" id="email" required>
             </fieldset>
             <fieldset class="fieldsetResterConnecte">
                 <input type="checkbox">
