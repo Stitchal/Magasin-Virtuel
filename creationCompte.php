@@ -29,7 +29,6 @@
 </head>
 <body>
     <main>
-        <h1>Inscrivez-vous</h1>
         <form method="post">
             <fieldset>
                 <label for="nom">Nom</label>
@@ -54,14 +53,9 @@
                 <label class="resterConnecte">Rester connecté</label>
             </fieldset>
             <fieldset>
-                <input type="submit" value="Connexion">
+                <input type="submit" value="Créer votre compte">
             </fieldset>
         </form>
-        
-        <div class="createCompte">
-            <p>Nouveau chez nomSite ?</p>
-            <p><a href="open_session.php" title="Cliquez ici pour vous créer un compte">Créez votre compte</a></p>
-        </div>
     </main>
 
 </body>

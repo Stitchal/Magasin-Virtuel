@@ -39,7 +39,6 @@
                             <li><a href="connexion.php" class="connexion" title="Cliquez ici pour vous connecter">Se connecter</a></li>
                         <?php else : ?><!-- Si on est pas sur la page connexion-->
                             <li><a href="connexion.php" title="Cliquez ici pour vous connecter">Se connecter</a></li>
-                            
                             <?php if($GLOBALS["page"] == "panier.php") : ?> <!-- Si on est sur la page panier.php -->
                                 <li><a href="panier.php" class="panier" title="Cliquez ici pour consulter votre panier"><img src="img/panier.png" alt="image panier" id="imgPanier"></a></li>
                             <?php else : ?> <!-- Si on est pas sur la page panier.php -->

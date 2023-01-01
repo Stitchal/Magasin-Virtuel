@@ -159,12 +159,19 @@
         $db->execute($sql, $params);
     }
 
-    function verifyCritere($nomProduit, $critere){
+    function verifyCritere($i, $critere){
         if($critere == ""){
             return true;
         }
 
-        if(strpos($nomProduit, $critere) === false)
+        $db = ConnexionDB::getInstance();
+        $sql = "SELECT nom FROM produit WHERE id = :id";
+        $params = array(
+            ':id' => $i
+        );
+        $result = $db->querySelect($sql, $params);
+
+        if(strpos($result[0]['nom'], $critere) === false)
             return false;
         else
             return true;

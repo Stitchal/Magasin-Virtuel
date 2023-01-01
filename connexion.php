@@ -11,8 +11,15 @@ if (!empty($_POST['nom']) and !empty($_POST['prenom'])){
         $_SESSION['nom'] = $_POST['nom'];
         $_SESSION['prenom'] = $_POST['prenom'];
         $_SESSION['email'] = $_POST['email'];
-        header('Location: articles.php');
-        exit;
+        if(checkAdmin($_SESSION['nom'])):{
+            header('Location: adminArticle.php');
+            exit;
+        }
+        else:{
+                header('Location: articles.php');
+                exit;
+            }
+    endif;
     }
     else{
         header('Location: creationCompte.php');
@@ -39,7 +46,6 @@ require_once('index.php');
 </head>
 <body>
     <main>
-        <h1>Connectez-vous</h1>
         <form method="post">
             <fieldset>
                 <label for="nom">Nom</label>
@@ -60,13 +66,12 @@ require_once('index.php');
                 <label class="resterConnecte">Rester connecté</label>
             </fieldset>
             <fieldset>
-                <input type="submit" value="Connexion">
+                <input type="submit" value="Se connecter">
             </fieldset>
         </form>
         
         <div class="createCompte">
-            <p>Nouveau chez nomSite ?</p>
-            <p><a href="creationCompte.php" title="Cliquez ici pour vous créer un compte">Créez votre compte</a></p>
+            <p>Vous n'avez pas de compte ? <a href="creationCompte.php" title="Cliquez ici pour vous créer un compte">Inscrivez-vous</a></p>
         </div>
     </main>
     <a href="#"title="Cliquez ici pour retourner en haut de la page">

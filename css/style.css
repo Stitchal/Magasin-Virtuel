@@ -7,7 +7,7 @@
 
 body {
     width: 100%;
-    background-color: rgb(247, 247, 247)
+    background-color: #FAFAFA;
 }
 
 
@@ -16,7 +16,7 @@ main{
     margin: 0 20%;
     padding-top: 5%;
     padding-bottom: 5%;
-    background-color: rgb(243, 243, 243);
+    background-color: white;
     min-height: 100vh;
 }
 
@@ -124,23 +124,26 @@ td {
 }
 
 form{
-    width: 50%;
-    margin: 0 25%;
+    width: 30%;
+    margin: 10% 35% 0 35%;
+    border: 1px solid #cccccc;
+    padding-top: 5%;
+    padding-bottom: 5%;
   }
 
 fieldset{
     border: 0;
 }
 
-input[type=text],
-textarea {
+input[type=text], input[type=password], textarea {
+    font-size: small;
     display: inline-block;
     background: white;
     border: 1px solid #b3b3b3;
     border-radius: 0.2em;
-    width: 45%;
-    margin: 5% 25% 0% 25%;
-    padding: 1em;
+    width: 75%;
+    margin: 1.5% 11% 0 11%;
+    padding: 2%;
     transition-duration: 0.2s;
 }
 
@@ -168,6 +171,11 @@ fieldset > input[type=text]:valid {
     border-width: 1px;
 }
 
+fieldset{
+    width: auto;
+    padding: 0;
+    margin: 0;
+}
 
 fieldset label{
     display: none;
@@ -185,29 +193,29 @@ fieldset label{
 
 fieldset label.resterConnecte{
     display: inline-block;
+    font-size: small;
 }
 
 .fieldsetResterConnecte{
     margin-top: 5%;
+    font-size: small;
     width: 40%;
     margin-left: 30%;
-    margin-right: 30%;
 }
 
 input[type=submit]{
     display: inline-block;
     font-weight: bold;
-    margin-top: 5%;
-    padding: 1em;
+    margin-top: 3%;
+    padding: 1.5%;
     background-color: #212529;
     color: white;
     border: 0;
-    width: 40%;
+    width: 80%;
     border-radius: 0.5em;
-    margin-left: 30%;
-    margin-right: 30%;
+    margin-left: 10.5%;
+    margin-right: 10.5%;
     transition-duration: 0.3s;
-    margin-bottom: 5%;
     border: 2px solid white;
 }
 
@@ -227,15 +235,24 @@ input[type=submit]:hover{
     text-align: center;
 }
 
+.createCompte{
+    width: 28%;
+    margin: 3% 35% 0 35%;
+    padding: 1%;
+    border: 1px solid #cccccc;
+}
+
 .createCompte p a{
     color: #212529;
     text-decoration: none;
+    color:rgb(41, 101, 212);
 }
 
 .createCompte p a:hover{
     color:rgb(41, 101, 212);
     text-decoration:underline;
 }
+
 
 footer{
     width: 100%;
