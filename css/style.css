@@ -533,3 +533,117 @@ div#haut_page img:hover{
 #haut_page:hover{
     cursor: pointer;
 }
+
+#gifPanierVide{
+    display:block;
+}
+
+img#gifPanierVide{
+    width: 50%;
+    margin: 5% 25% 0 25%;
+}
+
+input#quantite{
+    appearance: none;
+    background-color: #FAFAFA;
+    border: 0;
+    width: 30%;
+    display: inline-block;
+    text-align: center;
+}
+
+input#quantite::placeholder{
+    color: black;
+}
+
+table#tableauPanier td:first-child{
+    width: 20%;
+    height: 100%;
+    margin: 0;
+    margin-bottom: 1%;
+}
+
+table#tableauPanier td{
+    margin: 0;
+    height: 100%;
+    padding: 1%;
+    width: 68%;
+    margin-bottom: 1%;
+}
+
+table#tableauPanier tr{
+    height: 13.5vh;
+}
+
+table#tableauPanier img{
+    margin:0;
+    max-width: 60%;
+    margin: 10%;
+}
+
+table#tableauPanier{
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+table#tableauPanier h2{
+    text-align: left;
+}
+
+table#tableauPanier form{
+    margin: 0;
+    padding: 0;
+}
+
+table#tableauPanier form input[type=submit]{
+    margin:0;
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+    cursor: pointer;
+}
+
+#prix{
+    display: inline-block;
+    width: 49%;
+    text-align: left;
+    font-weight: bold;
+}
+
+#prix p{
+    color: #B12704;
+    font-size:x-large;
+}
+
+#prix + form{
+    display: inline-block;
+    width: 49%;
+}
+
+.ajouterPanier {
+    background-color: #212529;
+    padding: 1%;
+    border-radius: 0.75em;
+}
+
+.ajouterPanier:hover {
+    transition-duration: 0.2s;
+    background-color: rgb(41, 101, 212);
+}
+
+form fieldset button.ajouterPanier {
+    border: none;
+    display: inline-block;
+    margin-left: 60%;
+}
+
+button:hover .ajouterPanier {
+    cursor: pointer;
+}
+
+table#tabArticles > tr > td{
+    border: 1px solid red;
+    padding: 2%;
+}

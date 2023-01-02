@@ -3,40 +3,6 @@
     require_once('Database.php');
 
     /**
-     * script pour faire apparaitre les produits par rapport à ceux de la base de données
-     * @return void
-     */
-
-    function generateProduct(){
-        ConnexionDB::getInstance();
-        $sql = "SELECT id FROM produit";
-        $result = ConnexionDB::getInstance()->querySelect($sql);
-        $nbProduct = count($result);
-
-        for ($i = 1; $i <= $nbProduct; $i++) {
-            $nom = "SELECT nom FROM produit WHERE id = $i";
-            $result = ConnexionDB::getInstance()->querySelect($nom);
-
-            if ($i % 2 == 1) {
-                echo "<tr>";
-            }  
-
-            $img = "SELECT image FROM produit WHERE id = $i";
-            $res2 = ConnexionDB::getInstance()->querySelect($img);
-            print_r($res2[0]['image']);
-            $link = "img/".$res2[0]['image'];
-            echo $link;
-            echo "<td> "; echo "<img src=$link>" ; echo $result[0]['nom'];  echo "</td>";
-
-            if($i % 2 == 0){
-                echo "</tr>";
-            }
-
-            
-        }
-    }
-
-    /**
      * script pour ajouter un client dans la base de données
      *
      * @param [String] $nom
@@ -121,21 +87,34 @@
     }
 
     //TODO -> corriger la fonction en concordance avec la base de données
-    function checkStockProduct($productName, $number){
+    function checkStockProduct($id, $number){
         ConnexionDB::getInstance();
-        $sql = "SELECT stock FROM produit WHERE nom = :nom";
+        $sql = "SELECT quantite FROM gestion_stock WHERE id = :id";
         $params = array(
-            ':nom' => $productName
+            ':id' => $id
         );
 
         $result = ConnexionDB::getInstance()->querySelect($sql, $params);
-        if ($result[0]['stock'] >= $number) {
+        if ($result[0]['quantite'] >= $number) {
             return true;
         }
         else{
             return false;
         }
     }
+
+    function getStockProduct($id){
+        ConnexionDB::getInstance();
+        $sql = "SELECT quantite FROM gestion_stock WHERE refProduit = :id";
+        $params = array(
+            ':id' => $id
+        );
+        $result = ConnexionDB::getInstance()->querySelect($sql, $params);
+        return $result[0]['quantite'];
+    }
+
+
+
 
     function checkAdmin($nom){
         ConnexionDB::getInstance();
@@ -175,6 +154,16 @@
             return false;
         else
             return true;
+    }
+
+    function getIDProduct($nom){
+        ConnexionDB::getInstance();
+        $sql = "SELECT id FROM produit WHERE nom = :nom";
+        $params = array(
+            ':nom' => $nom
+        );
+        $result = ConnexionDB::getInstance()->querySelect($sql, $params);
+        return $result[0]['id'];
     }
 
     
