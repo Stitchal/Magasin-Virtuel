@@ -39,9 +39,14 @@
                 </tbody>
             </table>
             </div>
+            <?php
+            if(checkClientCommande($_SESSION["nom"])){
+            echo '<div>';
+            echo '<a href="clientFactures.php" id="bouton" title="Cliquez ici passer la commande">Voir les factures</a>';
+            echo '</div>';
+            }
+            ?>
     </main>
-    <a href="#"title="Cliquez ici pour retourner en haut de la page">
-        <div id="haut_page"><img src="img/flecheHaut.png" alt="image fleche haut"></a></div>
-    </a>
 </body>
 </html>
+

@@ -271,7 +271,6 @@ fieldset label.resterConnecte{
 
 input[type=submit]{
     display: inline-block;
-    font-weight: bold;
     margin-top: 3%;
     padding: 1.5%;
     background-color: #212529;
@@ -545,11 +544,16 @@ img#gifPanierVide{
 
 input#quantite{
     appearance: none;
-    background-color: #FAFAFA;
+    background-color: #e6e6e6;
+    border-radius: 0.5em;
     border: 0;
-    width: 30%;
+    width: 20%;
     display: inline-block;
     text-align: center;
+}
+
+input#quantite:hover{
+    background-color: #cccccc;
 }
 
 input#quantite::placeholder{
@@ -557,22 +561,23 @@ input#quantite::placeholder{
 }
 
 table#tableauPanier td:first-child{
-    width: 20%;
-    height: 100%;
+    max-width: 20%;
     margin: 0;
-    margin-bottom: 1%;
 }
 
 table#tableauPanier td{
+    background-color: #FAFAFA;
     margin: 0;
     height: 100%;
-    padding: 1%;
-    width: 68%;
-    margin-bottom: 1%;
+    padding: 2% 1% 2% 1%;
+    width: 76%;
 }
 
 table#tableauPanier tr{
-    height: 13.5vh;
+    background-color:#FAFAFA;
+    height: 10%;
+    margin-bottom: 1%;
+    border-bottom: 1px solid #C5C5C5;
 }
 
 table#tableauPanier img{
@@ -585,6 +590,7 @@ table#tableauPanier{
     width: 80%;
     margin-left: 10%;
     margin-right: 10%;
+    margin-bottom: 5%;
 }
 
 table#tableauPanier h2{
@@ -598,6 +604,7 @@ table#tableauPanier form{
 
 table#tableauPanier form input[type=submit]{
     margin:0;
+    width: auto;
 }
 
 input::-webkit-inner-spin-button,
@@ -605,19 +612,25 @@ input::-webkit-outer-spin-button {
     cursor: pointer;
 }
 
-#prix{
+.prix{
     display: inline-block;
     width: 49%;
     text-align: left;
     font-weight: bold;
 }
 
-#prix p{
+.prix p{
     color: #B12704;
     font-size:x-large;
 }
 
-#prix + form{
+p.prix{
+    text-align: right;
+    color: #B12704;
+    font-size:large;
+}
+
+.prix + form{
     display: inline-block;
     width: 49%;
 }
@@ -646,4 +659,145 @@ button:hover .ajouterPanier {
 table#tabArticles > tr > td{
     border: 1px solid red;
     padding: 2%;
+}
+
+a#passerCommande{
+    text-align: right;
+    display: inline-block;
+    padding: 0.5% 2% 0.5% 2%;
+    background-color: rgb(38, 117, 38);
+    color: rgb(13, 37, 13);
+    border: 0;
+    border-radius: 0.5em;
+    margin-left: 10.5%;
+    margin-right: 10.5%;
+    transition-duration: 0.3s;
+    border: 2px solid rgb(13, 37, 13);
+    text-decoration: none;
+}
+
+a#passerCommande:hover{
+    background-color: rgb(21, 63, 21);
+    cursor: pointer;
+    color: rgb(218, 218, 218);
+    transition-duration: 0.2s;
+}
+
+div a#passerCommande{
+    float: right;
+}
+
+a#bouton{
+    text-align: right;
+    display: inline-block;
+    padding: 0.5% 2% 0.5% 2%;
+    background-color: #212529;
+    color: rgb(255, 255, 255);
+    border: 0;
+    border-radius: 0.5em;
+    margin-left: 10.5%;
+    margin-right: 10.5%;
+    transition-duration: 0.3s;
+    border: 2px solid white;
+    text-decoration: none;
+}
+
+a#bouton:hover{
+    background-color: rgb(41, 101, 212);
+    cursor: pointer;
+    color: #212529;
+    border: 2px solid rgb(13, 37, 13);
+    transition-duration: 0.2s;
+}
+
+table.facture{
+    background-color: #FAFAFA;
+    border-radius: 2em;
+}
+
+.divFacture{
+    background-color: rgb(241, 241, 241);
+    border: 1px solid #212529;
+    padding: 2%;
+    border-radius: 1em;
+    margin-bottom: 10%;
+}
+
+table.facture tr td{
+    background-color: rgb(241, 241, 241);
+    background-color: none;
+    padding: 1% 1% 0% 1%;
+    text-align: left;
+    padding-bottom: 1%;
+    border-bottom: 1px solid rgb(207, 207, 207);
+    margin: 1% 0 0 0;
+    width: 48%;
+}
+
+table.facture tbody{
+    background-color: rgb(241, 241, 241);
+    border-radius: 5em;
+}
+
+div.divFacture b{
+    font-size: large;
+}
+
+div.divFacture b:hover{
+    color: red;
+    transition-duration: 5s;
+}
+
+.panierNomProduit{
+    width: 70%;
+    display: inline-block;
+}
+
+.panierPrix{
+    text-align: right;
+    width: 30%;
+    display: inline-block;
+
+}
+
+.panierQuantite{
+    width: auto;
+    float: left;
+    text-align: left;
+
+}
+
+form#modifierQuantitePanier{
+    width: auto;
+}
+
+.panierSupprimer{
+    float: bottom-left;
+    text-align: left;
+}
+
+.infosCommande{
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+}
+
+.infosCommande p:first-child{
+    display: inline-block;
+    text-align: left;
+    width: 50%;
+}
+
+.infosCommande p:last-child{
+    text-align: right;
+    display: inline-block;
+    width: 50%;
+}
+
+.infosCommande a#passerCommande{
+    margin:0;
+}
+
+div.panierPrix b{
+    font-size: large;
 }

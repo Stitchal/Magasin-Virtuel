@@ -11,6 +11,12 @@ if ((isset($_POST['nombreArticles']))) {
   header('Location: traitementPanier.php');
   exit;
 }
+
+if (isset($_POST['boutonRechercher'])) {
+  $_SESSION['recherche'] = $_POST['inputRechercher'];
+  header('Location: articles.php');
+  exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +31,10 @@ if ((isset($_POST['nombreArticles']))) {
 
 <body>
   <main>
+    <form id="formRecherche" method = "post">
+      <input type="search" id="inputRechercher" name="inputRechercher" placeholder="Rechercher...">
+      <button id="boutonRechercher" name="boutonRechercher" type="submit"><img src="img/rechercher.png" alt="image ajouter article"></button>
+    </form>
     <div class="article">
       <table id="tabArticles">
         <tbody>
@@ -33,6 +43,14 @@ if ((isset($_POST['nombreArticles']))) {
           $sql = "SELECT * FROM produit";
           $result = ConnexionDB::getInstance()->querySelect($sql);
           $i = 1;
+          $critere = "";
+            if(isset($_SESSION['recherche'])){
+               $critere = $_SESSION['recherche'];
+               $result = ConnexionDB::getInstance()->querySelect("SELECT * FROM produit WHERE nom LIKE '%$critere%'");
+            }
+            else{
+              $result = ConnexionDB::getInstance()->querySelect("SELECT * FROM produit");
+            }
           foreach ($result as $article) {
             $nomProduit = $article["nom"];
             $maxProduit = getStockProduct(getIDProduct($nomProduit));
@@ -59,7 +77,9 @@ if ((isset($_POST['nombreArticles']))) {
               echo '<button onclick="decrementer(\'' . $nomProduit . '\', \'' . $maxProduit . '\' );"> <img src="img/symboleMoins.png" id = "imageQuantiteMoins"></button>';
               echo '<p id="' . $nomProduit . '"> <span id="chiffre">0 </span></p>';
               echo '<button onclick="augmenter(\'' . $nomProduit . '\', \'' . $maxProduit . '\');"> <img src="img/symbolePlus.png" id="imageQuantitePlus"></button>';
-              echo '<br><div id="prix"><p>'.$prix.'€</p></div>';
+            }
+              echo '<br><div class="prix"><p>'.$prix.'€</p></div>';
+              if(!empty($_SESSION['nom'])){
               echo '<form method="post" action="traitementPanier.php">';
               echo '<input type="hidden" id="nom" name="nomProduit" value="' . $nomProduit . '">';
               echo '<input type="hidden" id="quantite-'.$nomProduit.'" name="quantite" value="">';

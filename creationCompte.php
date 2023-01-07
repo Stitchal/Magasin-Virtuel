@@ -1,33 +1,45 @@
 <?php
-    require_once('database/DatabaseFunction.php');
-    require_once('index.php');
+require_once('database/DatabaseFunction.php');
+require_once('functions.php');
+require_once('index.php');
 
-    if(!empty($_POST['nom']) and !empty($_POST['prenom']) and !empty($_POST['mdp']) and !empty($_POST['email'])){
-        if(!checkClientExistant($_POST['email'], $_POST['nom'], $_POST['prenom'])){
-            createClient($_POST['nom'], $_POST['prenom'], $_POST['mdp'], $_POST['email']);
-            $_SESSION['nom'] = $_POST['nom'];
-            $_SESSION['prenom'] = $_POST['prenom'];
-            $_SESSION['email'] = $_POST['email'];
-            header('Location: articles.php');
-            exit;
-        }
-        else{
+if (!empty($_POST['nom']) and !empty($_POST['prenom']) and !empty($_POST['mdp']) and !empty($_POST['email'])) {
+    if (!checkClientExistant($_POST['email'], $_POST['nom'], $_POST['prenom']) && verificationMail($_POST['email'])) {
+        createClient($_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['mdp']);
+        $_SESSION['nom'] = $_POST['nom'];
+        $_SESSION['prenom'] = $_POST['prenom'];
+        $_SESSION['email'] = $_POST['email'];
+        header('Location: articles.php');
+        exit;
+    } else {
+        if (verificationMail($_POST['email'])) {
             header('Location: creationCompte.php');
+            exit;
+        } else {
+            $error = "Email non valide";
+            header('Location: creationCompte.php?error=' . urlencode($error));
             exit;
         }
     }
+}
 ?>
 
 <!DOCTYPE html>
 <html LANG="fr">
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <title>Créer un compte </title>
 </head>
+
 <body>
     <main>
+        <?php if (!empty($_GET) || !empty($_GET['error'])) : ?>
+            <p style="color:#FF0000" ;> Erreur : <?= $_GET['error'] ?> </p>
+        <?php endif ?>
+
         <form class="connexion_creercompte" method="post">
             <fieldset>
                 <label for="nom">Nom</label>
@@ -57,4 +69,5 @@
     </main>
 
 </body>
+
 </html>
