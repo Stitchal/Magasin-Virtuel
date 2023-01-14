@@ -1,6 +1,5 @@
 <?php
 session_start();
-$GLOBALS["page"] = "adminArticle.php";
 require_once('database/DatabaseFunction.php');
 
 if(isset($_POST["submit"]) && isset($_POST["icon"]) && isset($_POST["image"])){
@@ -13,7 +12,7 @@ else if(isset($_POST["submit"])){
     header("Location: adminArticle.php");
     exit();
 }
-require_once('index.php');
+require_once('nav.php');
 ?>
 
 <!DOCTYPE html>
@@ -31,15 +30,6 @@ require_once('index.php');
 
     input[type=submit]:hover{
         background-color: green;
-    }
-
-    a#retourPageArticle{
-        color: #212529;
-        text-decoration: underline;
-    }
-
-    a#retourPageArticle:hover{
-        text-decoration: none;
     }
     
     #divGauche{
@@ -141,7 +131,7 @@ require_once('index.php');
             <input type="submit" name="submit" value="Ajouter l'article">
         </fieldset>
     </form>
-    <p><a id="retourPageArticle" href="adminArticle.php" title="Cliquez ici pour retourner à la page des articles">←Retourner à la page des articles</a></p>
+    <p><a class="retourPage" href="adminArticle.php" title="Cliquez ici pour retourner à la page des articles">←Retourner à la page des articles</a></p>
   </main>
     </a>
 </body>

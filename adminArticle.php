@@ -1,13 +1,17 @@
 <?php
 session_start();
 $GLOBALS["page"] = "adminArticle.php";
-require_once('index.php');
+$GLOBALS["pageSuppression"] = "adminArticle.php";
+require_once('nav.php');
+require_once('menuAdmin.php');
 require_once('database/Database.php');
 
 
 if(isset($_POST["suppr"])){ 
   $_SESSION['suppr'] = $_POST["supprimer"];
-  header('Location: adminSupprimerArticle.php');
+  $_SESSION['idSuppr'] = $_POST["idSuppression"];
+  $_SESSION['tabSuppr'] = "produit";
+  header('Location: adminSuppression.php');
   exit();}
   
   if (isset($_POST['boutonRechercher'])) {
@@ -19,25 +23,19 @@ if(isset($_POST["suppr"])){
 ?>
 <!DOCTYPE html>
 <html LANG="fr">
-
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
-  <title>ADMIN</title>
-  <style>
-        
-
-    </style>
+  <title>Table produit</title>
 </head>
-
 <body>
   <main>
-    <h1>Articles en vente</h1>
+    <h1>Table produit</h1>
   <form id="formRecherche" method = "post">
-  <input type="search" id="inputRechercher" name="inputRechercher" placeholder="Rechercher...">
-  <button id="boutonRechercher" name="boutonRechercher" type="submit"><img src="img/rechercher.png" alt="image ajouter article"></button>
-</form>
+    <input type="search" id="inputRechercher" name="inputRechercher" placeholder="Rechercher...">
+    <button id="boutonRechercher" name="boutonRechercher" type="submit"><img src="img/rechercher.png" alt="image ajouter article"></button>
+  </form>
     <div class="article">
       <script>
         let valeur = 0;
@@ -70,6 +68,7 @@ if(isset($_POST["suppr"])){
             $res2 = ConnexionDB::getInstance()->querySelect($img);
             //print_r($res2[0]['image']);
             $_SESSION[$nomProduit] = 0;
+            $idProduit = $article['id'];
             $link = "img/" . $res2[0]['image'];
             //echo $link;
             echo '<td> ';
@@ -77,14 +76,11 @@ if(isset($_POST["suppr"])){
             echo '<h2>';
             echo $nomProduit;
             echo '</h2>';
-            /*
-            echo '<button> <img src="img/symboleMoins.png" id = "imageQuantiteMoins"></button>';
-            echo '<p id="valeur"> <span id="chiffre">0 </span></p>';
-            echo '<button> <img src="img/symbolePlus.png" id="imageQuantitePlus"></button>';*/
 
             echo '<form method = "post">';
             echo '<fieldset>';
             echo "<input type='hidden' name='supprimer' value=$nomProduit>";
+            echo "<input type='hidden' name='idSuppression' value=$idProduit>";
             echo"<input name='suppr' class='supprimerProduit' type='submit' value = 'Supprimer' >";
             echo '<fieldset>';
             echo '</form>';
@@ -100,16 +96,6 @@ if(isset($_POST["suppr"])){
           ?>
 
           <style>
-            #imageQuantiteMoins {
-              width: 20px;
-              height: 20px;
-            }
-
-            #imageQuantitePlus {
-              width: 20px;
-              height: 20px;
-            }
-
             td {
               text-align: center;
               display: inline-block;
@@ -124,55 +110,10 @@ if(isset($_POST["suppr"])){
             p {
               display: inline-block;
             }
-
-            input.supprimerProduit{
-              display: block;
-              background-color: rgb(214, 0, 0);
-              width: 100%;
-              padding: 3%;
-              margin:5% 0;
-              
-            }
-
-            input.supprimerProduit:hover{
-              background-color: red;
-            }
-
-            #ajouterArticle img{
-                position: fixed;
-                bottom: 3%;
-                right: 10%;
-                width: 5em;
-                transition-duration: 0.1s;
-                background-color: rgb(0, 102, 0);
-                padding: 0.2em;
-                border-radius: 1em;
-                /*background-image: url('../img/fleche_haut.png');*/
-            }
-
-            /*div#haut_page{
-                background-color: red;
-                border: 1px solid #212529;
-                margin-left: 50%;
-                width: 5%;
-                height: 5%;
-                display: float;
-                transition-duration: 0.4s;
-            }*/
-
-            div#ajouterArticle img:hover{
-                transition-duration: 0.1s;
-                background-color: green;
-                width: 5.1em;
-            }
-
-            #ajouterArticle:hover{
-                cursor: pointer;
-            }
           </style>
         </tbody>
-        <a href="adminAjouterArticle.php"title="Cliquez ici pour retourner en haut de la page">
-          <div id="ajouterArticle"><img src="img/ajouterArticle.png" alt="image ajouter article"></a></div>
+        <a href="adminAjouterArticle.php"title="Cliquez ici pour ajouter un article à la base de donnée">
+          <div id="ajouter"><img src="img/ajouterArticle.png" alt="image ajouter article"></a></div>
     </a>
   </main>
 </body>

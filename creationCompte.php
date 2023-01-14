@@ -1,7 +1,9 @@
 <?php
+$GLOBALS["page"] = "creationCompte.php";
 require_once('database/DatabaseFunction.php');
 require_once('functions.php');
-require_once('index.php');
+require_once('nav.php');
+
 
 if (!empty($_POST['nom']) and !empty($_POST['prenom']) and !empty($_POST['mdp']) and !empty($_POST['email'])) {
     if (!checkClientExistant($_POST['email'], $_POST['nom'], $_POST['prenom']) && verificationMail($_POST['email'])) {
@@ -9,7 +11,7 @@ if (!empty($_POST['nom']) and !empty($_POST['prenom']) and !empty($_POST['mdp'])
         $_SESSION['nom'] = $_POST['nom'];
         $_SESSION['prenom'] = $_POST['prenom'];
         $_SESSION['email'] = $_POST['email'];
-        header('Location: articles.php');
+        header('Location: index.php');
         exit;
     } else {
         if (verificationMail($_POST['email'])) {

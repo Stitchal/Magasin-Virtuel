@@ -19,6 +19,6 @@ else {
     $_SESSION['panier'][$product_name] = $product_quantity;
 }
 
-header('Location: articles.php');
+header('Location: index.php');
 exit();
 ?>

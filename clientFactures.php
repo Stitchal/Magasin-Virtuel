@@ -1,7 +1,7 @@
 <?php
 session_start();
 $GLOBALS["page"] = "compte.php";
-require_once('index.php');
+require_once('nav.php');
 require_once('functions.php');
 require_once('database/DatabaseFunction.php');
 ?>
@@ -26,10 +26,10 @@ require_once('database/DatabaseFunction.php');
             $articles = getArticleFacture($facture['articles']);
 
 
-            echo "<div class='divFacture'> <table class='facture'>";
-            echo "<thead>";
-            echo '<b>Facture N°'.$facture['id'].'</b>';
-            echo "</thead>";
+            echo "<div class='divFacture'>";
+            echo "<b>Facture N°".$facture["id"]."</b>";
+            echo "</br>Date de création : ".$facture["dateFact"];
+            echo "<table class='facture'>";
             echo "<tbody>";
             echo "<tr>";
             echo "<td>ID</td>";
@@ -74,7 +74,7 @@ require_once('database/DatabaseFunction.php');
 
             echo "<tr>";
             echo "<td>Montant total</td>";
-            echo  "<td>". $facture['prixTotal']."€</td>";
+            echo  "<td>". $facture['prixHT']."€</td>";
             echo "</tr>";
             
             echo "</tbody>";

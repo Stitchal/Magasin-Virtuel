@@ -1,131 +1,211 @@
 <?php
-    //if (!isset($_SESSION['nom']) && !isset($_SESSION['prenom'])) {
-      //  $_SESSION['nom'] = '';
-        //$_SESSION['prenom'] = '';
-        //$_SESSION['nb'] = 0;
-    //}
+session_start();
+$GLOBALS["page"] = "index.php";
+require_once('nav.php');
+#require_once('database/Database.php');
+require_once('database/DatabaseFunction.php');
 
-    if(isset($_GLOBALS['page'])) {
-        $page = $_GLOBALS['page'];
-    } else {
-        $page = 'index.php';
-    }
-    $isMediaQueries = 0;
 
-    require_once('database/DatabaseFunction.php');
+if ((isset($_POST['nombreArticles']))) {
+  $_SESSION['nombreArticles'] = $_POST['nombreArticles'];
+  header('Location: traitementPanier.php');
+  exit;
+}
+
+if (isset($_POST['boutonRechercher'])) {
+  $_SESSION['recherche'] = $_POST['inputRechercher'];
+  header('Location: index.php');
+  exit();
+}
 ?>
 
 <!DOCTYPE html>
 <html LANG="fr">
+
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <title>Magasin Virtuel</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <title>Magasin Virtuel</title>
 </head>
-<body>  
-        <nav>
-            <input type="checkbox" id="bouton" />
-            <label id = "labelMenu" for="bouton">
-                <img src="img/iconeMenu.png" alt="Ouvrir le menu" id="boutonMenu" title="Menu" />
-            </label>
-            <ul class="menu">
-                <?php if(empty($_SESSION['nom']) || empty($_SESSION['prenom'])) :  ?> <!-- Si l'on n'est pas connecté -->
-                    <?php if($GLOBALS["page"] == "articles.php") : ?> <!-- Si on est sur la page articles.php -->
-                        <li><a href="articles.php"  class="articles" title="Cliquez ici pour voir les articles">Articles</a></li>
-                    <?php else : ?> <!-- On est pas sur la page article.php -->
-                        <li><a href="articles.php"  title="Cliquez ici pour voir les articles">Articles</a></li>
-                        <?php if($GLOBALS["page"] == "connexion.php") : ?><!-- Si on est sur la page connexion-->
-                            <li><a href="connexion.php" class="connexion" title="Cliquez ici pour vous connecter">Se connecter</a></li>
-                        <?php else : ?><!-- Si on est pas sur la page connexion-->
-                            <li><a href="connexion.php" title="Cliquez ici pour vous connecter">Se connecter</a></li>
-                            <?php if($GLOBALS["page"] == "panier.php") : ?> <!-- Si on est sur la page panier.php -->
-                                <li><a href="panier.php" class="panier" title="Cliquez ici pour consulter votre panier"><img src="img/panier.png" alt="image panier" id="imgPanier"></a></li>
-                            <?php else : ?> <!-- Si on est pas sur la page panier.php -->
-                                <li><a href="panier.php" title="Cliquez ici pour consulter votre panier"><img src="img/panier.png" alt="image panier" id="imgPanier"></a></li>
-                            <?php endif; ?>
-                        <?php endif; ?>
-                    <?php endif; ?>
 
-                <?php else : ?> <!-- Si on est connecté --> 
-                    <?php if(checkAdmin($_SESSION['nom'])): ?><!-- Si on est admin-->
-                        <li><a href="adminArticle.php" title="Cliquez pour voir les articles">ADMIN Articles</a></li>
-                        <?php if($GLOBALS["page"] == "deconnexion.php") : ?> <!-- Si on est sur la page déconnexion -->
-                            <li><a href="connexion.php" title="Cliquez ici pour vous connecter">Se connecter</a></li>
-                        <?php elseif($GLOBALS["page"] == "compte.php") : ?> <!-- Si on est sur la page compte-->
-                            <li> <a href="compte.php" title="Cliquez ici pour accéder à votre compte" class="compte"><img src="img/compte.png" alt="image compte" id="imgCompte"></a> </li> 
-                        <?php else : ?> <!-- Si on est pas sur la page déconnexion ou compte -->
-                            <li><a href="deconnexion.php" title="Cliquez ici pour vous déconnecter"><img src="img/deconnexion.png" alt="image deconnexion" id="imgDeconnexion"></a></li>
-                            <li><a href="compte.php" title="Cliquez ici pour accéder à votre compte" class="compte"><img src="img/compte.png" alt="image compte" id="imgCompte"></a> </li> 
-                        <?php endif; ?>
-                    <?php else : ?> <!-- Si on est pas admin-->
-                        <?php if($GLOBALS["page"] == "articles.php") : ?> <!-- Si on est sur la page articles.php -->
-                        <   li><a href="articles.php"  class="articles" title="Cliquez ici pour voir les articles">Articles</a></li>
-                        <?php else : ?> <!-- On est pas sur la page article.php -->
-                            <li><a href="articles.php"  title="Cliquez ici pour voir les articles">Articles</a></li>
-                            <?php if($GLOBALS["page"] == "deconnexion.php") : ?> <!-- Si on est sur la page déconnexion -->
-                                <li><a href="connexion.php" title="Cliquez ici pour vous connecter">Se connecter</a></li>
-                            <?php elseif($GLOBALS["page"] == "compte.php") : ?> <!-- Si on est sur la page compte-->
-                                <li> <a href="compte.php" title="Cliquez ici pour accéder à votre compte" class="compte"><img src="img/compte.png" alt="image compte" id="imgCompte"></a> </li> 
-                            <?php else : ?> <!-- Si on est pas sur la page déconnexion ou compte -->
-                                <li><a href="deconnexion.php" title="Cliquez ici pour vous déconnecter"><img src="img/deconnexion.png" alt="image deconnexion" id="imgDeconnexion"></a></li>
-                                <!-- Bouton pour afficher/masquer le sous-menu -->
-                                <!--
-                                <li><button class="buttonMenu" onclick="showMenu()" title = "fleche"> <img src="img/flecheHaute.png" alt="image fleche" id="imgFleche"> Mon profil</button>
-                                    <div class="sousMenu" id="sousMenu">
-                                        <a href="compte.php">Mon compte</a>
-                                        <a href="deconnexion.php">Se déconnecter <img src="img/deconnexion.png" alt="image deconnexion" id="imgDeconnexion"></a>
-                                    </div>
-                                </li>-->
-                                <li> <a href="compte.php" title="Cliquez ici pour accéder à votre compte"><img src="img/compte.png" alt="image compte" id="imgCompte"></a> </li> 
-                                <?php if($GLOBALS["page"] == "panier.php") : ?> <!-- Si on est sur la page panier.php -->
-                                    <li><a href="panier.php" class="panier" title="Cliquez ici pour consulter votre panier"><img src="img/panier.png" alt="image panier" id="imgPanier"></a></li>
-                                <?php else : ?> <!-- Si on est pas sur la page panier.php -->
-                                    <li><a href="panier.php" title="Cliquez ici pour consulter votre panier"><img src="img/panier.png" alt="image panier" id="imgPanier"></a></li>
-                                <?php endif; ?>
-                            <?php endif; ?>
-                        <?php endif; ?>
-                    <?php endif; ?>
-                <?php endif; ?>
-            </ul>
-        </nav>
+<body>
+  <main>
+    <form id="formRecherche" method = "post">
+      <input type="search" id="inputRechercher" name="inputRechercher" placeholder="Rechercher...">
+      <button id="boutonRechercher" name="boutonRechercher" type="submit"><img src="img/rechercher.png" alt="image ajouter article"></button>
+    </form>
+    <div class="article">
+      <table id="tabArticles">
+        <tbody>
+          <?php
+          ConnexionDB::getInstance();
+          $sql = "SELECT * FROM produit";
+          $result = ConnexionDB::getInstance()->querySelect($sql);
+          $i = 1;
+          $critere = "";
+            if(isset($_SESSION['recherche'])){
+               $critere = $_SESSION['recherche'];
+               $result = ConnexionDB::getInstance()->querySelect("SELECT * FROM produit WHERE nom LIKE '%$critere%'");
+            }
+            else{
+              $result = ConnexionDB::getInstance()->querySelect("SELECT * FROM produit");
+            }
+          foreach ($result as $article) {
+            $nomProduit = $article["nom"];
+            $maxProduit = getStockProduct(getIDProduct($nomProduit));
+
+            if ($i % 3 == 1) {
+              echo "<tr>";
+            }
+
+            $img = "SELECT image FROM produit WHERE nom = '$nomProduit'";
+            $res2 = ConnexionDB::getInstance()->querySelect($img);
+            //print_r($res2[0]['image']);
+            $link = "img/" . $res2[0]['image'];
+            //echo $link;
+            echo '<td> ';
+            echo "<img src=$link>";
+            echo '<h2>';
+            echo $nomProduit;
+            echo '</h2>';
+            $requetePrix = "SELECT prixPublic FROM produit WHERE nom = '$nomProduit'";
+            $resRequete = ConnexionDB::getInstance()->querySelect($requetePrix);
+            $prix = $resRequete[0]['prixPublic'];
+            if(!empty($_SESSION['nom'])){
+              echo '<br>';
+              echo '<button onclick="decrementer(\'' . $nomProduit . '\', \'' . $maxProduit . '\' );"> <img src="img/symboleMoins.png" id = "imageQuantiteMoins"></button>';
+              echo '<p id="' . $nomProduit . '"> <span id="chiffre">0 </span></p>';
+              echo '<button onclick="augmenter(\'' . $nomProduit . '\', \'' . $maxProduit . '\');"> <img src="img/symbolePlus.png" id="imageQuantitePlus"></button>';
+            }
+              echo '<br><div class="prix"><p>'.$prix.'€</p></div>';
+              if(!empty($_SESSION['nom'])){
+              echo '<form method="post" action="traitementPanier.php">';
+              echo '<input type="hidden" id="nom" name="nomProduit" value="' . $nomProduit . '">';
+              echo '<input type="hidden" id="quantite-'.$nomProduit.'" name="quantite" value="">';
+              echo '<fieldset>';
+              
+              echo '<button class="ajouterPanier" name="ajouterPanier" type="submit"><img src="img/ajouterAuPanier.png" alt="image ajouter panier" src="traitementPanier.png"></button>';
+              echo '</fieldset>';
+              echo '</form>';
+              echo '</td>';
+            }
+            
+
+            if ($i % 3 == 0) {
+              echo "</tr>";
+            }
+            $i++;
+          }
+          ?>
+
+          <script>
+            function augmenter(nomProduit, maxProduit) {
+              // Incrémentation de la valeur de la variable
+              if (!window.valeurs) {
+                window.valeurs = {};
+                document.getElementById(nomProduit).innerHTML = window.valeurs[nomProduit];
+                document.getElementById('quantite-'+nomProduit).value = window.valeurs[nomProduit]
+              }
+              if (!window.valeurs[nomProduit]) {
+                window.valeurs[nomProduit] = 0;
+                document.getElementById(nomProduit).innerHTML = window.valeurs[nomProduit];
+                document.getElementById('quantite-'+nomProduit).value = window.valeurs[nomProduit]
+              }
+              if(window.valeurs[nomProduit]+1 <= maxProduit){
+                window.valeurs[nomProduit] += 1;
+                document.getElementById(nomProduit).innerHTML = window.valeurs[nomProduit];
+                document.getElementById('quantite-'+nomProduit).value = window.valeurs[nomProduit]
+              }
+              // Mise à jour de la valeur dans le document
+              document.getElementById(nomProduit).innerHTML = window.valeurs[nomProduit];
+              document.getElementById('quantite-'+nomProduit).value = window.valeurs[nomProduit]
+            }
+
+            function decrementer(nomProduit, maxProduit) {
+              // Incrémentation de la valeur de la variable
+              if (!window.valeurs) {
+                window.valeurs = {};
+              }
+              if (!window.valeurs[nomProduit]) {
+                window.valeurs[nomProduit] = 0;
+              }
+              if (window.valeurs[nomProduit] - 1 >= 0) {
+                window.valeurs[nomProduit] -= 1;
+              }
+              // Mise à jour de la valeur dans le document
+              document.getElementById(nomProduit).innerHTML = window.valeurs[nomProduit];
+              document.getElementById('quantite-'+nomProduit).value = window.valeurs[nomProduit]
+            }
+
+          </script>
+
+          <style>
+            #imageQuantiteMoins {
+              width: 2em;
+              height: 2em;
+              cursor: pointer;
+            }
+
+            #imageQuantitePlus {
+              width: 2em;
+              height: 2em;
+              cursor: pointer;
+            }
+
+            button {
+              display: inline-block;
+            }
+
+            td {
+              background-color: white;
+              border-width: 0px;
+              text-align: center;
+              display: inline-block;
+              width: calc(98%/3);
+              margin-top: 1%;
+            }
+
+            td:first-child {
+              margin-right: 1%;
+            }
+
+            form {
+              margin: 0;
+              width: 100%;
+            }
+
+            td:last-child {
+              margin-left: 1%;
+            }
+
+            td>img {
+              width: 70%;
+              margin: 5% 0;
+            }
+
+            button {
+              border: none;
+              background-color: white;
+              display: inline-block;
+            }
+
+            button:hover {
+              cursor: pointer;
+            }
+
+            p {
+              display: inline-block;
+            }
+          </style>
+        </tbody>
+      </table>
+    </div>
+  </main>
+  <a href="#" title="Cliquez ici pour retourner en haut de la page">
+    <div id="haut_page"><img src="img/flecheHaut.png" alt="image fleche haut">
+  </a></div>
+  </a>
 </body>
-
-
-<script>
-  // Fonction pour afficher/masquer le sous-menu
-  function showMenu() {
-    var menu = document.getElementById("sousMenu");
-    if (menu.className === "sousMenu") {
-      menu.className += " show";
-    } else {
-      menu.className = "sousMenu";
-    }
-
-    var image = document.getElementById("imgFleche");
-    if (image.src.match("flecheHaute")) {
-      image.src = "img/flecheBasse.png";
-    } else {
-      image.src = "img/flecheHaute.png";
-    }
-  }
-
-  function showDiv() {
-    document.getElementById("myDiv").style.display = "block";
-  }
-
-  function isMediaQueries(){
-    if (!(window.matchMedia("(max-width: 1200px)").matches)) {
-        <?php
-        $isMediaQueries = 1;
-        ?>
-    }
-    else {
-        <?php
-        $isMediaQueries = 0;
-        ?>
-    }
-  }
-</script>
 
 </html>

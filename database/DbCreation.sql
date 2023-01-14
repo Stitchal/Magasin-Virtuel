@@ -61,12 +61,15 @@ INSERT INTO produit VALUES(1, "Boule_de_crystal", 10, 1, 10, "orange", "bouleCry
 
 CREATE TABLE Facturation(
     id INT NOT NULL AUTO_INCREMENT,
-    articles VARCHAR(100),
-    dateFact DATETIME,
-    nomAcheteur VARCHAR(50),
-    prenomAcheteur VARCHAR(50),
+    articles VARCHAR(100) NOT NULL,
+    dateFact DATETIME NOT NULL,
+    nomAcheteur VARCHAR(50) NOT NULL,
+    prenomAcheteur VARCHAR(50) ,
     emailAcheteur VARCHAR(50),
-    prixTotal DECIMAL(10,2),
+    prixHT DECIMAL(10,2) NOT NULL,
+    prixTTC DECIMAL(10,2) NOT NULL,
+    TVA INT(2) NOT NULL,
+
     PRIMARY KEY (id)
 );
 
@@ -80,4 +83,17 @@ CREATE TABLE gestion_stock (
     PRIMARY KEY (id),
     FOREIGN KEY (refProduit) REFERENCES produit(id),
     FOREIGN KEY (refFournisseur) REFERENCES fournisseur(id)
+);
+
+--créer une table comptabilite
+CREATE TABLE comptabilite (
+    id INT NOT NULL AUTO_INCREMENT,
+    ventes VARCHAR(1000),
+    montantVentes DECIMAL(50,5),
+    chiffreAffaire DECIMAL(50,5) NOT NULL,
+    achats VARCHAR(1000),
+    montantAchats DECIMAL(50,5),
+    annee INT (4) NOT NULL,
+
+    PRIMARY KEY (id)
 );

@@ -2,21 +2,7 @@
 
 require_once('Database.php');
 
-/**
- * script pour ajouter un client dans la base de données
- *
- * @param [String] $nom
- * @param [String] $prenom
- * @param [String] $email
- * @param [String] $password
- * @return void
- */
-function addClient($nom, $prenom, $email, $password)
-{
-    ConnexionDB::getInstance();
-    $sql = "INSERT INTO client (nom, prenom, email, password) VALUES ($nom, $prenom, $email, $password)";
-    ConnexionDB::getInstance()->execute($sql);
-}
+
 
 function addFournisseur($nom, $prenom, $email, $password)
 {
@@ -47,6 +33,8 @@ function addProduct($id, $nom, $prixPublic, $prixAchat, $taille, $couleur, $refM
 }
 
 
+
+
 /**
  * Vérifie si le client existe dans la base de données
  *
@@ -73,18 +61,33 @@ function checkClientExistant($email, $nom, $prenom)
     }
 }
 
-function createClient($nom, $prenom, $email, $password)
+function createClient($nom, $prenom, $email, $password, $isAdmin = 0)
 {
     ConnexionDB::getInstance();
-    $sql = "INSERT INTO client (nom, prenom, mail, mdp) VALUES (:nom, :prenom, :mail, :mdp)";
+    $sql = "INSERT INTO client (nom, prenom, mail, mdp, isAdmin) VALUES (:nom, :prenom, :mail, :mdp, :isAdmin)";
     $params = array(
         ':nom' => $nom,
         ':prenom' => $prenom,
         ':mail' => $email,
-        ':mdp' => $password
+        ':mdp' => $password,
+        ':isAdmin' => $isAdmin
     );
     ConnexionDB::getInstance()->execute($sql, $params);
 }
+
+function createFournisseur($nomEntreprise, $mail, $mdp, $infos){
+    ConnexionDB::getInstance();
+    $sql = "INSERT INTO fournisseur (nomEntreprise, mail, mdp, infos) VALUES (:nomEntreprise, :mail, :mdp, :infos)";
+    $params = array(
+        ':nomEntreprise' => $nomEntreprise,
+        ':mail' => $mail,
+        ':mdp' => $mdp,
+        ':infos' => $infos,
+    );
+    ConnexionDB::getInstance()->execute($sql, $params);
+}
+
+
 
 function addProductPanier($nom)
 {
@@ -136,12 +139,12 @@ function checkAdmin($nom)
     return false;
 }
 
-function deleteArticle($nomProduit)
+function deleteElement($id, $nomTable)
 {
     $db = ConnexionDB::getInstance();
-    $sql = "DELETE FROM produit WHERE nom = :nomProduit";
+    $sql = "DELETE FROM $nomTable WHERE id = :id";
     $params = array(
-        ':nomProduit' => $nomProduit
+        ':id' => $id
     );
     $db->execute($sql, $params);
 }
@@ -231,8 +234,8 @@ function getIDFacturation($datetime, $nom): String
 function generateFacturation($articles, $nomAcheteur, $prenomAcheteur, $emailAcheteur, $prixTotal): void
 {
     ConnexionDB::getInstance();
-    $sql = "INSERT INTO facturation (articles, dateFact, nomAcheteur, prenomAcheteur, emailAcheteur, prixTotal) VALUES
-        (:articles, :dateFact, :nomAcheteur, :prenomAcheteur, :emailAcheteur, :prixTotal)";
+    $sql = "INSERT INTO facturation (articles, dateFact, nomAcheteur, prenomAcheteur, emailAcheteur, prixHT, prixTTC, TVA) VALUES
+        (:articles, :dateFact, :nomAcheteur, :prenomAcheteur, :emailAcheteur, :prixHT, :prixTTC, :TVA)";
     $articlesString = "";
 
     foreach ($articles as $clef => $valeur) {
@@ -242,7 +245,8 @@ function generateFacturation($articles, $nomAcheteur, $prenomAcheteur, $emailAch
         $articlesString .= $valeur . "_";
         $articlesString .= $prix . ", ";
     }
-
+    $TVA = 0.20;
+    $prixTTC = $prixTotal + $prixTotal * $TVA;
 
 
     $params = array(
@@ -251,7 +255,10 @@ function generateFacturation($articles, $nomAcheteur, $prenomAcheteur, $emailAch
         ':nomAcheteur' => strval($nomAcheteur),
         ':prenomAcheteur' => strval($prenomAcheteur),
         ':emailAcheteur' => strval($emailAcheteur),
-        ':prixTotal' => strval($prixTotal)
+        ':prixHT' => strval($prixTotal),
+        ':prixTTC' => $prixTTC,
+        ':TVA' => $TVA*100
+
     );
 
     ConnexionDB::getInstance()->execute($sql, $params);
@@ -293,3 +300,60 @@ function getFacture($id)
     $resRequete = ConnexionDB::getInstance()->querySelect($requeteFacture);
     return $resRequete[0];
 }
+
+function checkComptabilite(){
+    $date = date('Y');
+    $requeteComptabilite = "SELECT COUNT(id) FROM comptabilite WHERE annee = '$date'";
+    $resRequete = ConnexionDB::getInstance()->querySelect($requeteComptabilite);
+    $res = $resRequete[0]['COUNT(id)'];
+    if ($res > 0) {
+        return true;
+    }
+    return false;
+
+}
+
+function updateComptabiliteVente($montantTransaction, $listeProd){
+    $date = date('Y');
+    $articlesString = "";
+    foreach ($listeProd as $clef => $valeur) {
+        $idProd = getIDProduct($clef);
+        $prix = getPrixArticle($clef);
+        $articlesString .= $idProd . "_ ";
+        $articlesString .= $valeur . "_";
+        $articlesString .= $prix . ", ";
+    }
+    $db = ConnexionDB::getInstance();
+    $sql = "UPDATE comptabilite SET montantVentes = montantVentes + ':montantTransaction', chiffreAffaire = montantVentes + montantAchats, ventes = CONCAT(ventes, ':listeProd') WHERE annee=':annee'";
+    $params = array(
+        ':montantTransaction' => $montantTransaction,
+        ':annee' => $date,
+        ':listeProd' => $articlesString
+    );
+    $db->execute($sql, $params);
+
+}
+
+function createComptabiliteVente($montantTransaction, $listeProd){
+    $date = date('Y');
+    $db = ConnexionDB::getInstance();
+    $articlesString = "";
+    foreach ($listeProd as $clef => $valeur) {
+        $idProd = getIDProduct($clef);
+        $prix = getPrixArticle($clef);
+        $articlesString .= $idProd . "_ ";
+        $articlesString .= $valeur . "_";
+        $articlesString .= $prix . ", ";
+    }
+    $sql = "INSERT INTO comptabilite (ventes, montantVentes, chiffreAffaire, annee) VALUES
+        (:ventes, :montantVentes, :chiffreAffaire, :annee)";
+    $params = array(
+        ':ventes' => $articlesString,
+        ':montantVentes' => $montantTransaction,
+        ':chiffreAffaire' => $montantTransaction,
+        ':annee' => $date
+    );
+
+    $db->execute($sql, $params);
+}
+

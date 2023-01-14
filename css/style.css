@@ -16,7 +16,6 @@ main{
     margin: 0 20%;
     padding-top: 5%;
     padding-bottom: 5%;
-    min-height: 100vh;
 }
 
 h1{
@@ -800,4 +799,154 @@ form#modifierQuantitePanier{
 
 div.panierPrix b{
     font-size: large;
+}
+
+.menuAdmin{
+    background-color: #212529;
+    color: #212529;
+    width: 10%;
+    text-decoration: none;
+    position: fixed;
+    padding-top: 20%;
+    padding-bottom: 35%;
+}
+
+div.menuAdmin > ul{
+}
+
+.menuAdmin li a{
+    text-decoration: none;
+}
+
+.menuAdmin li a:hover{
+    text-decoration:underline;
+}
+
+.blue{
+    color:#2965D4;
+}
+
+table.bdd{
+    border-spacing: 0;
+}
+
+table.bdd td{
+    height: 1.5em;
+    text-align: right;
+    margin: 0;
+    width: 10%;
+}
+
+table.bdd tr{
+    background-color: #F8F9FA;
+    margin: 0 1% 0 0;
+}
+
+table.bdd tr:first-child td{
+    background: linear-gradient(white, rgb(182, 182, 182));
+    color: #235A81;
+    text-align: left;
+}
+
+table.bdd tr:nth-child(3) td, table.bdd tr:nth-child(5) td, table.bdd tr:nth-child(7) td, table.bdd tr:nth-child(9) td, table.bdd tr:nth-child(11) td{
+    background-color: #e6e6e6;
+}
+
+table.bdd td button{
+    background-color: none;
+}
+
+#ajouter img{
+    position: fixed;
+    bottom: 3%;
+    right: 10%;
+    width: 5em;
+    transition-duration: 0.1s;
+    background-color: rgb(0, 102, 0);
+    padding: 0.2em;
+    border-radius: 1em;
+}
+
+div#ajouter img:hover{
+    transition-duration: 0.1s;
+    background-color: green;
+    width: 5.1em;
+}
+
+#ajouter:hover{
+    cursor: pointer;
+}
+
+a.retourPage{
+    color: #212529;
+    text-decoration: underline;
+}
+
+a.retourPage:hover{
+    text-decoration: none;
+}
+
+form#formAjouter{
+    background-color: white;
+    width: 40%;
+    margin: 0 30%;
+}
+
+form#formAjouter label{
+    display: contents;
+}
+
+fieldset#supression p{
+    display: inline-block;
+    width: 10%;
+}
+fieldset#supression:first-child{
+    padding: 0 37%;
+}
+
+a#retourPageArticle{
+    color: #212529;
+    text-decoration: underline;
+}
+
+a#retourPageArticle:hover{
+    text-decoration: none;
+}
+
+fieldset#supression input[type="radio"]{
+    width: 10%;
+    display: inline-block;
+    width: 2vw;
+    height: 2vh;
+    cursor: pointer;
+}
+
+input.supprimerProduit{
+    z-index: 1;
+    display: block;
+    background-color: rgb(214, 0, 0);
+    width: 100%;
+    padding: 3%;
+    margin:5% 0;
+  }
+
+  input.supprimerProduit:hover{
+    background-color: red;
+  }
+
+input[type=submit]#ajouterItem {
+    background-color: rgb(1, 71, 1);
+}
+
+input[type=submit]#ajouterItem:hover {
+    background-color: green;
+}
+
+a#retourPageArticle {
+    color: #212529;
+    text-decoration: underline;
+}
+
+a#retourPageArticle:hover {
+    text-decoration: none;
 }

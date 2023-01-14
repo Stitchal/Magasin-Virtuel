@@ -1,9 +1,14 @@
 <?php
     session_start();
     $GLOBALS["page"] = "compte.php";
-    require_once('index.php');
+    require_once('nav.php');
+    if (checkAdmin($_SESSION['nom']) ){
+        require_once('menuAdmin.php');
+        require_once('database/Database.php');
+    }
+
     if(empty($_SESSION['nom']) || empty($_SESSION['prenom']) || empty($_SESSION['email'])){
-        header('Location: articles.php');
+        header('Location: index.php');
         exit;
     }
 

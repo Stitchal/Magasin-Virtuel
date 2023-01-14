@@ -25,7 +25,7 @@ if (!empty($_POST['nom']) and !empty($_POST['prenom'])) {
                 exit;
             }
         else : {
-                header('Location: articles.php');
+                header('Location: index.php');
                 exit;
             }
         endif;
@@ -34,7 +34,7 @@ if (!empty($_POST['nom']) and !empty($_POST['prenom'])) {
         exit;
     }
 }
-require_once('index.php');
+require_once('nav.php');
 
 
 
@@ -50,7 +50,7 @@ require_once('index.php');
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <title>Ouvrir une session</title>
+    <title>Se connecter</title>
 </head>
 
 <body>
@@ -83,9 +83,6 @@ require_once('index.php');
             <p>Vous n'avez pas de compte ? <a href="creationCompte.php" title="Cliquez ici pour vous créer un compte">Inscrivez-vous</a></p>
         </div>
     </main>
-    <a href="#" title="Cliquez ici pour retourner en haut de la page">
-        <div id="haut_page"><img src="img/flecheHaut.png" alt="image fleche haut">
-    </a></div>
     </a>
 </body>
 

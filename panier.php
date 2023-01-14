@@ -11,7 +11,7 @@ if (isset($_POST["modifier"])) {
         $_SESSION['panier'][$_POST["modify"]] = $_POST['quantite'];
     }
 }
-require_once('index.php');
+require_once('nav.php');
 ?>
 
 
@@ -90,10 +90,7 @@ require_once('index.php');
             echo '</div>';
         }
         ?>
-    </main>
-    <a href="#" title="Cliquez ici pour retourner en haut de la page">
-        <div id="haut_page"><img src="img/flecheHaut.png" alt="image fleche haut">
-    </a></div>
+    </main></div>
     </a>
 </body>
 
