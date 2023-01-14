@@ -1,14 +1,14 @@
 <?php
 session_start();
 $GLOBALS["page"] = "index.php";
-require_once('nav.php');
-#require_once('database/Database.php');
-require_once('database/DatabaseFunction.php');
+require_once('includes/nav.php');
+#require_once('libs/database.php');
+require_once('libs/database-functions.php');
 
 
 if ((isset($_POST['nombreArticles']))) {
   $_SESSION['nombreArticles'] = $_POST['nombreArticles'];
-  header('Location: traitementPanier.php');
+  header('Location: client-traitement-panier.php');
   exit;
 }
 
@@ -74,18 +74,18 @@ if (isset($_POST['boutonRechercher'])) {
             $prix = $resRequete[0]['prixPublic'];
             if(!empty($_SESSION['nom'])){
               echo '<br>';
-              echo '<button onclick="decrementer(\'' . $nomProduit . '\', \'' . $maxProduit . '\' );"> <img src="img/symboleMoins.png" id = "imageQuantiteMoins"></button>';
+              echo '<button onclick="decrementer(\'' . $nomProduit . '\', \'' . $maxProduit . '\' );"> <img src="img/icone-reduire-nb-article.png" id = "imageQuantiteMoins"></button>';
               echo '<p id="' . $nomProduit . '"> <span id="chiffre">0 </span></p>';
-              echo '<button onclick="augmenter(\'' . $nomProduit . '\', \'' . $maxProduit . '\');"> <img src="img/symbolePlus.png" id="imageQuantitePlus"></button>';
+              echo '<button onclick="augmenter(\'' . $nomProduit . '\', \'' . $maxProduit . '\');"> <img src="img/icone-augmenter-nb-article.png" id="imageQuantitePlus"></button>';
             }
               echo '<br><div class="prix"><p>'.$prix.'€</p></div>';
               if(!empty($_SESSION['nom'])){
-              echo '<form method="post" action="traitementPanier.php">';
+              echo '<form method="post" action="client/client-traitement-panier.php">';
               echo '<input type="hidden" id="nom" name="nomProduit" value="' . $nomProduit . '">';
               echo '<input type="hidden" id="quantite-'.$nomProduit.'" name="quantite" value="">';
               echo '<fieldset>';
               
-              echo '<button class="ajouterPanier" name="ajouterPanier" type="submit"><img src="img/ajouterAuPanier.png" alt="image ajouter panier" src="traitementPanier.png"></button>';
+              echo '<button class="ajouterPanier" name="ajouterPanier" type="submit"><img src="img/icone-ajout-panier.png" alt="image ajouter panier" src="client/traitementPanier.png"></button>';
               echo '</fieldset>';
               echo '</form>';
               echo '</td>';
@@ -203,7 +203,7 @@ if (isset($_POST['boutonRechercher'])) {
     </div>
   </main>
   <a href="#" title="Cliquez ici pour retourner en haut de la page">
-    <div id="haut_page"><img src="img/flecheHaut.png" alt="image fleche haut">
+    <div id="haut_page"><img src="img/fleche-haut-page.png" alt="image fleche haut">
   </a></div>
   </a>
 </body>

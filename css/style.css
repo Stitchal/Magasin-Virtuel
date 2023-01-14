@@ -831,15 +831,24 @@ table.bdd{
 }
 
 table.bdd td{
-    height: 1.5em;
+    display: inline-block;
+    height: 2em;
+    vertical-align: middle;
     text-align: right;
     margin: 0;
+    margin-right: 0.1%;
     width: 10%;
+    transition-duration: 0.1s;
 }
 
 table.bdd tr{
     background-color: #F8F9FA;
     margin: 0 1% 0 0;
+}
+
+table.bdd tr:hover td{
+    background-color: #d6d6d6;
+    transition-duration: 0.1s;
 }
 
 table.bdd tr:first-child td{
@@ -848,8 +857,12 @@ table.bdd tr:first-child td{
     text-align: left;
 }
 
-table.bdd tr:nth-child(3) td, table.bdd tr:nth-child(5) td, table.bdd tr:nth-child(7) td, table.bdd tr:nth-child(9) td, table.bdd tr:nth-child(11) td{
+table.bdd tr:nth-child(3) td, table.bdd tr:nth-child(5) td, table.bdd tr:nth-child(7) td, table.bdd tr:nth-child(9) td, table.bdd tr:nth-child(11) table.bdd tr:nth-child(13) table.bdd tr:nth-child(15) td{
     background-color: #e6e6e6;
+}
+
+table.bdd tr:nth-child(3):hover td, table.bdd tr:nth-child(5):hover td, table.bdd tr:nth-child(7):hover td, table.bdd tr:nth-child(9):hover td, table.bdd tr:nth-child(11):hover table.bdd tr:nth-child(13):hover table.bdd tr:nth-child(15):hover td{
+    background-color: #d6d6d6;
 }
 
 table.bdd td button{
@@ -922,17 +935,30 @@ fieldset#supression input[type="radio"]{
 }
 
 input.supprimerProduit{
-    z-index: 1;
+    border: 0;
+    margin: 0;
     display: block;
-    background-color: rgb(214, 0, 0);
+    background-color: transparent;
     width: 100%;
-    padding: 3%;
-    margin:5% 0;
-  }
+    padding: 0;
+}
 
-  input.supprimerProduit:hover{
-    background-color: red;
-  }
+input.supprimerProduit:hover{
+    border: 0;
+    margin: 0;
+    text-decoration: underline;
+    background-color: transparent;
+}
+
+input[value="Supprimer"]{
+    color:#235AA0;
+}
+
+input[value="Supprimer"]:hover{
+    color:#235AA0;
+    text-decoration: underline;
+}
+
 
 input[type=submit]#ajouterItem {
     background-color: rgb(1, 71, 1);
@@ -949,4 +975,22 @@ a#retourPageArticle {
 
 a#retourPageArticle:hover {
     text-decoration: none;
+}
+
+ul#indexAdminTables li a{
+    color: #2965D4;
+    text-decoration: none;
+}
+
+ul#indexAdminTables li a:hover{
+    text-decoration: underline;
+}
+
+ul#indexAdminTables li img{
+    width: 2%;
+    margin-right: 0.5%;
+}
+
+ul#indexAdminTables{
+    list-style-type: none;
 }
