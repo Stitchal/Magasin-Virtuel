@@ -1,8 +1,6 @@
 <?php
 session_start();
 $GLOBALS["page"] = "admin-marque.php";
-require_once(__DIR__ . '/../includes/nav.php');
-require_once(__DIR__ . '/../includes/menu-admin.php');
 require_once(__DIR__ . '/../libs/database.php');
 
 if (isset($_POST["suppr"])) {
@@ -19,6 +17,8 @@ if (isset($_POST['boutonRechercher'])) {
   exit();
 }
 
+require_once(__DIR__ . '/../includes/nav.php');
+require_once(__DIR__ . '/../includes/menu-admin.php');
 ?>
 
 <!DOCTYPE html>

@@ -3,7 +3,6 @@ session_start();
 $GLOBALS["page"] = "admin-fournisseur.php";
 require_once(__DIR__ . '/../libs/database-functions.php');
 require_once(__DIR__.'/../libs/functions.php');
-require_once(__DIR__.'/includes/nav.php');
 
 if (isset($_POST["submit"]) && isset($_POST["nom"]) && isset($_POST["prenom"]) && isset($_POST["mail"]) && isset($_POST["mdp"])) {
     if (verificationMail($_POST["mail"])) {
@@ -16,6 +15,8 @@ if (isset($_POST["submit"]) && isset($_POST["nom"]) && isset($_POST["prenom"]) &
     header("Location: admin-fournisseur-ajout.php?error=" . urlencode($error));
     exit();
 }
+
+require_once(__DIR__.'/includes/nav.php');
 ?>
 
 <!DOCTYPE html>

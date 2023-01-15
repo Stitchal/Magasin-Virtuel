@@ -30,7 +30,7 @@ if (!empty($_POST['nom']) and !empty($_POST['prenom'])) {
             }
         endif;
     } else {
-        header('Location: client-creation-compte.php');
+        header('Location: ../client/client-creation-compte.php');
         exit;
     }
 }

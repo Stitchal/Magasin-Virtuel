@@ -1,10 +1,6 @@
 <?php
 session_start();
 $GLOBALS["page"] = "index.php";
-require_once('includes/nav.php');
-#require_once('libs/database.php');
-require_once('libs/database-functions.php');
-
 
 if ((isset($_POST['nombreArticles']))) {
   $_SESSION['nombreArticles'] = $_POST['nombreArticles'];
@@ -17,6 +13,11 @@ if (isset($_POST['boutonRechercher'])) {
   header('Location: index.php');
   exit();
 }
+
+require_once('includes/nav.php');
+#require_once('libs/database.php');
+require_once('libs/database-functions.php');
+
 ?>
 
 <!DOCTYPE html>

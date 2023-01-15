@@ -1,6 +1,5 @@
 <?php
 
-#TODO -> modifier car simple reprise de code
 
 class ConnexionDB {
 
@@ -18,8 +17,7 @@ public static function getInstance() {
     return self::$instance_singleton;
 }
 
-//Constructeur : connexion à la base de données
-//
+
 private function __construct() {
     
     if(!self::$pdo) { 

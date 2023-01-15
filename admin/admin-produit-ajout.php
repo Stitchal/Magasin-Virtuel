@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once(__DIR__ . '/../libs/database-functions.php');
-require_once(__DIR__.'/../includes/nav.php');
 
 if(isset($_POST["submit"]) && isset($_POST["icon"]) && isset($_POST["image"])){
     addProduct($_POST["id"], $_POST["nom"], $_POST["prixPublic"], $_POST["prixAchat"], $_POST["taille"], $_POST["couleur"],$_POST["refMarque"],  $_POST["titre"], $_POST["icone"],  $_POST["image"]);
@@ -13,6 +12,8 @@ else if(isset($_POST["submit"])){
     header("Location: admin-produit.php");
     exit();
 }
+
+require_once(__DIR__.'/../includes/nav.php');
 ?>
 
 <!DOCTYPE html>

@@ -118,13 +118,15 @@ function addProductPanier($nom)
 function checkStockProduct($id, $number)
 {
     ConnexionDB::getInstance();
-    $sql = "SELECT quantite FROM gestion_stock WHERE id = :id";
+    $sql = "SELECT quantite FROM gestion_stock WHERE refProduit = :id";
     $params = array(
         ':id' => $id
     );
 
     $result = ConnexionDB::getInstance()->querySelect($sql, $params);
-    if ($result[0]['quantite'] >= $number) {
+    print_r($result[0]['quantite']);
+    $nb = $result[0]['quantite'];
+    if ($nb >= $number) {
         return true;
     } else {
         return false;
@@ -159,11 +161,14 @@ function checkAdmin($nom)
     return false;
 }
 
+
+//TODO -> corriger problème contraint violation
 function deleteElement($id, $nomTable)
 {
     $db = ConnexionDB::getInstance();
-    $sql = "DELETE FROM $nomTable WHERE id = :id";
+    $sql = "DELETE FROM :nomTable WHERE id = :id";
     $params = array(
+        ':nomTable' => $nomTable,
         ':id' => $id
     );
     $db->execute($sql, $params);

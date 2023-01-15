@@ -2,7 +2,6 @@
 session_start();
 $GLOBALS["page"] = "client-panier.php";
 require_once(__DIR__ . '/../libs/database-functions.php');
-require_once(__DIR__.'/../includes/nav.php');
 
 if (isset($_POST["suppr"])) {
     unset($_SESSION['panier'][$_POST["supprimer"]]);
@@ -13,6 +12,8 @@ if (isset($_POST["modifier"])) {
         $_SESSION['panier'][$_POST["modify"]] = $_POST['quantite'];
     }
 }
+
+require_once(__DIR__.'/../includes/nav.php');
 ?>
 
 

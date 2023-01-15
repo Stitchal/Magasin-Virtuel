@@ -4,7 +4,6 @@ session_start();
 //echo $_SESSION["suppr"];
 $GLOBALS["page"] = "admin-suppression.php";
 require_once(__DIR__ . '/../libs/database-functions.php');
-require_once(__DIR__.'/../includes/nav.php');
 
 if (isset($_POST['oui'])){
      $_SESSION['oui'] = $_POST['oui'];
@@ -17,6 +16,8 @@ elseif (isset($_POST['non'])){
     header('Location: index-admin.php');
     exit;
 }
+
+require_once(__DIR__.'/../includes/nav.php');
 
 
 ?>

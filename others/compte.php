@@ -1,7 +1,6 @@
 <?php
     session_start();
     $GLOBALS["page"] = "compte.php";
-    require_once(__DIR__.'/../includes/nav.php');
 
     if (checkAdmin($_SESSION['nom']) ){
         require_once(__DIR__.'/../includes/menu-admin.php');
@@ -13,6 +12,7 @@
         exit;
     }
 
+    require_once(__DIR__.'/../includes/nav.php');
     require_once(__DIR__ . '/../libs/database-functions.php');
 ?>
 

@@ -2,7 +2,6 @@
 $GLOBALS["page"] = "client-creation-compte.php";
 require_once(__DIR__ . '/../libs/database-functions.php');
 require_once(__DIR__.'/../libs/functions.php');
-require_once(__DIR__.'/../includes/nav.php');
 
 
 if (!empty($_POST['nom']) and !empty($_POST['prenom']) and !empty($_POST['mdp']) and !empty($_POST['email'])) {
@@ -15,7 +14,7 @@ if (!empty($_POST['nom']) and !empty($_POST['prenom']) and !empty($_POST['mdp'])
         exit;
     } else {
         if (verificationMail($_POST['email'])) {
-            header('Location: client-creation-compte.php');
+            header('Location: ../client/client-creation-compte.php');
             exit;
         } else {
             $error = "Email non valide";
@@ -24,6 +23,8 @@ if (!empty($_POST['nom']) and !empty($_POST['prenom']) and !empty($_POST['mdp'])
         }
     }
 }
+
+require_once(__DIR__.'/../includes/nav.php');
 ?>
 
 <!DOCTYPE html>

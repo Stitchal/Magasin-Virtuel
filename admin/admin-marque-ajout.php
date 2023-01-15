@@ -3,7 +3,6 @@ session_start();
 $GLOBALS["page"] = "admin-marque.php";
 require_once(__DIR__ . '/../libs/database-functions.php');
 require_once(__DIR__ . '/../libs/functions.php');
-require_once(__DIR__ . '/../includes/nav.php');
 
 
 if (isset($_POST["submit"]) && isset($_POST["nom"])) {
@@ -11,6 +10,8 @@ if (isset($_POST["submit"]) && isset($_POST["nom"])) {
     header("Location: admin-marque.php");
     exit();
 }
+
+require_once(__DIR__ . '/../includes/nav.php');
 ?>
 
 <!DOCTYPE html>
