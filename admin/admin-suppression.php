@@ -8,12 +8,12 @@ require_once(__DIR__ . '/../libs/database-functions.php');
 if (isset($_POST['oui'])){
      $_SESSION['oui'] = $_POST['oui'];
      deleteElement($_SESSION['idSuppr'], $_SESSION['tabSuppr']);
-    header('Location: index-admin.php');
+     header('Location: ../admin/index-admin.php');
     exit;
 }
 elseif (isset($_POST['non'])){
     $_SESSION['non'] = $_POST['non'];
-    header('Location: index-admin.php');
+    header('Location: ../admin/index-admin.php');
     exit;
 }
 

@@ -6,7 +6,7 @@ require_once(__DIR__ . '/../libs/functions.php');
 
 if (isset($_POST["submit"]) && isset($_POST["refProduit"]) && isset($_POST["refFournisseur"]) && isset($_POST["quantite"])) {
         createGestionStock($_POST["refProduit"], $_POST["refFournisseur"], $_POST["quantite"]);
-        header("Location: admin-gestion_stock.php");
+        header("Location: ../admin/admin-gestion_stock.php");
         exit();
 }
 

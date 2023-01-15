@@ -4,12 +4,12 @@ require_once(__DIR__ . '/../libs/database-functions.php');
 
 if(isset($_POST["submit"]) && isset($_POST["icon"]) && isset($_POST["image"])){
     addProduct($_POST["id"], $_POST["nom"], $_POST["prixPublic"], $_POST["prixAchat"], $_POST["taille"], $_POST["couleur"],$_POST["refMarque"],  $_POST["titre"], $_POST["icone"],  $_POST["image"]);
-    header("Location: admin-produit.php");
+    header("Location: ../admin/admin-produit.php");
     exit();
 }
 else if(isset($_POST["submit"])){
     addProduct($_POST["id"], $_POST["nom"], $_POST["prixPublic"], $_POST["prixAchat"], $_POST["taille"], $_POST["couleur"],  $_POST["refMarque"], $_POST["titre"]);
-    header("Location: admin-produit.php");
+    header("Location: ../admin/admin-produit.php");
     exit();
 }
 

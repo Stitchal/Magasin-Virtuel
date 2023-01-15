@@ -166,9 +166,33 @@ function checkAdmin($nom)
 function deleteElement($id, $nomTable)
 {
     $db = ConnexionDB::getInstance();
-    $sql = "DELETE FROM :nomTable WHERE id = :id";
+
+    if($nomTable == "produit"){
+        $sql = "DELETE FROM gestion_stock WHERE refProduit = :id";
+        $params = array(
+            ':id' => $id
+        );
+        $db->execute($sql, $params);
+    }
+
+    if($nomTable == "fournisseur"){
+        $sql = "DELETE FROM gestion_stock WHERE refFournisseur = :id";
+        $params = array(
+            ':id' => $id
+        );
+        $db->execute($sql, $params);
+    }
+
+    if($nomTable == "marque"){
+        $sql = "DELETE FROM produit WHERE refMarque = :id";
+        $params = array(
+            ':id' => $id
+        );
+        $db->execute($sql, $params);
+    }
+
+    $sql = "DELETE FROM $nomTable WHERE id = :id";
     $params = array(
-        ':nomTable' => $nomTable,
         ':id' => $id
     );
     $db->execute($sql, $params);

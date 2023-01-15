@@ -1,7 +1,8 @@
 
 
 --insertion dragon ball dans la table produit
-INSERT INTO 
-    produit (nom, prixPublic, prixAchat, taille, couleur, image, icone, titre, refMarque)
-VALUES
-    ('dragon ball', 10.00, 5.00, 'taille unique', 'rouge', 'boule.jpg', 'dragonball.jpg', 'dragon ball', 1);
+
+INSERT INTO marque VALUES(1, "Dragon Ball");
+INSERT INTO produit VALUES(1, "Boule_de_crystal", 10, 1, 10, "orange", "bouleCrystal.png", "bouleCrystal.png", "Boule_de_crystal", 1);
+INSERT INTO fournisseur (nomEntreprise, mail, mdp, infos) VALUES ('Sasuke', 'sasuke.sss@sss.com', 'sasuke', 'Sasuke est un fournisseur de qualité');
+INSERT INTO gestion_stock (refProduit, refFournisseur, quantite) VALUES (1, 1, 10);

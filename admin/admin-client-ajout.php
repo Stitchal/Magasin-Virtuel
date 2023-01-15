@@ -3,7 +3,6 @@ session_start();
 $GLOBALS["page"] = "admin-client.php";
 require_once(__DIR__ . '/../libs/database-functions.php');
 require_once(__DIR__ . '/../libs/functions.php');
-require_once(__DIR__ . '/../includes/nav.php');
 
 
 if (isset($_POST["submit"]) && isset($_POST["nom"]) && isset($_POST["prenom"]) && isset($_POST["mail"]) && isset($_POST["mdp"])) {
@@ -14,13 +13,15 @@ if (isset($_POST["submit"]) && isset($_POST["nom"]) && isset($_POST["prenom"]) &
         } else {
             createClient($_POST["nom"], $_POST["prenom"], $_POST["mail"], $_POST["mdp"]);
         }
-        header("Location: admin-client.php");
+        header('Location: ../admin/admin-client.php');
         exit();
     }
     $error = "email non valide";
-    header("Location: admin-client-ajout.php?error=" . urlencode($error));
+    header("Location: ../admin/admin-client-ajout.php?error=" . urlencode($error));
     exit();
 }
+
+require_once(__DIR__ . '/../includes/nav.php');
 ?>
 
 <!DOCTYPE html>

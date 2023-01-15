@@ -18,7 +18,7 @@ if (!empty($_POST['nom']) and !empty($_POST['prenom']) and !empty($_POST['mdp'])
             exit;
         } else {
             $error = "Email non valide";
-            header('Location:client-creation-compte.php?error=' . urlencode($error));
+            header('Location: ../client/client-creation-compte.php?error=' . urlencode($error));
             exit;
         }
     }

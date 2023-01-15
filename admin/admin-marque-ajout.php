@@ -7,7 +7,7 @@ require_once(__DIR__ . '/../libs/functions.php');
 
 if (isset($_POST["submit"]) && isset($_POST["nom"])) {
     createMarque($_POST["nom"]);
-    header("Location: admin-marque.php");
+    header("Location: ../admin/admin-marque.php");
     exit();
 }
 

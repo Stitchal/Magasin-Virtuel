@@ -8,11 +8,11 @@ if (isset($_POST["submit"]) && isset($_POST["nom"]) && isset($_POST["prenom"]) &
     if (verificationMail($_POST["mail"])) {
         echo "|" . $_POST["nom"] . "|  |" . $_POST["prenom"] . "|  |" . $_POST["mail"] . "|  |" . $_POST["mdp"] . "|";
         createFournisseur($_POST["nomEntreprise"], $_POST["mail"], $_POST["mdp"], $_POST["infos"]);
-        header("Location: admin-fournisseur.php");
+        header("Location: ../admin/admin-fournisseur.php");
         exit();
     }
     $error = "email non valide";
-    header("Location: admin-fournisseur-ajout.php?error=" . urlencode($error));
+    header("Location: ../admin/admin-fournisseur-ajout.php?error=" . urlencode($error));
     exit();
 }
 

@@ -8,13 +8,13 @@ if (isset($_POST["suppr"])) {
   $_SESSION['suppr'] = $_POST["supprimer"];
   $_SESSION['idSuppr'] = $_POST["idSuppression"];
   $_SESSION['tabSuppr'] = "fournisseur";
-  header('Location: admin-suppression.php');
+  header('Location: ../admin/admin-suppression.php');
   exit();
 }
 
 if (isset($_POST['boutonRechercher'])) {
   $_SESSION['recherche'] = $_POST['inputRechercher'];
-  header('Location: admin-fournisseur.php');
+  header('Location: ../admin/admin-fournisseur.php');
   exit();
 }
 
