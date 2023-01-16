@@ -5,12 +5,12 @@ require_once(__DIR__ . '/../libs/database-functions.php');
 require_once(__DIR__ . '/../libs/functions.php');
 
 if (isset($_POST["submit"]) && isset($_POST["refProduit"]) && isset($_POST["refFournisseur"]) && isset($_POST["quantite"])) {
-        createGestionStock($_POST["refProduit"], $_POST["refFournisseur"], $_POST["quantite"]);
-        header("Location: ../admin/admin-gestion_stock.php");
-        exit();
+    createGestionStock($_POST["refProduit"], $_POST["refFournisseur"], $_POST["quantite"]);
+    header("Location: ../admin/admin-gestion_stock.php");
+    exit();
 }
 
-require_once(__DIR__ . '/includes/nav.php');
+require_once(__DIR__ . '/../includes/nav.php');
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +38,7 @@ require_once(__DIR__ . '/includes/nav.php');
             <p style="color:#FF0000" ;> Erreur : <?= $_GET['error'] ?> </p>
         <?php endif ?>
         <div class="client">
-            <h1>Informations du fournisseur</h1>
+            <h1>Informations gestion_stock</h1>
             <form id="formAjouter" method="post">
                 <fieldset>
                     <label for="refProduit">référence du produit</label>
@@ -51,6 +51,9 @@ require_once(__DIR__ . '/includes/nav.php');
                 <fieldset>
                     <label for="quantite">quantite</label>
                     <input placeholder="quantite" type="text" name="quantite" id="quantite" required>
+                </fieldset>
+                <fieldset>
+                    <input type="submit" name="submit" value="Ajouter la gestion du stock">
                 </fieldset>
             </form>
             <p><a class="retourPage" href="admin-gestion_stock.php" title="Cliquez ici pour retourner à la page des gestions stock">←Retourner à la page de gestion stock</a></p>

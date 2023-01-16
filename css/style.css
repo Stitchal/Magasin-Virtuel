@@ -80,33 +80,12 @@ nav ul li a:hover{
     transition-duration: 0.3s;
 }
 
-.articles{
-    font-weight: bold;
-    color: rgb(41, 101, 212);
-    border-bottom: 0.2em solid rgb(41, 101, 212);
-    padding: 1.3em 1.42em;
-
-}
-
-.connexion{
+.articles, .connexion, .panier, .compte{
     font-weight: bold;
     color: rgb(41, 101, 212);
     border-bottom: 0.2em solid rgb(41, 101, 212);
     padding: 1.3em 1.42em;
 }
-
-.panier{
-    color: rgb(41, 101, 212);
-    border-bottom: 0.2em solid rgb(41, 101, 212);
-    padding: 1.3em 1.42em;
-}
-
-.compte{
-    color: rgb(41, 101, 212);
-    border-bottom: 0.2em solid rgb(41, 101, 212);
-    padding: 1.3em 1.42em;
-}
-
 
 table {
     border-collapse: collapse;
@@ -124,44 +103,53 @@ td:last-child{
 td > img{
       width: 70%;
       margin: 5% 0;
-    }
-
-#boutonRechercher img{
-  height: 1vh;
-  padding: 0 0.5em;
 }
 
-#boutonRechercher{
-  border: 1px solid grey;
-  display: float;
-  padding: 1%;
-  border-radius: 1em;
-  background-color: #212529;
+.divBarreRecherche{
+    width: 100%;
+    display: block;
 }
-
-#boutonRechercher:hover{
-    cursor: pointer;
-}
-
-#boutonRechercher:hover{
-  background-color: #2965D4;
-}
-
 input#inputRechercher{
-  margin:0;
-  display: inline-block;
+    margin:0;
+    display: inline-block;
+    height: 5em;
+    width: 95%;
+    border: 1px solid rgb(230, 230, 230);
+    border-radius: 1em 0 0 1em;
 }
 
-input#inputRechercher{
-  height: 1vh;
-  width: 80%;
-  border: 1px solid grey;
-  border-radius: 1em;
+input#inputRechercher:hover{
+    background-color: #f3f3f3;
 }
 
 form#formRecherche{
-  width: auto;
-  margin: 2%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 3%;
+}
+
+.divBarreRecherche #boutonRechercher img{
+    max-height: 25%;
+ }
+  
+.divBarreRecherche button#boutonRechercher{
+    margin:0;
+    display: inline-block;
+    height: 4em;
+    width: 4%;
+    max-width: 4%;
+    border: 1px solid grey;
+    border-radius: 0 1em 1em 0;
+    background: linear-gradient(#212529, #212529);
+    transition-duration: 0.2s;
+}
+  
+button#boutonRechercher:hover{
+    cursor: pointer;
+    background: #212529;
+    background: linear-gradient(#212529, #1b3e7a);
+    transition-duration: 0.2s;
 }
 
 form{
@@ -169,7 +157,7 @@ form{
     margin: 0% 35% 0 35%;
     padding-top: 5%;
     padding-bottom: 5%;
-  }
+}
 
 form.connexion_creercompte{
     background-color: #FAFAFA;
@@ -255,7 +243,7 @@ fieldset label.resterConnecte{
     margin-top: 5%;
     font-size: small;
     width: 40%;
-    margin-left: 30%;
+    margin-left: 11%;
 }
 
 input[type=submit]{
@@ -469,7 +457,7 @@ input[type="checkbox"]:checked + label img#boutonMenu{
 
 input[type="checkbox"]:checked + label + ul.menu li{
     display: flex;
-    width: 30em;
+    width: 100%;
 }
 
 input[type="checkbox"]:checked + label + ul.menu li{
@@ -793,6 +781,7 @@ div.panierPrix b{
 }
 
 .menuAdmin li a{
+    margin-left: 5%;
     text-decoration: none;
 }
 
@@ -810,7 +799,7 @@ table.bdd{
 
 table.bdd td{
     display: inline-block;
-    height: 2em;
+    height: auto;
     vertical-align: middle;
     text-align: right;
     margin: 0;
@@ -1033,4 +1022,91 @@ table.facture tr:first-child td{
 
 table.facture tr:first-child{
     border-top: 1px solid black;
+}
+
+.article td {
+    text-align: center;
+    display: inline-block;
+}
+
+
+table#clientTD td{
+    width: calc(100%/7.1);
+    table-layout: fixed;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+table#clientTD tr:first-child td:hover{
+    text-overflow:ellipsis;
+    overflow: visible;
+}
+
+table#clientTD td:hover{
+    text-overflow:clip;
+    overflow: auto;
+}
+
+table#facturationTD td{
+    width: calc(100%/10.1);
+    table-layout: fixed;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+table#facturationTD tr:first-child td:hover{
+    text-overflow:ellipsis;
+    overflow: visible;
+}
+
+table#facturationTD td:hover{
+    text-overflow:clip;
+    overflow: auto;
+}
+
+table#fournisseurTD td{
+    width: calc(100%/6.1);
+    table-layout: fixed;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+table#fournisseurTD tr:first-child td:hover{
+    text-overflow:ellipsis;
+    overflow: visible;
+}
+
+table#fournisseurTD td:hover{
+    text-overflow:clip;
+    overflow: auto;
+}
+
+table#marqueTD td{
+    width: calc(100%/3.1);
+    table-layout: fixed;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+table#marqueTD tr:first-child td:hover{
+    text-overflow:ellipsis;
+    overflow: visible;
+}
+
+table#marqueTD td:hover{
+    text-overflow:clip;
+    overflow: auto;
+}
+
+
+form input.supprimerProduit{
+    margin: 0;
+}
+
+form.formBDD{
+    margin: 0 5%;
 }

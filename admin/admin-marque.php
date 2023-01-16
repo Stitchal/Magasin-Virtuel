@@ -61,13 +61,13 @@ require_once(__DIR__ . '/../includes/menu-admin.php');
             $result = ConnexionDB::getInstance()->querySelect("SELECT * FROM marque");
           }
 
-          echo '<table class="bdd"><tbody>
+          echo '<table class="bdd" id="marqueTD"><tbody>
             <tr><td>id</td><td> nom </td><td></td>';
           foreach ($result as $marque) {
             $idMarque = $marque["id"];
             $nomMarque = $marque["nom"];
             echo "<tr><td>" . $idMarque . "</td><td>" . $nomMarque . "</td><td>";
-            echo '<form method = "post">';
+            echo '<form method = "post" class="formBDD">';
             echo '<fieldset>';
             echo "<input type='hidden' name='supprimer' value=$nomMarque>";
             echo "<input type='hidden' name='idSuppression' value=$idMarque>";

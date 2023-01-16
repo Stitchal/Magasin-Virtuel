@@ -30,6 +30,11 @@ class Verification
         return false;
     }
 
+    public function verifieListeArticles($articles){
+        $pattern = '/^(([0-9]+)_([0-9]+)_([0-9]+),\s?)+$/';
+        return preg_match($pattern, $articles);
+    }
+
     public function getArticleFacture($string)
     {
         $string = rtrim($string);

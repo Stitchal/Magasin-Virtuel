@@ -87,9 +87,12 @@
         width: 100%;
     }
 
-    nav ul > li a{
-        width: 100%;
+    nav ul li a{
+        width: 30%;
+        padding-left: 40%;
+        padding-right: 40%;
         background-color: #212529;
+        font-size: xx-large;
     }
 
     img#boutonMenu{
@@ -114,4 +117,26 @@
         width: 5.1em;
     }
     
+    .ajouterPanier {
+        height: 3em;
+        width: 3em;
+    }
+
+    .ajouterPanier img{
+        height: 2.5em;
+        width: 2.5em;
+    }
+
+    form fieldset button.ajouterPanier {
+        margin-left: 40%;
+    }
+
+    .articles, .connexion, .panier, .compte{
+        font-weight: bold;
+        background-color: rgb(41, 101, 212);
+        color: white;
+        padding-left: 40%;
+        padding-right: 40%;
+    
+    }
   }

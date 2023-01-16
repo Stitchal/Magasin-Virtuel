@@ -9,7 +9,7 @@ require_once(__DIR__ . '/../libs/database-functions.php');
 if (!empty($_POST['nom']) and !empty($_POST['prenom'])) {
     if (checkClientExistant($_POST['email'], $_POST['nom'], $_POST['prenom'])) {
         if (isset($_POST['souvenir'])) {
-            $timeout = 180;
+            $timeout = 10000;
             session_abort();
             ini_set("session.gc_maxlifetime", $timeout);
             ini_set("session.cookie_lifetime", $timeout);

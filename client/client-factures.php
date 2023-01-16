@@ -69,7 +69,7 @@ require_once(__DIR__ . '/../libs/database-functions.php');
                 $prixHT = $article[2];
                 $totalProduitTVA = $prixHT * 0.2;
                 $totalProduitTTC = ($prixHT * $quantite) * 1.20;
-                $totalTVA += $totalProduitTVA;
+                $totalTVA += $totalProduitTVA*$quantite;
                 echo "<tr>
                         <td>".$nomProduit."</td>
                         <td>".$quantite."</td>

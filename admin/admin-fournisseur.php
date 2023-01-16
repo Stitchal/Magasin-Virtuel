@@ -55,7 +55,7 @@ require_once(__DIR__ . '/../includes/menu-admin.php');
       $result = ConnexionDB::getInstance()->querySelect("SELECT * FROM fournisseur");
     }
 
-    echo '<table class="bdd"><tbody>
+    echo '<table class="bdd" id="fournisseurTD"><tbody>
             <tr><td>id</td><td>nomEntreprise</td><td>mail</td><td>mdp</td><td>infos</td><td></td>';
     foreach ($result as $fournisseur) {
       $idFournisseur = $fournisseur["id"];
@@ -64,7 +64,7 @@ require_once(__DIR__ . '/../includes/menu-admin.php');
       $mdpFournisseur = $fournisseur["mdp"];
       $infosFournisseur = $fournisseur["infos"];
       echo "<tr><td>" . $idFournisseur . "</td><td>" . $nomFournisseur . "</td><td>" . $mailFournisseur . "</td><td>" . $mdpFournisseur . "</td><td>" . $infosFournisseur . "</td><td>";
-      echo '<form method = "post">';
+      echo '<form method = "post" class="formBDD">';
       echo '<fieldset>';
       echo "<input type='hidden' name='supprimer' value=$nomFournisseur>";
       echo "<input type='hidden' name='idSuppression' value=$idFournisseur>";

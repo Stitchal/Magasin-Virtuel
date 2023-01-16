@@ -89,7 +89,7 @@ function createFournisseur($nomEntreprise, $mail, $mdp, $infos){
 
 function createMarque($nomMarque){
     ConnexionDB::getInstance();
-    $sql = "INSERT INTO marque (nomMarque) VALUES (:nomMarque)";
+    $sql = "INSERT INTO marque (nom) VALUES (:nomMarque)";
     $params = array(
         ':nomMarque' => $nomMarque,
     );
@@ -108,10 +108,21 @@ function createGestionStock($refProduit, $refFournisseur, $quantite){
 }
 
 
-
-function addProductPanier($nom)
-{
-    $_SESSION[$nom] += 1;
+function createFacturation($articles, $nom, $prenom, $email, $prixHT, $TVA){
+    ConnexionDB::getInstance();
+    $dateFact = getDateAjd();
+    $sql = "INSERT INTO facturation (articles, nomAcheteur, prenomAcheteur, dateFact, emailAcheteur, prixHT, prixTTC, TVA) VALUES (:articles, :nomAcheteur, :prenomAcheteur, :dateFact, :emailAcheteur, :prixHT, :prixTTC, :TVA)";
+    $params = array(
+        ':articles' => $articles,
+        ':nomAcheteur' => $nom,
+        ':prenomAcheteur' => $prenom,
+        ':dateFact' => getDateAjd(),
+        ':emailAcheteur' => $email,
+        ':prixHT' => $prixHT,
+        ':prixTTC' => $prixHT + ($prixHT * $TVA),
+        ':TVA' => $TVA,
+    );
+    ConnexionDB::getInstance()->execute($sql, $params);
 }
 
 //TODO -> corriger la fonction en concordance avec la base de données

@@ -97,23 +97,6 @@ require_once(__DIR__ . '/../includes/menu-admin.php');
 
 
           ?>
-
-          <style>
-            td {
-              text-align: center;
-              display: inline-block;
-            }
-
-            button {
-              border: none;
-              background-color: white;
-              display: inline-block;
-            }
-
-            p {
-              display: inline-block;
-            }
-          </style>
         </tbody>
         <a href="admin-produit-ajout.php" title="Cliquez ici pour ajouter un article à la base de donnée">
           <div id="ajouter"><img src="../img/icone-ajout.png" alt="image ajouter article">

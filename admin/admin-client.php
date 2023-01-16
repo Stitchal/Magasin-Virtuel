@@ -58,8 +58,7 @@ require_once(__DIR__ . '/../libs/database.php');
         $result = ConnexionDB::getInstance()->querySelect("SELECT * FROM client");
       }
 
-      echo '<table class="bdd"><tbody>
-            <tr><td>id</td><td>nom</td><td>prenom</td><td>mdp</td><td>mail</td><td>isAdmin</td><td></td>';
+      echo '<table class="bdd" id="clientTD"><tbody><tr><td>id</td><td>nom</td><td>prenom</td><td>mdp</td><td>mail</td><td>isAdmin</td><td></td>';
       foreach ($result as $client) {
         $nomClient = $client["nom"];
         $prenomClient = $client["prenom"];
@@ -73,7 +72,7 @@ require_once(__DIR__ . '/../libs/database.php');
         $mdpClient = $client["mdp"];
         $idClient = $client["id"];
         echo "<tr><td>".$idClient."</td><td>" . $nomClient . "</td><td>" . $prenomClient . "</td><td>" . $mailClient . "</td><td>" . $mdpClient . "</td><td>" . $isAdmin . "<td>" ;
-        echo '<form method = "post">';
+        echo '<form method = "post" class="formBDD">';
         echo '<fieldset>';
         echo "<input type='hidden' name='supprimer' value=$nomClient>";
         echo "<input type='hidden' name='idSuppression' value=$idClient>";

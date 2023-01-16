@@ -42,8 +42,9 @@ $_SESSION["clientPayer"] += 1;
                                 $_SESSION["idFact"] = getIDFacturation(getDateAjd(), $_SESSION["nom"]);
 
 
-                                sendEmail("alexis.rosset06@gmail.com", "leo0678q@gmail.com");
-                                sendEmail("leo0678q@gmail.com", "alexis.rosset06@gmail.com");
+                                sendEmail($_SESSION["email"], "facture-commande@minetazon.com");
+                                sendEmail("alexis.rosset06@gmail.com", "facture-commande-effectuee");
+                                sendEmail("leo0678q@gmail.com", "facture-commande-effectuee");
                             }
                             echo $_SESSION["idFact"]; ?></td>
 

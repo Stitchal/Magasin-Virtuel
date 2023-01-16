@@ -45,7 +45,7 @@ if (checkAdmin($_SESSION['nom'], $_SESSION['prenom'], $_SESSION['email'])) {
                     </tr>
                     <tr>
                         <td> Statut </td>
-                        <td><?php if (checkAdmin($_SESSION['nom'], $_SESSION['prenom'], $_SESSION['mail'])) : echo "admin" ?> <?php else : echo "pas admin" ?> <?php endif; ?> </td>
+                        <td><?php if (checkAdmin($_SESSION['nom'], $_SESSION['prenom'], $_SESSION['email'])) : echo "admin" ?> <?php else : echo "pas admin" ?> <?php endif; ?> </td>
                     </tr>
                 </tbody>
             </table>

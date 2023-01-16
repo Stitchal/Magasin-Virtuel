@@ -47,7 +47,7 @@ require_once(__DIR__ . '/../includes/menu-admin.php');
       $critere = $_SESSION['recherche'];
       $result = ConnexionDB::getInstance()->querySelect("SELECT * FROM gestion_stock WHERE id LIKE '%$critere%'");
       }  else {
-      $result = ConnexionDB::getInstance()->querySelect("SELECT * FROM fournisseur");
+      $result = ConnexionDB::getInstance()->querySelect("SELECT * FROM gestion_stock");
     }
 
     echo '<table class="bdd"><tbody>
@@ -58,7 +58,7 @@ require_once(__DIR__ . '/../includes/menu-admin.php');
       $refFournisseur = $gestion_stock["refFournisseur"];
       $quantite = $gestion_stock["quantite"];
       echo "<tr><td>" . $idGestionStock . "</td><td>" . $refProduit . "</td><td>" . $refFournisseur . "</td><td>" . $quantite . "</td><td>";
-      echo '<form method = "post">';
+      echo '<form method = "post" class="formBDD">';
       echo '<fieldset>';
       echo "<input type='hidden' name='supprimer' value=$refProduit>";
       echo "<input type='hidden' name='idSuppression' value=$idGestionStock>";

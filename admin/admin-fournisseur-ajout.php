@@ -6,7 +6,7 @@ require_once(__DIR__.'/../libs/functions.php');
 
 $verify = new Verification();
 
-if (isset($_POST["submit"]) && isset($_POST["nom"]) && isset($_POST["prenom"]) && isset($_POST["mail"]) && isset($_POST["mdp"])) {
+if (isset($_POST["submit"]) && isset($_POST["nomEntreprise"]) && isset($_POST["infos"]) && isset($_POST["mail"]) && isset($_POST["mdp"])) {
     if ($verify->verificationMail($_POST["mail"])) {
         createFournisseur($_POST["nomEntreprise"], $_POST["mail"], $_POST["mdp"], $_POST["infos"]);
         header("Location: ../admin/admin-fournisseur.php");
@@ -17,7 +17,7 @@ if (isset($_POST["submit"]) && isset($_POST["nom"]) && isset($_POST["prenom"]) &
     exit();
 }
 
-require_once(__DIR__.'/includes/nav.php');
+require_once(__DIR__ . '/../includes/nav.php');
 ?>
 
 <!DOCTYPE html>
