@@ -35,12 +35,6 @@ if (!empty($_POST['nom']) and !empty($_POST['prenom'])) {
     }
 }
 require_once(__DIR__.'/../includes/nav.php');
-
-
-
-// Souvent on identifie cet objet par la variable $conn ou $db
-//$mysqlConnection = new PDO('mysql:host=linserv-info01.campus.unice.fr;port=5432;dbname=alexis.rosset@univ-cotedazur.fr', 'ra103059', 'ra103059');
-
 ?>
 
 <!DOCTYPE html>

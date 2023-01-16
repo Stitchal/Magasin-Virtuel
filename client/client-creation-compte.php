@@ -4,8 +4,10 @@ require_once(__DIR__ . '/../libs/database-functions.php');
 require_once(__DIR__.'/../libs/functions.php');
 
 
+$verify = new Verification();
+
 if (!empty($_POST['nom']) and !empty($_POST['prenom']) and !empty($_POST['mdp']) and !empty($_POST['email'])) {
-    if (!checkClientExistant($_POST['email'], $_POST['nom'], $_POST['prenom']) && verificationMail($_POST['email'])) {
+    if (!checkClientExistant($_POST['email'], $_POST['nom'], $_POST['prenom']) && $verify->verificationMail($_POST['email'])) {
         createClient($_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['mdp']);
         $_SESSION['nom'] = $_POST['nom'];
         $_SESSION['prenom'] = $_POST['prenom'];
@@ -13,7 +15,7 @@ if (!empty($_POST['nom']) and !empty($_POST['prenom']) and !empty($_POST['mdp'])
         header('Location: ../index.php');
         exit;
     } else {
-        if (verificationMail($_POST['email'])) {
+        if ($verify->verificationMail($_POST['email'])) {
             header('Location: ../client/client-creation-compte.php');
             exit;
         } else {

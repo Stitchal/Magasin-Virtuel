@@ -80,7 +80,7 @@ $_SESSION["clientPayer"] += 1;
                 </tbody>
             </table>
         </div>
-        <p><a id="retourPageArticle" href="index.php" title="Cliquez ici pour retourner à la page des articles">←Retourner à la page des articles</a></p>
+        <p><a id="retourPageArticle" href="../index.php" title="Cliquez ici pour retourner à la page des articles">←Retourner à la page des articles</a></p>
         <?php
         unset($_SESSION['panier']);
         ?>

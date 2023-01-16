@@ -1,16 +1,15 @@
 --TODO -> faire un script sql propre et qui fonctionne
 
---on recrée la base de données
+--Ordre de suppression des tables
+DROP TABLE gestion_stock;
+DROP TABLE produit;
+DROP TABLE marque;
+DROP TABLE fournisseur;
+DROP TABLE client;
+DROP TABLE comptabilite;
+DROP TABLE facturation;
 
-DROP TABLE IF EXISTS produit CASCADE;
-DROP TABLE IF EXISTS marque CASCADE;
-DROP TABLE IF EXISTS fournisseur CASCADE;
-DROP TABLE IF EXISTS client CASCADE;
-DROP TABLE IF EXISTS personne CASCADE;
-
-
-
---créer une table utilisateur qui hérite de la table personne
+--crée la table client
 CREATE TABLE client (
     id INT NOT NULL AUTO_INCREMENT,
     isAdmin BOOLEAN NOT NULL,
@@ -18,28 +17,31 @@ CREATE TABLE client (
     prenom VARCHAR(50) NOT NULL,
     mail VARCHAR(50) NOT NULL,
     mdp VARCHAR(50) NOT NULL,
+
     PRIMARY KEY (id)
 );
 
---créer une table administrateur qui hérite de la table personne
+--crée la table fournisseur
 CREATE TABLE fournisseur (
     id INT NOT NULL AUTO_INCREMENT,
     nomEntreprise VARCHAR(50) NOT NULL,
     mail VARCHAR(50) NOT NULL,
     mdp VARCHAR(50) NOT NULL,
     infos VARCHAR(100),
+
     PRIMARY KEY (id)
 );
 
 
---créer une table marque
+--crée la table marque
 CREATE TABLE marque (
     id INT NOT NULL AUTO_INCREMENT,
     nom VARCHAR(50) NOT NULL,
+
     PRIMARY KEY (id)
 );
 
---créer une table produit
+--crée la table produit
 CREATE TABLE produit (
    id INT NOT NULL AUTO_INCREMENT,
    nom VARCHAR(50) NOT NULL,
@@ -51,14 +53,12 @@ CREATE TABLE produit (
    icone VARCHAR(50),
    titre VARCHAR(50) NOT NULL,
    refMarque INT NOT NULL,
+
    PRIMARY KEY (id),
    FOREIGN KEY (refMarque) REFERENCES marque(id)
 );
 
---insérer des données dans la table produit
-INSERT INTO marque VALUES(1, "Dragon Ball");
-INSERT INTO produit VALUES(1, "Boule_de_crystal", 10, 1, 10, "orange", "bouleCrystal.png", "bouleCrystal.png", "Boule_de_crystal", 1);
-
+--crée la table facturation
 CREATE TABLE facturation(
     id INT NOT NULL AUTO_INCREMENT,
     articles VARCHAR(100) NOT NULL,
@@ -74,18 +74,19 @@ CREATE TABLE facturation(
 );
 
 
---créer une table gestion_stock
+--crée la table gestion_stock
 CREATE TABLE gestion_stock (
     id INT NOT NULL AUTO_INCREMENT,
     refProduit INT NOT NULL,
     refFournisseur INT NOT NULL,
     quantite INT NOT NULL,
+
     PRIMARY KEY (id),
     FOREIGN KEY (refProduit) REFERENCES produit(id),
     FOREIGN KEY (refFournisseur) REFERENCES fournisseur(id)
 );
 
---créer une table comptabilite
+--crée la table comptabilite
 CREATE TABLE comptabilite (
     id INT NOT NULL AUTO_INCREMENT,
     ventes VARCHAR(1000),

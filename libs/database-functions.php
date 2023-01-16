@@ -267,7 +267,7 @@ function getNameProduct($id): string
  * @param [string] $nom
  * @return integer
  */
-function getPrixArticle($nom): int
+function getPrixArticle($nom): float
 {
     $requetePrix = "SELECT prixPublic FROM produit WHERE nom = '$nom'";
     $resRequete = ConnexionDB::getInstance()->querySelect($requetePrix);

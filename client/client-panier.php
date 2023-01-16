@@ -74,7 +74,7 @@ require_once(__DIR__.'/../includes/nav.php');
                 }
                 echo '</table>';
                 echo '<div class="infosCommande">';
-                echo '<p id="montantTotal">Montant total ('.$nbTotalArticle.' articles) : <b>'.$sous_total.'€</b></p>';
+                echo '<p id="montantTotal">Sous-total ('.$nbTotalArticle.' articles) : <b>'.$sous_total.'€</b></p>';
                 $_SESSION["totalPaiement"] = $sous_total;
             } else {
                 echo 'Votre panier est vide :(';

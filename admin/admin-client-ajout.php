@@ -1,13 +1,14 @@
 <?php
 session_start();
 $GLOBALS["page"] = "admin-client.php";
-require_once(__DIR__ . '/../libs/database-functions.php');
-require_once(__DIR__ . '/../libs/functions.php');
 
+require_once(__DIR__ . '/../libs/functions.php');
+require_once(__DIR__ . '/../libs/database-functions.php');
+
+$verify = new Verification();
 
 if (isset($_POST["submit"]) && isset($_POST["nom"]) && isset($_POST["prenom"]) && isset($_POST["mail"]) && isset($_POST["mdp"])) {
-    if (verificationMail($_POST["mail"])) {
-        echo "|" . $_POST["nom"] . "|  |" . $_POST["prenom"] . "|  |" . $_POST["mail"] . "|  |" . $_POST["mdp"] . "|";
+    if ($verify->verificationMail($_POST["mail"])) {
         if (isset($_POST["estAdmin"])) {
             createClient($_POST["nom"], $_POST["prenom"], $_POST["mail"], $_POST["mdp"], 1);
         } else {
