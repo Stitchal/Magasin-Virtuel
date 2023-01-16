@@ -54,6 +54,9 @@ require_once(__DIR__ . '/../includes/menu-admin.php');
     } else {
       $result = ConnexionDB::getInstance()->querySelect("SELECT * FROM fournisseur");
     }
+    if (isset($_SESSION["recherche"])) {
+      unset($_SESSION["recherche"]);
+    }
 
     echo '<table class="bdd" id="fournisseurTD"><tbody>
             <tr><td>id</td><td>nomEntreprise</td><td>mail</td><td>mdp</td><td>infos</td><td></td>';

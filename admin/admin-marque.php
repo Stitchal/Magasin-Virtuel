@@ -61,6 +61,9 @@ require_once(__DIR__ . '/../includes/menu-admin.php');
             $result = ConnexionDB::getInstance()->querySelect("SELECT * FROM marque");
           }
 
+          if (isset($_SESSION["recherche"])) {
+            unset($_SESSION["recherche"]);
+          }
           echo '<table class="bdd" id="marqueTD"><tbody>
             <tr><td>id</td><td> nom </td><td></td>';
           foreach ($result as $marque) {

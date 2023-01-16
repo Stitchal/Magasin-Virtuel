@@ -119,7 +119,7 @@ function createFacturation($articles, $nom, $prenom, $email, $prixHT, $TVA){
         ':dateFact' => getDateAjd(),
         ':emailAcheteur' => $email,
         ':prixHT' => $prixHT,
-        ':prixTTC' => $prixHT + ($prixHT * $TVA),
+        ':prixTTC' => $prixHT + ($prixHT * ($TVA/100)),
         ':TVA' => $TVA,
     );
     ConnexionDB::getInstance()->execute($sql, $params);

@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 $GLOBALS["page"] = "admin-client.php";
 $GLOBALS["pageSuppression"] = "admin-client.php";
 
@@ -56,6 +57,9 @@ require_once(__DIR__ . '/../libs/database.php');
         }
       } else {
         $result = ConnexionDB::getInstance()->querySelect("SELECT * FROM client");
+      }
+      if (isset($_SESSION["recherche"])) {
+        unset($_SESSION["recherche"]);
       }
 
       echo '<table class="bdd" id="clientTD"><tbody><tr><td>id</td><td>nom</td><td>prenom</td><td>mdp</td><td>mail</td><td>isAdmin</td><td></td>';

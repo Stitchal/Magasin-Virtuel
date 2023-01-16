@@ -8,13 +8,18 @@ require_once(__DIR__.'/../libs/functions.php');
 $verify = new Verification();
 
 if (isset($_POST["submit"]) && isset($_POST["articles"]) && isset($_POST["nom"]) && isset($_POST["email"]) && isset($_POST["prenom"]) && isset($_POST["prixHT"]) && isset($_POST["TVA"])) {
-    if ($verify->verifieListeArticles($_POST["articles"])) {
+    if ($verify->verifieListeArticles($_POST["articles"]) && $verify->verificationMail($_POST["email"])) {
         createFacturation($_POST["articles"], $_POST["nom"], $_POST["prenom"], $_POST["email"], $_POST["prixHT"], $_POST["TVA"]);
-        header("Location: ../admin/admin-fournisseur.php");
+        header("Location: ../admin/admin-facturation.php");
         exit();
     }
-    $error = "erreur format liste article,  ex : 1_1_1, 2_2_2, ";
-    header("Location: ../admin/admin-fournisseur-ajout.php?error=" . urlencode($error));
+    else if($verify->verificationMail($_POST["email"])){
+        $error = "erreur mail";
+    }
+    else {
+        $error = "erreur format liste article,  ex : 1_1_1, 2_2_2, ";
+    }
+    header("Location: ../admin/admin-facturation-ajout.php?error=" . urlencode($error));
     exit();
 }
 

@@ -59,6 +59,9 @@ require_once(__DIR__ . '/../includes/menu-admin.php');
           } else {
             $result = ConnexionDB::getInstance()->querySelect("SELECT * FROM produit");
           }
+          if (isset($_SESSION["recherche"])) {
+            unset($_SESSION["recherche"]);
+          }
 
           foreach ($result as $article) {
             $nomProduit = $article["nom"];

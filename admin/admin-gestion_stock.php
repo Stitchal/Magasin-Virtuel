@@ -50,6 +50,9 @@ require_once(__DIR__ . '/../includes/menu-admin.php');
       $result = ConnexionDB::getInstance()->querySelect("SELECT * FROM gestion_stock");
     }
 
+    if (isset($_SESSION["recherche"])) {
+      unset($_SESSION["recherche"]);
+    }
     echo '<table class="bdd"><tbody>
             <tr><td>id</td><td>refProduit</td><td>refFournisseur</td><td>quantite</td><td></td>';
     foreach ($result as $gestion_stock) {
