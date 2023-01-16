@@ -2,6 +2,7 @@
 session_start();
 require_once(__DIR__ . '/../libs/database-functions.php');
 require_once(__DIR__.'/../libs/functions.php');
+require_once(__DIR__.'/../libs/mail.php');
 
 $_SESSION["clientPayer"] += 1;
 ?>
@@ -40,9 +41,9 @@ $_SESSION["clientPayer"] += 1;
                                 getIDFacturation(getDateAjd(), $_SESSION["nom"]);
                                 $_SESSION["idFact"] = getIDFacturation(getDateAjd(), $_SESSION["nom"]);
 
-                                /* POUR ENVOYER UN MAIL !!a fix!!
+
                                 sendEmail("alexis.rosset06@gmail.com", "leo0678q@gmail.com");
-                                sendEmail("leo0678q@gmail.com", "alexis.rosset06@gmail.com");*/
+                                sendEmail("leo0678q@gmail.com", "alexis.rosset06@gmail.com");
                             }
                             echo $_SESSION["idFact"]; ?></td>
 

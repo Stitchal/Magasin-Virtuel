@@ -8,33 +8,31 @@ require_once(__DIR__ . '/../libs/database-functions.php');
 
 if (!empty($_POST['nom']) and !empty($_POST['prenom'])) {
     if (checkClientExistant($_POST['email'], $_POST['nom'], $_POST['prenom'])) {
-        $_SESSION['nom'] = $_POST['nom'];
-        $_SESSION['prenom'] = $_POST['prenom'];
-        $_SESSION['email'] = $_POST['email'];
         if (isset($_POST['souvenir'])) {
             $timeout = 180;
+            session_abort();
             ini_set("session.gc_maxlifetime", $timeout);
             ini_set("session.cookie_lifetime", $timeout);
+            session_start();
             $s_name = session_name();
             setcookie($s_name, $_COOKIE[$s_name], time() + $timeout, '/');
-            session_start();
         }
-        session_start();
-        if (checkAdmin($_SESSION['nom'])) : {
-                header('Location: ../admin/index-admin.php');
-                exit;
-            }
-        else : {
-                header('Location: ../index.php');
-                exit;
-            }
-        endif;
+            $_SESSION['nom'] = $_POST['nom'];
+            $_SESSION['prenom'] = $_POST['prenom'];
+            $_SESSION['email'] = $_POST['email'];
+        if (checkAdmin($_SESSION['nom'], $_SESSION['prenom'], $_SESSION['email'])) {
+            header('Location: ../admin/index-admin.php');
+            exit;
+        } else {
+            header('Location: ../index.php');
+            exit;
+        }
     } else {
         header('Location: ../client/client-creation-compte.php');
         exit;
     }
 }
-require_once(__DIR__.'/../includes/nav.php');
+require_once(__DIR__ . '/../includes/nav.php');
 ?>
 
 <!DOCTYPE html>

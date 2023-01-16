@@ -63,6 +63,7 @@
         width: 95%;
         margin: 0 2.5%;
         background-color: rgb(247, 247, 247);
+        padding-top: 20%;
     }
 
     nav {
@@ -112,4 +113,5 @@
     div#haut_page img:hover{
         width: 5.1em;
     }
+    
   }

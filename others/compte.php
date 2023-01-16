@@ -11,7 +11,7 @@ if (empty($_SESSION['nom']) || empty($_SESSION['prenom']) || empty($_SESSION['em
 require_once(__DIR__ . '/../includes/nav.php');
 require_once(__DIR__ . '/../libs/database-functions.php');
 
-if (checkAdmin($_SESSION['nom'])) {
+if (checkAdmin($_SESSION['nom'], $_SESSION['prenom'], $_SESSION['email'])) {
     require_once(__DIR__ . '/../includes/menu-admin.php');
     require_once(__DIR__ . '/../libs/database.php');
 }
@@ -45,7 +45,7 @@ if (checkAdmin($_SESSION['nom'])) {
                     </tr>
                     <tr>
                         <td> Statut </td>
-                        <td><?php if (checkAdmin($_SESSION['nom'])) : echo "admin" ?> <?php else : echo "pas admin" ?> <?php endif; ?> </td>
+                        <td><?php if (checkAdmin($_SESSION['nom'], $_SESSION['prenom'], $_SESSION['mail'])) : echo "admin" ?> <?php else : echo "pas admin" ?> <?php endif; ?> </td>
                     </tr>
                 </tbody>
             </table>

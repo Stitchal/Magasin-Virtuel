@@ -147,12 +147,15 @@ function getStockProduct($id)
 
 
 
-function checkAdmin($nom)
+function checkAdmin($nom, $prenom, $mail)
 {
     ConnexionDB::getInstance();
-    $sql = "SELECT isAdmin FROM client WHERE nom = :nom";
+    $sql = "SELECT isAdmin FROM client WHERE nom = :nom AND prenom = :prenom AND mail = :mail";
     $params = array(
-        ':nom' => $nom
+        ':nom' => $nom,
+        ':prenom' => $prenom,
+        ':mail' => $mail
+
     );
     $result = ConnexionDB::getInstance()->querySelect($sql, $params);
     if ($result[0]['isAdmin'] == '1') {
@@ -430,10 +433,10 @@ function updateComptabiliteVente($montantTransaction, $listeProd){
     }
     $ancienneVente = getVentesComptabilite($date);
     $nvVente = $ancienneVente . ";" . $articlesString;
-    $sql = "UPDATE comptabilite SET montantVentes = montantVentes + ':montantTransaction', chiffreAffaire = chiffreAffaire + ':montantTransaction', ventes = ':listeProd' WHERE annee=':annee'";
+    $sql = "UPDATE comptabilite SET montantVentes = montantVentes + :montantTransaction, chiffreAffaire = chiffreAffaire + :montantTransaction, ventes = :listeProd WHERE annee=:annee";
     $params = array(
         ':montantTransaction' => $montantTransaction,
-        ':annee' => $date,
+        ':annee' => strval($date),
         ':listeProd' => $nvVente
     );
     $db->execute($sql, $params);

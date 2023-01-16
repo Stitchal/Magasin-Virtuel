@@ -44,7 +44,7 @@
                     <?php endif; ?>
 
                 <?php else : ?> <!-- Si on est connecté --> 
-                    <?php if(checkAdmin($_SESSION['nom'])): ?><!-- Si on est admin-->
+                    <?php if(checkAdmin($_SESSION['nom'], $_SESSION['prenom'], $_SESSION['email'])): ?><!-- Si on est admin-->
                         <li><a href="../admin/index-admin.php" title="Cliquez pour voir les articles">Accueil</a></li>
                         <?php if($GLOBALS["page"] == "deconnexion.php") : ?> <!-- Si on est sur la page déconnexion -->
                             <li><a href="../others/connexion.php" title="Cliquez ici pour vous connecter">Se connecter</a></li>

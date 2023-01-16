@@ -63,13 +63,13 @@ require_once(__DIR__ . '/../libs/database.php');
       foreach ($result as $client) {
         $nomClient = $client["nom"];
         $prenomClient = $client["prenom"];
+        $mailClient = $client["mail"];
         $isAdmin = "";
-        if (checkAdmin($nomClient)) {
+        if (checkAdmin($nomClient,$prenomClient, $mailClient)) {
           $isAdmin = "admin";
         } else {
           $isAdmin = "pas admin";
         }
-        $mailClient = $client["mail"];
         $mdpClient = $client["mdp"];
         $idClient = $client["id"];
         echo "<tr><td>".$idClient."</td><td>" . $nomClient . "</td><td>" . $prenomClient . "</td><td>" . $mailClient . "</td><td>" . $mdpClient . "</td><td>" . $isAdmin . "<td>" ;
