@@ -61,6 +61,13 @@
                             <li><a href="../others/deconnexion.php" title="Cliquez ici pour vous déconnecter"><img src="../img/icone-deconnexion.png" alt="image deconnexion" id="imgDeconnexion"></a></li>
                             <li><a href="../client/client-panier.php" title="Cliquez ici pour consulter votre panier"><img src="../img/panier.png" alt="image panier" id="imgPanier"></a></li>
                             <li><a href="../others/compte.php" title="Cliquez ici pour accéder à votre compte"><img src="../img/icone-compte.png" alt="image compte" id="imgCompte"></a> </li>
+                            <!--Barre de recherche-->
+                            <form id="formRecherche" method = "post">
+                                <div class ="divBarreRecherche">
+                                    <input type="search" id="inputRechercher" name="inputRechercher" placeholder="Rechercher...">
+                                    <button id="boutonRechercher" name="boutonRechercher" type="submit"><img src="../img/rechercher.png" alt="image ajouter article"></button>
+                                </div>
+                            </form>
                         <?php else : ?> <!-- On est pas sur la page article.php -->
                             <li><a href="../client/client-article.php" title="Cliquez ici pour voir les articles">Articles</a></li>
                             <?php if($GLOBALS["page"] == "deconnexion.php") : ?> <!-- Si on est sur la page déconnexion -->
@@ -75,6 +82,9 @@
                                     <li><a href="../client/client-panier.php" class="panier" title="Cliquez ici pour consulter votre panier"><img src="../img/panier.png" alt="image panier" id="imgPanier"></a></li>
                                     <li><a href="../others/compte.php" title="Cliquez ici pour accéder à votre compte" ><img src="../img/icone-compte.png" alt="image compte" id="imgCompte"></a> </li>
                                 <?php else : ?>
+                                    <li><a href="../deconnexion.php" title="Cliquez ici pour vous déconnecter"><img src="../img/icone-deconnexion.png" alt="image deconnexion" id="imgDeconnexion"></a></li>
+                                    <li><a href="../client/client-panier.php" title="Cliquez ici pour consulter votre panier"><img src="../img/panier.png" alt="image panier" id="imgPanier"></a></li>
+                                    <li><a href="../others/compte.php" title="Cliquez ici pour accéder à votre compte" ><img src="../img/icone-compte.png" alt="image compte" id="imgCompte"></a> </li>
                                 <?php endif; ?>
                             <?php endif; ?>
                         <?php endif; ?>

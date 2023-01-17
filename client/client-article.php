@@ -32,12 +32,6 @@ require_once(__DIR__.'/../libs/functions.php');
 
 <body>
   <main>
-    <form id="formRecherche" method = "post">
-      <div class ="divBarreRecherche">
-        <input type="search" id="inputRechercher" name="inputRechercher" placeholder="Rechercher...">
-        <button id="boutonRechercher" name="boutonRechercher" type="submit"><img src="../img/rechercher.png" alt="image ajouter article"></button>
-      </div>
-    </form>
     <div class="article">
       <table id="tabArticles">
         <tbody>

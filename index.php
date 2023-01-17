@@ -31,19 +31,18 @@ require_once('libs/database-functions.php');
   <style>
       body {
         background-image: url("img/indexBackground.jpg");
+        background-position: center;
+        width: 100%;
+        height: 100vh;
         background-size : cover;
+        background-repeat: no-repeat;
+        overflow: hidden;
       }
     </style>
-  <main>
-    <p id="textIndex" style="display:none;">Des milliers d'articles exclusifs à découvrir dès maintenant </p>
+    <p id="textIndex" >Des milliers d'articles exclusifs à découvrir dès maintenant </p>
     <div class="accueilButton">
-    <a href="../client/client-article.php" onmouseover="showImg()" onmouseout="hideImg()" class="boutonMinetta">Deviens un héros comme Minetta</a>
+    <a href="../client/client-article.php" onmouseover="showImg()" onmouseout="hideImg()" class="boutonMineta">Deviens un héros comme Mineta</a>
     </div>
-  </main>
-  <a href="#" title="Cliquez ici pour retourner en haut de la page">
-    <div id="haut_page"><img src="img/fleche-haut-page.png" alt="image fleche haut">
-  </a></div>
-  </a>
 </body>
 
 <script> 
