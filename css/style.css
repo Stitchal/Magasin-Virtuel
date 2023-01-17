@@ -1,7 +1,7 @@
 * {
-    margin : 0px;
+    margin: 0px;
     padding: 0px;
-    font-family:'Trebuchet MS';
+    font-family: 'Trebuchet MS';
     font-size: medium;
 }
 
@@ -11,45 +11,45 @@ body {
 }
 
 
-main{
+main {
     width: 60%;
     margin: 0 20%;
     padding-top: 10%;
     padding-bottom: 5%;
 }
 
-h1{
+h1 {
     color: #212529;
     text-align: center;
-    font-size:  2em;
+    font-size: 2em;
     padding-bottom: 5%;
 }
 
-nav{
+nav {
     width: 100%;
     height: 4em;
     background-color: #212529;
     position: fixed;
 }
 
-nav ul{
+nav ul {
     margin: 0 20%;
     height: 4em;
 }
 
-nav ul li:first-child{
+nav ul li:first-child {
     float: left;
 }
 
-nav ul li{
+nav ul li {
     height: 100%;
     float: right;
     display: float;
-    list-style-type:none;
+    list-style-type: none;
 }
 
 
-nav ul li a{
+nav ul li a {
     display: block;
     text-decoration: none;
     color: white;
@@ -59,7 +59,7 @@ nav ul li a{
     transition-duration: 0.4s;
 }
 
-nav ul li button{
+nav ul li button {
     display: block;
     text-decoration: none;
     color: white;
@@ -69,18 +69,21 @@ nav ul li button{
     transition-duration: 0.4s;
     border: 0;
     height: 100%;
-    position: relative; 
+    position: relative;
 
 }
 
 
-nav ul li a:hover{
+nav ul li a:hover {
     background-color: rgb(41, 101, 212);
     color: #212529;
     transition-duration: 0.3s;
 }
 
-.articles, .connexion, .panier, .compte{
+.articles,
+.connexion,
+.panier,
+.compte {
     font-weight: bold;
     color: rgb(41, 101, 212);
     border-bottom: 0.2em solid rgb(41, 101, 212);
@@ -92,25 +95,26 @@ table {
     width: 100%;
 }
 
-td:first-child{
-  margin-right: 1%;
+td:first-child {
+    margin-right: 1%;
 }
 
-td:last-child{
-  margin-left: 1%;
+td:last-child {
+    margin-left: 1%;
 }
 
-td > img{
-      width: 70%;
-      margin: 5% 0;
+td>img {
+    width: 70%;
+    margin: 5% 0;
 }
 
-.divBarreRecherche{
+.divBarreRecherche {
     width: 100%;
     display: block;
 }
-input#inputRechercher{
-    margin:0;
+
+input#inputRechercher {
+    margin: 0;
     display: inline-block;
     height: 5em;
     width: 95%;
@@ -118,23 +122,23 @@ input#inputRechercher{
     border-radius: 1em 0 0 1em;
 }
 
-input#inputRechercher:hover{
+input#inputRechercher:hover {
     background-color: #f3f3f3;
 }
 
-form#formRecherche{
+form#formRecherche {
     width: 100%;
     padding: 0;
     margin: 0;
     margin-bottom: 3%;
 }
 
-.divBarreRecherche #boutonRechercher img{
+.divBarreRecherche #boutonRechercher img {
     max-height: 25%;
- }
-  
-.divBarreRecherche button#boutonRechercher{
-    margin:0;
+}
+
+.divBarreRecherche button#boutonRechercher {
+    margin: 0;
     display: inline-block;
     height: 4em;
     width: 4%;
@@ -144,32 +148,36 @@ form#formRecherche{
     background: linear-gradient(#212529, #212529);
     transition-duration: 0.2s;
 }
-  
-button#boutonRechercher:hover{
+
+button#boutonRechercher:hover {
     cursor: pointer;
     background: #212529;
     background: linear-gradient(#212529, #1b3e7a);
     transition-duration: 0.2s;
 }
 
-form{
+form {
     width: 30%;
     margin: 0% 35% 0 35%;
     padding-top: 5%;
     padding-bottom: 5%;
 }
 
-form.connexion_creercompte{
+form.connexion_creercompte {
     background-color: #FAFAFA;
     border: 1px solid #cccccc;
     margin-top: 10%
 }
 
-fieldset{
+fieldset {
     border: 0;
 }
 
-input[type=text], input[type=password], input[type=mail], input[type=search], textarea {
+input[type=text],
+input[type=password],
+input[type=mail],
+input[type=search],
+textarea {
     font-size: small;
     display: inline-block;
     background: white;
@@ -182,45 +190,51 @@ input[type=text], input[type=password], input[type=mail], input[type=search], te
 }
 
 
-input[type="text"]:hover, input[type=mail]:hover, input[type=password]:hover,
-textarea{
+input[type="text"]:hover,
+input[type=mail]:hover,
+input[type=password]:hover,
+textarea {
     background-color: rgb(241, 241, 241);
 }
 
-input[type="text"]:focus, input[type="mail"]:focus, input[type="password"]:focus, 
-textarea{
+input[type="text"]:focus,
+input[type="mail"]:focus,
+input[type="password"]:focus,
+textarea {
     transition-duration: 0.2s;
     background-color: rgb(236, 236, 236);
     border: 1px solid #212529;
 }
 
-fieldset:focus-within > input[type=text]:valid{
+fieldset:focus-within>input[type=text]:valid {
     transition-duration: 0.2s;
     background-color: rgb(236, 236, 236);
 }
 
-fieldset:focus-within > input[type=mail]:valid{
+fieldset:focus-within>input[type=mail]:valid {
     transition-duration: 0.2s;
     background-color: rgb(236, 236, 236);
 }
 
-fieldset:focus-within > input[type=password]:valid{
+fieldset:focus-within>input[type=password]:valid {
     transition-duration: 0.2s;
     background-color: rgb(236, 236, 236);
 }
 
-fieldset > input[type=text]:valid, input[type=mail]:valid, input[type=password]:valid {
+fieldset>input[type=text]:valid,
+input[type=mail]:valid,
+input[type=password]:valid {
     border-color: green;
     border-width: 1px;
 }
 
-fieldset{
+fieldset {
     width: auto;
     padding: 0;
     margin: 0;
 }
 
-fieldset label{
+fieldset label {
     display: none;
     /*font-size: large;
     width: 15%;
@@ -230,23 +244,23 @@ fieldset label{
     border: 1px solid red;*/
 }
 
-::placeholder{
+::placeholder {
     color: #C5C5C5;
 }
 
-fieldset label.resterConnecte{
+fieldset label.resterConnecte {
     display: inline-block;
     font-size: small;
 }
 
-.fieldsetResterConnecte{
+.fieldsetResterConnecte {
     margin-top: 5%;
     font-size: small;
     width: 40%;
     margin-left: 11%;
 }
 
-input[type=submit]{
+input[type=submit] {
     display: inline-block;
     margin-top: 3%;
     padding: 1.5%;
@@ -261,7 +275,7 @@ input[type=submit]{
     border: 2px solid white;
 }
 
-input[type=submit]:hover{
+input[type=submit]:hover {
     background-color: rgb(41, 101, 212);
     color: #212529;
     cursor: pointer;
@@ -269,7 +283,7 @@ input[type=submit]:hover{
     border: 2px solid #212529;
 }
 
-.createCompte{
+.createCompte {
     display: block;
     /*width: 40%;
     margin-left: 30%;
@@ -277,7 +291,7 @@ input[type=submit]:hover{
     text-align: center;
 }
 
-.createCompte{
+.createCompte {
     background-color: #FAFAFA;
     width: 28%;
     margin: 3% 35% 0 35%;
@@ -285,122 +299,123 @@ input[type=submit]:hover{
     border: 1px solid #cccccc;
 }
 
-.createCompte p a{
+.createCompte p a {
     color: #212529;
     text-decoration: none;
-    color:rgb(41, 101, 212);
+    color: rgb(41, 101, 212);
 }
 
-.createCompte p a:hover{
-    color:rgb(41, 101, 212);
-    text-decoration:underline;
+.createCompte p a:hover {
+    color: rgb(41, 101, 212);
+    text-decoration: underline;
 }
 
 
-footer{
+footer {
     width: 100%;
     height: 4em;
     background-color: #212529;
 }
 
-footer p{
+footer p {
     font-size: 1em;
     color: white;
     padding: 1.5em 0;
     text-align: center;
 }
 
-footer p a{
+footer p a {
     color: white;
 }
 
-footer p a:hover{
+footer p a:hover {
     color: rgb(224, 224, 224);
 }
 
-#imgDeconnexion{
+#imgDeconnexion {
     text-align: center;
     height: 0.9em;
 }
 
 
-a img#imgPanier{
+a img#imgPanier {
     text-align: center;
     height: 0.9em;
 }
 
-#imgCompte{
+#imgCompte {
     text-align: center;
     height: 0.9em;
 }
 
-#imgFleche{
+#imgFleche {
     text-align: center;
     height: 0.9em;
 }
 
-.divCompte{
+.divCompte {
     margin: 5% 25% 0 25%;
     max-width: 50%;
     padding: 3%;
 }
 
-.divCompte p{
+.divCompte p {
     color: red;
 }
 
-.divCompte table{
+.divCompte table {
     height: auto;
     border-collapse: collapse;
-    padding:0;
+    padding: 0;
 }
 
-.divCompte table tr td{
+.divCompte table tr td {
     padding: 1em 0;
     border: 0;
-    margin:0;
+    margin: 0;
     border-bottom: 1px solid rgb(133, 133, 133);
     color: #212529;
     text-align: left;
 }
 
-.divCompte table tr:first-child td{
+.divCompte table tr:first-child td {
     padding-top: 0;
 }
 
-.divCompte table tr td:first-child{
-    color:rgb(133, 133, 133);
+.divCompte table tr td:first-child {
+    color: rgb(133, 133, 133);
 }
 
 
-  @keyframes slideDown {
+@keyframes slideDown {
     0% {
-      transform: translateY(-100%);
+        transform: translateY(-100%);
     }
-    100% {
-      transform: translateY(0);
-    }
-  }
 
-  /* Style pour le bouton */
-  .buttonMenu {
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Style pour le bouton */
+.buttonMenu {
     color: white;
     padding: 15px 20px;
     border: none;
     cursor: pointer;
-  }
+}
 
-  .buttonMenu:hover{
+.buttonMenu:hover {
     background-color: #4CAF50;
-  }
+}
 
-  .buttonMenu:focus{
+.buttonMenu:focus {
     background-color: #4CAF50;
-  }
+}
 
 
-  /* Style pour le sous-menu */
-  .sousMenu {
+/* Style pour le sous-menu */
+.sousMenu {
     display: none;
     list-style-type: none;
     background-color: black;
@@ -408,19 +423,19 @@ a img#imgPanier{
     position: fixed;
     border-radius: 0 0.75em 0.75em 0.75em;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  }
+}
 
-.sousMenu a:first-child{
+.sousMenu a:first-child {
     border-radius: 0 0 0 0.5em;
 }
 
-.sousMenu a{
+.sousMenu a {
     border-radius: 0 0.5em 0.5em 0;
 }
 
-  /* Style pour le sous-menu lorsqu'il est affiché */
+/* Style pour le sous-menu lorsqu'il est affiché */
 .show {
-    display: flex; 
+    display: flex;
     flex-direction: row;
 }
 
@@ -431,11 +446,11 @@ div a {
     width: 100;
 }
 
-img#boutonMenu{
-    display:none;
+img#boutonMenu {
+    display: none;
 }
 
-nav input{
+nav input {
     display: none;
 }
 
@@ -451,33 +466,33 @@ label:hover {
     cursor: pointer;
 }
 
-input[type="checkbox"]:checked + label img#boutonMenu{
+input[type="checkbox"]:checked+label img#boutonMenu {
     background-color: rgb(41, 101, 212);
 }
 
-input[type="checkbox"]:checked + label + ul.menu li{
+input[type="checkbox"]:checked+label+ul.menu li {
     display: flex;
     width: 100%;
 }
 
-input[type="checkbox"]:checked + label + ul.menu li{
+input[type="checkbox"]:checked+label+ul.menu li {
     display: flex;
     float: left;
 }
 
-#boutonMenu:hover{
+#boutonMenu:hover {
     border: solid 1px white;
 }
 
-#bouton{
+#bouton {
     display: none;
 }
 
-label#labelMenu{
+label#labelMenu {
     width: 0;
 }
 
-#haut_page img{
+#haut_page img {
     position: fixed;
     bottom: 3%;
     right: 3%;
@@ -500,26 +515,26 @@ label#labelMenu{
     transition-duration: 0.4s;
 }*/
 
-div#haut_page img:hover{
+div#haut_page img:hover {
     transition-duration: 0.1s;
     background-color: rgb(41, 101, 212);
     width: 3.1em;
 }
 
-#haut_page:hover{
+#haut_page:hover {
     cursor: pointer;
 }
 
-#gifPanierVide{
-    display:block;
+#gifPanierVide {
+    display: block;
 }
 
-img#gifPanierVide{
+img#gifPanierVide {
     width: 50%;
     margin: 5% 25% 0 25%;
 }
 
-input#quantite{
+input#quantite {
     appearance: none;
     background-color: #e6e6e6;
     border-radius: 0.5em;
@@ -529,20 +544,21 @@ input#quantite{
     display: inline-block;
     text-align: center;
 }
-input#quantite:hover{
+
+input#quantite:hover {
     background-color: #cccccc;
 }
 
-input#quantite::placeholder{
+input#quantite::placeholder {
     color: black;
 }
 
-table#tableauPanier td:first-child{
+table#tableauPanier td:first-child {
     max-width: 20%;
     margin: 0;
 }
 
-table#tableauPanier td{
+table#tableauPanier td {
     background-color: #FAFAFA;
     margin: 0;
     height: 100%;
@@ -550,37 +566,37 @@ table#tableauPanier td{
     width: 76%;
 }
 
-table#tableauPanier tr{
-    background-color:#FAFAFA;
+table#tableauPanier tr {
+    background-color: #FAFAFA;
     height: 10%;
     margin-bottom: 1%;
     border-bottom: 1px solid #C5C5C5;
 }
 
-table#tableauPanier img{
-    margin:0;
+table#tableauPanier img {
+    margin: 0;
     max-width: 60%;
     margin: 10%;
 }
 
-table#tableauPanier{
+table#tableauPanier {
     width: 80%;
     margin-left: 10%;
     margin-right: 10%;
     margin-bottom: 5%;
 }
 
-table#tableauPanier h2{
+table#tableauPanier h2 {
     text-align: left;
 }
 
-table#tableauPanier form{
+table#tableauPanier form {
     margin: 0;
     padding: 0;
 }
 
-table#tableauPanier form input[type=submit]{
-    margin:0;
+table#tableauPanier form input[type=submit] {
+    margin: 0;
     width: auto;
 }
 
@@ -589,25 +605,25 @@ input::-webkit-outer-spin-button {
     cursor: pointer;
 }
 
-.prix{
+.prix {
     display: inline-block;
     width: 49%;
     text-align: left;
     font-weight: bold;
 }
 
-.prix p{
+.prix p {
     color: #B12704;
-    font-size:x-large;
+    font-size: x-large;
 }
 
-p.prix{
+p.prix {
     text-align: right;
     color: #B12704;
-    font-size:large;
+    font-size: large;
 }
 
-.prix + form{
+.prix+form {
     display: inline-block;
     width: 49%;
 }
@@ -633,12 +649,12 @@ button:hover .ajouterPanier {
     cursor: pointer;
 }
 
-table#tabArticles > tr > td{
+table#tabArticles>tr>td {
     border: 1px solid red;
     padding: 2%;
 }
 
-a#passerCommande{
+a#passerCommande {
     text-align: right;
     display: inline-block;
     padding: 0.5% 2% 0.5% 2%;
@@ -653,18 +669,18 @@ a#passerCommande{
     text-decoration: none;
 }
 
-a#passerCommande:hover{
+a#passerCommande:hover {
     background-color: rgb(21, 63, 21);
     cursor: pointer;
     color: rgb(218, 218, 218);
     transition-duration: 0.2s;
 }
 
-div a#passerCommande{
+div a#passerCommande {
     float: right;
 }
 
-a#bouton{
+a#bouton {
     text-align: right;
     display: inline-block;
     padding: 0.5% 2% 0.5% 2%;
@@ -679,7 +695,7 @@ a#bouton{
     text-decoration: none;
 }
 
-a#bouton:hover{
+a#bouton:hover {
     background-color: rgb(41, 101, 212);
     cursor: pointer;
     color: #212529;
@@ -687,12 +703,12 @@ a#bouton:hover{
     transition-duration: 0.2s;
 }
 
-table.facture{
+table.facture {
     background-color: #FAFAFA;
     border-radius: 2em;
 }
 
-.divFacture{
+.divFacture {
     background-color: rgb(241, 241, 241);
     border: 1px solid #212529;
     padding: 2%;
@@ -700,7 +716,7 @@ table.facture{
     margin-bottom: 10%;
 }
 
-table.facture tr td{
+table.facture tr td {
     background-color: rgb(241, 241, 241);
     background-color: none;
     padding: 1% 1% 0% 1%;
@@ -711,66 +727,66 @@ table.facture tr td{
     width: 48%;
 }
 
-table.facture tbody{
+table.facture tbody {
     background-color: rgb(241, 241, 241);
     border-radius: 5em;
 }
 
-.panierNomProduit{
+.panierNomProduit {
     width: 70%;
     display: inline-block;
 }
 
-.panierPrix{
+.panierPrix {
     text-align: right;
     width: 30%;
     display: inline-block;
 
 }
 
-.panierQuantite{
+.panierQuantite {
     width: auto;
     float: left;
     text-align: left;
 
 }
 
-form#modifierQuantitePanier{
+form#modifierQuantitePanier {
     width: auto;
 }
 
-.panierSupprimer{
+.panierSupprimer {
     float: bottom-left;
     text-align: left;
 }
 
-.infosCommande{
+.infosCommande {
     margin-left: 10%;
     margin-right: 10%;
     width: 80%;
 }
 
-.infosCommande p:first-child{
+.infosCommande p:first-child {
     display: inline-block;
     text-align: left;
     width: 50%;
 }
 
-.infosCommande p:last-child{
+.infosCommande p:last-child {
     text-align: right;
     display: inline-block;
     width: 50%;
 }
 
-.infosCommande a#passerCommande{
-    margin:0;
+.infosCommande a#passerCommande {
+    margin: 0;
 }
 
-div.panierPrix b{
+div.panierPrix b {
     font-size: large;
 }
 
-.menuAdmin{
+.menuAdmin {
     background-color: #212529;
     color: #212529;
     width: 10%;
@@ -780,24 +796,24 @@ div.panierPrix b{
     padding-bottom: 35%;
 }
 
-.menuAdmin li a{
+.menuAdmin li a {
     margin-left: 5%;
     text-decoration: none;
 }
 
-.menuAdmin li a:hover{
-    text-decoration:underline;
+.menuAdmin li a:hover {
+    text-decoration: underline;
 }
 
-.blue{
-    color:#2965D4;
+.blue {
+    color: #2965D4;
 }
 
-table.bdd{
+table.bdd {
     border-spacing: 0;
 }
 
-table.bdd td{
+table.bdd td {
     display: inline-block;
     height: auto;
     vertical-align: middle;
@@ -808,35 +824,43 @@ table.bdd td{
     transition-duration: 0.1s;
 }
 
-table.bdd tr{
+table.bdd tr {
     background-color: #F8F9FA;
     margin: 0 1% 0 0;
 }
 
-table.bdd tr:hover td{
+table.bdd tr:hover td {
     background-color: #d6d6d6;
     transition-duration: 0.1s;
 }
 
-table.bdd tr:first-child td{
+table.bdd tr:first-child td {
     background: linear-gradient(white, rgb(182, 182, 182));
     color: #235A81;
     text-align: left;
 }
 
-table.bdd tr:nth-child(3) td, table.bdd tr:nth-child(5) td, table.bdd tr:nth-child(7) td, table.bdd tr:nth-child(9) td, table.bdd tr:nth-child(11) table.bdd tr:nth-child(13) table.bdd tr:nth-child(15) td{
+table.bdd tr:nth-child(3) td,
+table.bdd tr:nth-child(5) td,
+table.bdd tr:nth-child(7) td,
+table.bdd tr:nth-child(9) td,
+table.bdd tr:nth-child(11) table.bdd tr:nth-child(13) table.bdd tr:nth-child(15) td {
     background-color: #e6e6e6;
 }
 
-table.bdd tr:nth-child(3):hover td, table.bdd tr:nth-child(5):hover td, table.bdd tr:nth-child(7):hover td, table.bdd tr:nth-child(9):hover td, table.bdd tr:nth-child(11):hover table.bdd tr:nth-child(13):hover table.bdd tr:nth-child(15):hover td{
+table.bdd tr:nth-child(3):hover td,
+table.bdd tr:nth-child(5):hover td,
+table.bdd tr:nth-child(7):hover td,
+table.bdd tr:nth-child(9):hover td,
+table.bdd tr:nth-child(11):hover table.bdd tr:nth-child(13):hover table.bdd tr:nth-child(15):hover td {
     background-color: #d6d6d6;
 }
 
-table.bdd td button{
+table.bdd td button {
     background-color: none;
 }
 
-#ajouter img{
+#ajouter img {
     position: fixed;
     bottom: 3%;
     right: 10%;
@@ -847,53 +871,54 @@ table.bdd td button{
     border-radius: 1em;
 }
 
-div#ajouter img:hover{
+div#ajouter img:hover {
     transition-duration: 0.1s;
     background-color: green;
     width: 5.1em;
 }
 
-#ajouter:hover{
+#ajouter:hover {
     cursor: pointer;
 }
 
-a.retourPage{
+a.retourPage {
     color: #212529;
     text-decoration: underline;
 }
 
-a.retourPage:hover{
+a.retourPage:hover {
     text-decoration: none;
 }
 
-form#formAjouter{
+form#formAjouter {
     background-color: white;
     width: 40%;
     margin: 0 30%;
 }
 
-form#formAjouter label{
+form#formAjouter label {
     display: contents;
 }
 
-fieldset#supression p{
+fieldset#supression p {
     display: inline-block;
     width: 10%;
 }
-fieldset#supression:first-child{
+
+fieldset#supression:first-child {
     padding: 0 37%;
 }
 
-a#retourPageArticle{
+a#retourPageArticle {
     color: #212529;
     text-decoration: underline;
 }
 
-a#retourPageArticle:hover{
+a#retourPageArticle:hover {
     text-decoration: none;
 }
 
-fieldset#supression input[type="radio"]{
+fieldset#supression input[type="radio"] {
     width: 10%;
     display: inline-block;
     width: 2vw;
@@ -901,7 +926,7 @@ fieldset#supression input[type="radio"]{
     cursor: pointer;
 }
 
-input.supprimerProduit{
+input.supprimerProduit {
     border: 0;
     margin: 0;
     display: block;
@@ -910,19 +935,19 @@ input.supprimerProduit{
     padding: 0;
 }
 
-input.supprimerProduit:hover{
+input.supprimerProduit:hover {
     border: 0;
     margin: 0;
     text-decoration: underline;
     background-color: transparent;
 }
 
-input[value="Supprimer"]{
-    color:#235AA0;
+input[value="Supprimer"] {
+    color: #235AA0;
 }
 
-input[value="Supprimer"]:hover{
-    color:#235AA0;
+input[value="Supprimer"]:hover {
+    color: #235AA0;
     text-decoration: underline;
 }
 
@@ -944,29 +969,29 @@ a#retourPageArticle:hover {
     text-decoration: none;
 }
 
-ul#indexAdminTables li a{
+ul#indexAdminTables li a {
     color: #2965D4;
     text-decoration: none;
 }
 
-ul#indexAdminTables li a:hover{
+ul#indexAdminTables li a:hover {
     text-decoration: underline;
 }
 
-ul#indexAdminTables li img{
+ul#indexAdminTables li img {
     width: 2%;
     margin-right: 0.5%;
 }
 
-ul#indexAdminTables{
+ul#indexAdminTables {
     list-style-type: none;
 }
 
-table.facture tr td{
+table.facture tr td {
     width: 10%;
 }
 
-table.clientFacture{
+table.clientFacture {
     margin-top: 5%;
     border-collapse: collapse;
     width: 50%;
@@ -974,53 +999,53 @@ table.clientFacture{
 
 }
 
-table.clientFacture tr{
+table.clientFacture tr {
     border-collapse: collapse;
     border-bottom: 1px solid #CFCFCF;
     width: 50%;
 
 }
 
-table.clientFacture tr td{
+table.clientFacture tr td {
     background-color: transparent;
     text-align: left;
     width: 20%;
     margin: 0;
 }
 
-table.clientFacture tr td:first-child{
+table.clientFacture tr td:first-child {
     font-weight: bold;
 }
 
-table.totalFacture{
+table.totalFacture {
     margin-top: 10%;
     width: 30%;
     margin-left: 75%;
 }
 
-table.totalFacture tr{
+table.totalFacture tr {
     border-collapse: collapse;
 }
 
-table.totalFacture tr td{
+table.totalFacture tr td {
     margin: 0;
     text-align: left;
 }
 
-.divFacture > h3{
+.divFacture>h3 {
     font-size: x-large;
 }
 
-table.facture{
+table.facture {
     margin-top: 10%;
 }
 
-table.facture tr:first-child td{
+table.facture tr:first-child td {
     background-color: #dfdfdf;
     font-weight: bold;
 }
 
-table.facture tr:first-child{
+table.facture tr:first-child {
     border-top: 1px solid black;
 }
 
@@ -1030,7 +1055,7 @@ table.facture tr:first-child{
 }
 
 
-table#clientTD td{
+table#clientTD td {
     width: calc(100%/7.1);
     table-layout: fixed;
     overflow: hidden;
@@ -1038,17 +1063,17 @@ table#clientTD td{
     white-space: nowrap;
 }
 
-table#clientTD tr:first-child td:hover{
-    text-overflow:ellipsis;
+table#clientTD tr:first-child td:hover {
+    text-overflow: ellipsis;
     overflow: visible;
 }
 
-table#clientTD td:hover{
-    text-overflow:clip;
+table#clientTD td:hover {
+    text-overflow: clip;
     overflow: auto;
 }
 
-table#facturationTD td{
+table#facturationTD td {
     width: calc(100%/10.1);
     table-layout: fixed;
     overflow: hidden;
@@ -1056,17 +1081,17 @@ table#facturationTD td{
     white-space: nowrap;
 }
 
-table#facturationTD tr:first-child td:hover{
-    text-overflow:ellipsis;
+table#facturationTD tr:first-child td:hover {
+    text-overflow: ellipsis;
     overflow: visible;
 }
 
-table#facturationTD td:hover{
-    text-overflow:clip;
+table#facturationTD td:hover {
+    text-overflow: clip;
     overflow: auto;
 }
 
-table#fournisseurTD td{
+table#fournisseurTD td {
     width: calc(100%/6.1);
     table-layout: fixed;
     overflow: hidden;
@@ -1074,17 +1099,17 @@ table#fournisseurTD td{
     white-space: nowrap;
 }
 
-table#fournisseurTD tr:first-child td:hover{
-    text-overflow:ellipsis;
+table#fournisseurTD tr:first-child td:hover {
+    text-overflow: ellipsis;
     overflow: visible;
 }
 
-table#fournisseurTD td:hover{
-    text-overflow:clip;
+table#fournisseurTD td:hover {
+    text-overflow: clip;
     overflow: auto;
 }
 
-table#marqueTD td{
+table#marqueTD td {
     width: calc(100%/3.1);
     table-layout: fixed;
     overflow: hidden;
@@ -1092,21 +1117,64 @@ table#marqueTD td{
     white-space: nowrap;
 }
 
-table#marqueTD tr:first-child td:hover{
-    text-overflow:ellipsis;
+table#marqueTD tr:first-child td:hover {
+    text-overflow: ellipsis;
     overflow: visible;
 }
 
-table#marqueTD td:hover{
-    text-overflow:clip;
+table#marqueTD td:hover {
+    text-overflow: clip;
     overflow: auto;
 }
 
 
-form input.supprimerProduit{
+form input.supprimerProduit {
     margin: 0;
 }
 
-form.formBDD{
+form.formBDD {
     margin: 0 5%;
 }
+
+.accueilButton {
+    text-align: center;
+    padding-top: 60%;
+    /* pour centrer le bouton */
+}
+
+.accueilButton a {
+    font-size: 2em;
+    font-weight: bold;
+    text-decoration: none;
+    color: #000000;
+    padding: 10px 20px;
+    background-color: #ffc107;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.accueilButton a:hover {
+    background-color: #000000;
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+    display:none;
+  }
+  
+  #textIndex {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: white;
+    z-index: 1;
+    display:none;
+  }

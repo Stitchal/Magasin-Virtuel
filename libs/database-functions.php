@@ -135,7 +135,6 @@ function checkStockProduct($id, $number)
     );
 
     $result = ConnexionDB::getInstance()->querySelect($sql, $params);
-    print_r($result[0]['quantite']);
     $nb = $result[0]['quantite'];
     if ($nb >= $number) {
         return true;

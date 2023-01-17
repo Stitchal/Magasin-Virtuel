@@ -25,6 +25,8 @@ if (isset($_POST["submit"]) && isset($_POST["nom"]) && isset($_POST["prenom"]) &
 require_once(__DIR__ . '/../includes/nav.php');
 ?>
 
+
+
 <!DOCTYPE html>
 <html LANG="fr">
 
