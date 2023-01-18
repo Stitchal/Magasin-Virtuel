@@ -2,7 +2,7 @@
 session_start();
 $GLOBALS["page"] = "admin-marque.php";
 require_once(__DIR__.'/../includes/nav.php');
-require_once(__DIR__ . '/../libs/database.php');
+require_once(__DIR__ . '/../libs/database-functions.php');
 
 ?>
 
@@ -16,6 +16,9 @@ require_once(__DIR__ . '/../libs/database.php');
 </head>
 <body>
   <main>
+    <?php if(getProductUnavailable() != ""){
+      echo "<script>alert('Des articles ne sont plus en stock : , ".getProductUnavailable()."');</script>";
+    } ?>
     <h1>Base de données</h1>
     <ul id="indexAdminTables">Tables
         <li><a href="admin-client.php"><img src="../img/admin-icone-client.png">client</a> - données des clients (Identifiant, nom, prenom, mdp, mail, isAdmin).</li>

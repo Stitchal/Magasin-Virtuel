@@ -15,7 +15,6 @@ if (isset($_POST['boutonRechercher'])) {
 }
 
 require_once('includes/nav.php');
-#require_once('libs/database.php');
 require_once('libs/database-functions.php');
 
 ?>
@@ -39,38 +38,9 @@ require_once('libs/database-functions.php');
         overflow: hidden;
       }
     </style>
-    <p id="textIndex" >Des milliers d'articles exclusifs à découvrir dès maintenant </p>
     <div class="accueilButton">
-    <a href="../client/client-article.php" onmouseover="showImg()" onmouseout="hideImg()" class="boutonMineta">Deviens un héros comme Mineta</a>
+    <a href="../client/client-article.php" id="boutonMineta">Deviens un héros comme Mineta</a>
     </div>
 </body>
 
-<script> 
-function showImg() {
-  const img = document.createElement("img");
-  img.src = "img/Mineta.webp";
-  img.id = "img";
-  img.style.position = "absolute";
-  img.style.top = "30%";
-  img.style.left = "50%";
-  document.body.appendChild(img);
-  const text = document.createElement("div");
-  text.id = "text";
-  text.innerHTML = "Clique pour découvrir les nouveautés";
-  text.style.position = "absolute";
-  text.style.top = "55%";
-  text.style.left = "40%";
-  text.style.transform = "translate(-50%, -50%)";
-  text.style.padding = "20px";
-  text.style.backgroundColor = "white";
-  text.style.zIndex = "1";
-  document.body.appendChild(text);
-
-}
-function hideImg() {
-  document.getElementById("img").remove();
-  document.getElementById("text").remove();
-}
-
-</script>
 </html>

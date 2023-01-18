@@ -23,6 +23,7 @@ $_SESSION["clientPayer"] += 1;
         if ($_SESSION["clientPayer"] == 1) {
             $date = date('d-m-Y');
             generateFacturation($_SESSION["panier"], $_SESSION["nom"], $_SESSION["prenom"], $_SESSION["email"], $_SESSION["totalPaiement"]);
+            updateGestionStock($_SESSION["panier"]);
             if (checkComptabilite()) {
                 updateComptabiliteVente($_SESSION["totalPaiement"], $_SESSION["panier"]);
             } else {

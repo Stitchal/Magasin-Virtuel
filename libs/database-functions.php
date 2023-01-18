@@ -270,6 +270,9 @@ function getNameProduct($id): string
         ':id' => $id
     );
     $result = ConnexionDB::getInstance()->querySelect($sql, $params);
+    if(is_null($result[0]['nom'])){
+        return "Article n'existant plus";
+    } 
     return $result[0]['nom'];
 }
 
@@ -453,6 +456,20 @@ function updateComptabiliteVente($montantTransaction, $listeProd){
 
 }
 
+function updateGestionStock($articles){
+    $db = ConnexionDB::getInstance();
+    foreach ($articles as $clef => $valeur) {
+        $idProd = getIDProduct($clef);
+        $prix = getPrixArticle($clef);
+        $sql = "UPDATE gestion_stock SET quantite = quantite - :valeur WHERE refProduit=:id";
+        $params = array(
+            ':valeur' => $valeur,
+            ':id' => $idProd
+        );
+        $db->execute($sql, $params);
+    }
+}
+
 /**
  * Récupère les ventes de la comptabilité de l'année actuelle
  * 
@@ -489,5 +506,17 @@ function createComptabiliteVente($montantTransaction, $listeProd){
     );
 
     $db->execute($sql, $params);
+}
+
+function getProductUnavailable(){
+    $result = ConnexionDB::getInstance()->querySelect("SELECT refProduit FROM gestion_stock WHERE quantite = 0");
+    
+    $StringRésultat = "";
+    foreach($result as $subArray) {
+    $refProduit = $subArray["refProduit"];
+    $StringRésultat .= getNameProduct($refProduit);
+    $StringRésultat .= ", ";
+    }
+    return $StringRésultat;
 }
 
