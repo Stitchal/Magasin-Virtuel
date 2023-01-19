@@ -11,6 +11,12 @@ if (isset($_POST["suppr"])) {
   exit();
 }
 
+if(isset($_POST["reappro"])){
+  $_SESSION['idReappro'] = $_POST["reappro"];
+  header('Location: ../admin/reapprovisionnement.php');
+  exit();
+}
+
 if (isset($_POST['boutonRechercher'])) {
   $_SESSION['recherche'] = $_POST['inputRechercher'];
   header('Location: ../admin/admin-gestion_stock.php');
@@ -66,6 +72,7 @@ require_once(__DIR__ . '/../includes/menu-admin.php');
       echo "<input type='hidden' name='supprimer' value=$refProduit>";
       echo "<input type='hidden' name='idSuppression' value=$idGestionStock>";
       echo "<input name='suppr' class='supprimerProduit' type='submit' value = 'Supprimer' >";
+      echo "<input name='reappro' class='reapprovisionnerProduit' type='submit' value = 'Reappro' >";
       echo '<fieldset>';
       echo '</form>';
       echo '</td>';

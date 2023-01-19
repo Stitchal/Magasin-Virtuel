@@ -4,6 +4,10 @@
     } else {
         //$page = 'nav.php';
     }
+
+    if(!isset($_SESSION['nbArticle'])){
+        $_SESSION['nbArticle'] = 0;
+    }
     $isMediaQueries = 0;
     require_once(__DIR__.'/../libs/database-functions.php');
 ?>
@@ -25,19 +29,19 @@
                 <?php if(empty($_SESSION['nom']) || empty($_SESSION['prenom'])) :  ?> <!-- Si l'on n'est pas connecté -->
                     <?php if($GLOBALS["page"] == "client-article.php") : ?> <!-- Si on est sur la page articles.php -->
                         <li><a href="../client/client-article.php" class="articles" title="Cliquez ici pour voir les articles">Articles</a></li>
-                        <li><a href="../client/client-panier.php" title="Cliquez ici pour consulter votre panier"><img src="../img/panier.png" alt="image panier" id="imgPanier"></a></li>
+                        <li class="imagePanier"><a href="../client/client-panier.php" title="Cliquez ici pour consulter votre panier"><!--<img src="../img/panier.png" alt="image panier" id="imgPanier">--></a></li>
                         <li><a href="../others/connexion.php" title="Cliquez ici pour vous connecter">Se connecter</a></li>
                     <?php else : ?> <!-- On est pas sur la page article.php -->
                         <li><a href="../client/client-article.php" title="Cliquez ici pour voir les articles">Articles</a></li>
                         <?php if($GLOBALS["page"] == "connexion.php") : ?><!-- Si on est sur la page connexion-->
-                            <li><a href="../client/client-panier.php" title="Cliquez ici pour consulter votre panier"><img src="../img/panier.png" alt="image panier" id="imgPanier"></a></li>
+                            <li class="imagePanier"><a href="../client/client-panier.php" title="Cliquez ici pour consulter votre panier"><!--<img src="../img/panier.png" alt="image panier" id="imgPanier">--></a></li>
                             <li><a href="../others/connexion.php" class="connexion" title="Cliquez ici pour vous connecter">Se connecter</a></li>
                         <?php else : ?><!-- Si on est pas sur la page connexion-->
                             <?php if($GLOBALS["page"] == "client-panier.php") : ?> <!-- Si on est sur la page panier.php -->
-                                <li><a href="../client/client-panier.php" class="panier" title="Cliquez ici pour consulter votre panier"><img src="../img/panier.png" alt="image panier" id="imgPanier"></a></li>
+                                <li class="imagePanierFocus"><a href="../client/client-panier.php" class="panier" title="Cliquez ici pour consulter votre panier"><!--<img src="../img/panier.png" alt="image panier" id="imgPanier">--></a></li>
                                 <li><a href="../others/connexion.php" title="Cliquez ici pour vous connecter">Se connecter</a></li>
                             <?php else : ?>
-                                <li><a href="../client/client-panier.php" title="Cliquez ici pour consulter votre panier"><img src="../img/panier.png" alt="image panier" id="imgPanier"></a></li>
+                                <li class="imagePanier"><a href="../client/client-panier.php" title="Cliquez ici pour consulter votre panier"><!--<img src="../img/panier.png" alt="image panier" id="imgPanier">--></a></li>
                                 <li><a href="../others/connexion.php" title="Cliquez ici pour vous connecter">Se connecter</a></li>
                             <?php endif; ?>
                         <?php endif; ?>
@@ -50,41 +54,52 @@
                             <li><a href="../others/connexion.php" title="Cliquez ici pour vous connecter">Se connecter</a></li>
                         <?php elseif($GLOBALS["page"] == "compte.php") : ?> <!-- Si on est sur la page compte-->
                             <li><a href="../others/deconnexion.php" title="Cliquez ici pour vous déconnecter"><img src="../img/icone-deconnexion.png" alt="image deconnexion" id="imgDeconnexion"></a></li>
-                            <li> <a href="../others/compte.php" title="Cliquez ici pour accéder à votre compte" class="compte"><img src="../img/icone-compte.png" alt="image compte" id="imgCompte"></a> </li>
+                            <li class="imageCompteFocus"> <a href="../others/compte.php" title="Cliquez ici pour accéder à votre compte" class="compte"><!--<img src="../img/icone-compte.png" alt="image compte" id="imgCompte">--></a> </li>
                         <?php else : ?> <!-- Si on est pas sur la page déconnexion ou compte -->
                             <li><a href="../others/deconnexion.php" title="Cliquez ici pour vous déconnecter"><img src="../img/icone-deconnexion.png" alt="image deconnexion" id="imgDeconnexion"></a></li>
-                            <li><a href="../others/compte.php" title="Cliquez ici pour accéder à votre compte"><img src="../img/icone-compte.png" alt="image compte" id="imgCompte"></a> </li>
+                            <li class="imageCompte"><a href="../others/compte.php" title="Cliquez ici pour accéder à votre compte"><!--<img src="../img/icone-compte.png" alt="image compte" id="imgCompte">--></a> </li>
                         <?php endif; ?>
                     <?php else : ?> <!-- Si on est pas admin-->
                         <?php if($GLOBALS["page"] == "client-article.php") : ?> <!-- Si on est sur la page articles.php -->
                             <li><a href="../client/client-article.php" class="articles" title="Cliquez ici pour voir les articles">Articles</a></li>
                             <li><a href="../others/deconnexion.php" title="Cliquez ici pour vous déconnecter"><img src="../img/icone-deconnexion.png" alt="image deconnexion" id="imgDeconnexion"></a></li>
-                            <li><a href="../client/client-panier.php" title="Cliquez ici pour consulter votre panier"><img src="../img/panier.png" alt="image panier" id="imgPanier"></a></li>
-                            <li><a href="../others/compte.php" title="Cliquez ici pour accéder à votre compte"><img src="../img/icone-compte.png" alt="image compte" id="imgCompte"></a> </li>
+                            <li class="imagePanier"><a href="../client/client-panier.php" title="Cliquez ici pour consulter votre panier"><!--<img src="../img/panier.png" alt="image panier" id="imgPanier">-->
+                                <?php if ($_SESSION['nbArticle'] != 0){ ?>
+                                    <span id="panier-badge" style="text-align: center;" > <?php echo $_SESSION['nbArticle']; ?> </span>
+                                <?php } ?>
+                                </a>
+                            </li>
+                            <li class="imageCompte"><a href="../others/compte.php" title="Cliquez ici pour accéder à votre compte"><!--<img src="../img/icone-compte.png" alt="image compte" id="imgCompte">--></a> </li>
                             <!--Barre de recherche-->
+                            <!--
                             <form id="formRecherche" method = "post">
                                 <div class ="divBarreRecherche">
                                     <input type="search" id="inputRechercher" name="inputRechercher" placeholder="Rechercher...">
                                     <button id="boutonRechercher" name="boutonRechercher" type="submit"><img src="../img/rechercher.png" alt="image ajouter article"></button>
                                 </div>
-                            </form>
+                            </form>-->
                         <?php else : ?> <!-- On est pas sur la page article.php -->
                             <li><a href="../client/client-article.php" title="Cliquez ici pour voir les articles">Articles</a></li>
                             <?php if($GLOBALS["page"] == "deconnexion.php") : ?> <!-- Si on est sur la page déconnexion -->
                                 <li><a href="../others/connexion.php" title="Cliquez ici pour vous connecter">Se connecter</a></li>
                             <?php elseif($GLOBALS["page"] == "compte.php") : ?> <!-- Si on est sur la page compte-->
                                 <li><a href="../others/deconnexion.php" title="Cliquez ici pour vous déconnecter"><img src="../img/icone-deconnexion.png" alt="image deconnexion" id="imgDeconnexion"></a></li>
-                                <li><a href="../client/client-panier.php" title="Cliquez ici pour consulter votre panier"><img src="../img/panier.png" alt="image panier" id="imgPanier"></a></li>
-                                <li><a href="../others/compte.php" title="Cliquez ici pour accéder à votre compte" class="compte"><img src="../img/icone-compte.png" alt="image compte" id="imgCompte"></a> </li>
+                                <li class="imagePanier"><a href="../client/client-panier.php" title="Cliquez ici pour consulter votre panier"><!--<img src="../img/panier.png" alt="image panier" id="imgPanier">--></a></li>
+                                <li class="imageCompteFocus"><a href="../others/compte.php" title="Cliquez ici pour accéder à votre compte" class="compte"><!--<img src="../img/icone-compte.png" alt="image compte" id="imgCompte">--></a> </li>
                             <?php else : ?> <!-- Si on est pas sur la page déconnexion ou compte -->
                                 <?php if($GLOBALS["page"] == "client-panier.php") : ?> <!-- Si on est sur la page panier -->
                                     <li><a href="../deconnexion.php" title="Cliquez ici pour vous déconnecter"><img src="../img/icone-deconnexion.png" alt="image deconnexion" id="imgDeconnexion"></a></li>
-                                    <li><a href="../client/client-panier.php" class="panier" title="Cliquez ici pour consulter votre panier"><img src="../img/panier.png" alt="image panier" id="imgPanier"></a></li>
-                                    <li><a href="../others/compte.php" title="Cliquez ici pour accéder à votre compte" ><img src="../img/icone-compte.png" alt="image compte" id="imgCompte"></a> </li>
+                                    <li class="imagePanierFocus"><a href="../client/client-panier.php" class="panier" title="Cliquez ici pour consulter votre panier">
+                                        <!--<img src="../img/panier.png" alt="image panier" id="imgPanier">-->
+                                        <?php if ($_SESSION['nbArticle'] != 0){ ?>
+                                            <span id="panier-badge" style="text-align: center;" > <?php echo $_SESSION['nbArticle']; ?> </span>
+                                        <?php } ?>
+                                    </a></li>
+                                    <li class="imageCompte"><a href="../others/compte.php" title="Cliquez ici pour accéder à votre compte" ><!--<img src="../img/icone-compte.png" alt="image compte" id="imgCompte">--></a> </li>
                                 <?php else : ?>
                                     <li><a href="../deconnexion.php" title="Cliquez ici pour vous déconnecter"><img src="../img/icone-deconnexion.png" alt="image deconnexion" id="imgDeconnexion"></a></li>
-                                    <li><a href="../client/client-panier.php" title="Cliquez ici pour consulter votre panier"><img src="../img/panier.png" alt="image panier" id="imgPanier"></a></li>
-                                    <li><a href="../others/compte.php" title="Cliquez ici pour accéder à votre compte" ><img src="../img/icone-compte.png" alt="image compte" id="imgCompte"></a> </li>
+                                    <li class="imagePanier"><a href="../client/client-panier.php" title="Cliquez ici pour consulter votre panier"><!--<img src="../img/panier.png" alt="image panier" id="imgPanier">--></a></li>
+                                    <li class="imageCompte"><a href="../others/compte.php" title="Cliquez ici pour accéder à votre compte" ><!--<img src="../img/icone-compte.png" alt="image compte" id="imgCompte">--></a> </li>
                                 <?php endif; ?>
                             <?php endif; ?>
                         <?php endif; ?>
@@ -117,18 +132,11 @@
     document.getElementById("myDiv").style.display = "block";
   }
 
-  function isMediaQueries(){
-    if (!(window.matchMedia("(max-width: 1200px)").matches)) {
-        <?php
-        $isMediaQueries = 1;
-        ?>
-    }
-    else {
-        <?php
-        $isMediaQueries = 0;
-        ?>
-    }
-  }
+  function updateBadge() {
+    var badge = document.getElementById("panier-badge");
+    var nbArticles = localStorage.getItem("nbArticles") || 0;
+    badge.innerHTML = nbArticles;
+}
 </script>
 
 </html>

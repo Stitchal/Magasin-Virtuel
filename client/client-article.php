@@ -2,6 +2,10 @@
 session_start();
 $GLOBALS["page"] = "client-article.php";
 
+if(!isset($_SESSION['nbArticle'])){
+  $_SESSION['nbArticle'] = 0;
+}
+
 if ((isset($_POST['nombreArticles']))) {
   $_SESSION['nombreArticles'] = $_POST['nombreArticles'];
   header('Location: client-traitement-panier.php');
@@ -32,6 +36,9 @@ require_once(__DIR__.'/../libs/functions.php');
 
 <body>
   <main>
+  <?php if (!empty($_GET) || !empty($_GET['error'])) : ?>
+            <p style="color:#FF0000" ;> Erreur : <?= $_GET['error'] ?> </p>
+        <?php endif ?>
     <div class="article">
       <table id="tabArticles">
         <tbody>
@@ -59,7 +66,7 @@ require_once(__DIR__.'/../libs/functions.php');
             $img = "SELECT image FROM produit WHERE nom = '$nomProduit'";
             $res2 = ConnexionDB::getInstance()->querySelect($img);
             //print_r($res2[0]['image']);
-            $link = "img/" . $res2[0]['image'];
+            $link = "../img/" . $res2[0]['image'];
             //echo $link;
             echo '<td> ';
             echo "<img src=$link>";
@@ -73,7 +80,7 @@ require_once(__DIR__.'/../libs/functions.php');
               echo '<br>';
               echo '<button onclick="decrementer(\'' . $nomProduit . '\', \'' . $maxProduit . '\' );"> <img src="../img/icone-reduire-nb-article.png" id = "imageQuantiteMoins"></button>';
               echo '<p id="' . $nomProduit . '"> <span id="chiffre">0 </span></p>';
-              echo '<button onclick="augmenter(\'' . $nomProduit . '\', \'' . $maxProduit . '\');"> <img src="../img/icone-augmenter-nb-article.png" id="imageQuantitePlus"></button>';
+              echo '<button class="augmenter" onclick="augmenter(\'' . $nomProduit . '\', \'' . $maxProduit . '\');"> <img src="../img/icone-augmenter-nb-article.png" id="imageQuantitePlus"></button>';
             }
               echo '<br><div class="prix"><p>'.$prix.'€</p></div>';
               if(!empty($_SESSION['nom'])){
@@ -93,6 +100,13 @@ require_once(__DIR__.'/../libs/functions.php');
               echo "</tr>";
             }
             $i++;
+          }
+
+          if((isset($_SESSION['ajoutPanier'])) && ($_SESSION['ajoutPanier'] != "")) {
+            $nomArticle = $_SESSION['ajoutPanier'];
+            //setTimeout(function() { alert("L'article vient d'être ajouté au panier"); }, 100);
+            echo '<script language="javascript"> setTimeout(function() { alert("L\'article '.$nomArticle.' vient d\'être ajouté au panier");}, 200)</script>';
+            $_SESSION['ajoutPanier'] = "";
           }
           ?>
 
@@ -152,15 +166,6 @@ require_once(__DIR__.'/../libs/functions.php');
 
             button {
               display: inline-block;
-            }
-
-            td {
-              background-color: white;
-              border-width: 0px;
-              text-align: center;
-              display: inline-block;
-              width: calc(98%/3);
-              margin-top: 1%;
             }
 
             td:first-child {

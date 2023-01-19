@@ -520,3 +520,13 @@ function getProductUnavailable(){
     return $StringRésultat;
 }
 
+function getFournisseur($idGestionStock){
+    $requeteGestionStock = "SELECT refFournisseur FROM gestion_stock WHERE id = '$idGestionStock'";
+    $resRequete = ConnexionDB::getInstance()->querySelect($requeteGestionStock);
+    $fournisseurID = $resRequete[0]['refFournisseur'];
+
+    $requeteFournisseur = "SELECT nomEntreprise FROM fournisseur WHERE id = '$fournisseurID'";
+    $res = ConnexionDB::getInstance()->querySelect($requeteFournisseur);
+    return$res[0]['nomEntreprise'];
+}
+

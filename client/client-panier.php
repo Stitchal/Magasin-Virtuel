@@ -4,7 +4,9 @@ $GLOBALS["page"] = "client-panier.php";
 require_once(__DIR__ . '/../libs/database-functions.php');
 
 if (isset($_POST["suppr"])) {
+    $_SESSION['nbArticle'] = $_SESSION['nbArticle'] - $_POST['supprQuantite'];
     unset($_SESSION['panier'][$_POST["supprimer"]]);
+
 }
 
 if (isset($_POST["modifier"])) {
@@ -65,6 +67,7 @@ require_once(__DIR__.'/../includes/nav.php');
                     echo "<div class='panierSupprimer'>";
                     echo '<form method = "post">';
                     echo '<fieldset>';
+                    echo "<input type='hidden' name='supprQuantite' value=$valeur>";
                     echo "<input type='hidden' name='supprimer' value=$clef>";
                     echo "<input name='suppr' class='supprimerProduit' type='submit' value = 'Supprimer' >";
                     echo '</fieldset>';

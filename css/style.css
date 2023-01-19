@@ -1,7 +1,7 @@
 * {
     margin: 0px;
     padding: 0px;
-    font-family: 'Trebuchet MS';
+    font-family: "Calibri";
     font-size: medium;
 }
 
@@ -16,6 +16,7 @@ main {
     margin: 0 20%;
     padding-top: 10%;
     padding-bottom: 5%;
+    height: 100vh;
 }
 
 h1 {
@@ -54,7 +55,7 @@ nav ul li a {
     text-decoration: none;
     color: white;
     padding: 1.42em;
-    min-width: 25%;
+    width: auto;
     background-color: #212529;
     transition-duration: 0.4s;
 }
@@ -95,11 +96,11 @@ table {
     width: 100%;
 }
 
-td:first-child {
+table#tabArticle td:first-child {
     margin-right: 1%;
 }
 
-td:last-child {
+table#tabArticle td:last-child {
     margin-left: 1%;
 }
 
@@ -337,16 +338,11 @@ footer p a:hover {
     height: 0.9em;
 }
 
-
 a img#imgPanier {
     text-align: center;
     height: 0.9em;
 }
 
-#imgCompte {
-    text-align: center;
-    height: 0.9em;
-}
 
 #imgFleche {
     text-align: center;
@@ -559,7 +555,6 @@ table#tableauPanier td:first-child {
 }
 
 table#tableauPanier td {
-    background-color: #FAFAFA;
     margin: 0;
     height: 100%;
     padding: 2% 1% 2% 1%;
@@ -567,7 +562,6 @@ table#tableauPanier td {
 }
 
 table#tableauPanier tr {
-    background-color: #FAFAFA;
     height: 10%;
     margin-bottom: 1%;
     border-bottom: 1px solid #C5C5C5;
@@ -649,9 +643,12 @@ button:hover .ajouterPanier {
     cursor: pointer;
 }
 
-table#tabArticles>tr>td {
-    border: 1px solid red;
-    padding: 2%;
+table#tabArticles tr td {
+    background-color: rgb(241, 241, 241);
+    border-radius: 1em;
+    display: inline-block;
+    width: calc(93%/3);
+    margin-top: 1%;
 }
 
 a#passerCommande {
@@ -704,20 +701,17 @@ a#bouton:hover {
 }
 
 table.facture {
-    background-color: #FAFAFA;
     border-radius: 2em;
 }
 
 .divFacture {
-    background-color: rgb(241, 241, 241);
+    background-color: white;
     border: 1px solid #212529;
     padding: 2%;
-    border-radius: 0.5em;
     margin-bottom: 10%;
 }
 
 table.facture tr td {
-    background-color: rgb(241, 241, 241);
     background-color: none;
     padding: 1% 1% 0% 1%;
     text-align: left;
@@ -725,11 +719,6 @@ table.facture tr td {
     border-bottom: 1px solid rgb(207, 207, 207);
     margin: 1% 0 0 0;
     width: 48%;
-}
-
-table.facture tbody {
-    background-color: rgb(241, 241, 241);
-    border-radius: 5em;
 }
 
 .panierNomProduit {
@@ -1041,7 +1030,6 @@ table.facture {
 }
 
 table.facture tr:first-child td {
-    background-color: #dfdfdf;
     font-weight: bold;
 }
 
@@ -1161,5 +1149,84 @@ form.formBDD {
 
 .accueilButton a:hover {
     background-color: #dba608;
+}
+
+span#panier-badge{
+    display: float;
+    text-align: right;
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    border-radius: 1em;
+    display: float;
+    float: right;
+    text-align: right;
+    background-color: white;
+    color: black;
+}
+
+nav ul li.imageCompte a{
+    display: inline-block;
+    background-image: url("../img/icone-compte.png");
+    background-size: 1.82em;
+    padding: 2em;
+    overflow: hidden;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+nav ul li.imageCompteFocus a{
+    display: inline-block;
+    background-image: url("../img/icone-compte-focus.png");
+    background-size: 1.82em;
+    padding: 1.9em;
+    overflow: hidden;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+nav ul li.imageCompteFocus a:hover{
+    background-image: url("../img/icone-compte.png");
+}
+
+nav ul li.imageCompte{
+    height: 100%;
+}
+
+nav ul li.imageCompte a:hover{
+    background-image: url("../img/icone-compte-hover.png");
+}
+
+/*panier*/
+nav ul li.imagePanier a{
+    display: inline-block;
+    background-image: url("../img/icone-panier.png");
+    background-size: 1.82em;
+    padding: 2em;
+    overflow: hidden;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+nav ul li.imagePanierFocus a{
+    display: inline-block;
+    background-image: url("../img/icone-panier-focus.png");
+    background-size: 1.82em;
+    padding: 1.9em;
+    overflow: hidden;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+nav ul li.imagePanier a:hover{
+    background-image: url("../img/icone-panier.png");
+}
+
+nav ul li.imagePanier{
+    height: 100%;
+}
+
+nav ul li.imagePanier a:hover{
+    background-image: url("../img/icone-panier-hover.png");
 }
 
