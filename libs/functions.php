@@ -48,4 +48,5 @@ class Verification
         }
         return $finalArray;
     }
+
 }

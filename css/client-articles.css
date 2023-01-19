@@ -1,0 +1,55 @@
+#imageQuantiteMoins {
+    width: 2em;
+    height: 2em;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#imageQuantitePlus {
+    width: 2em;
+    height: 2em;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#imageQuantiteMoins:hover{
+    transition-duration: 0.2s;
+    transform: scale(1.1);
+}
+
+#imageQuantitePlus:hover{
+    transition-duration: 0.2s;
+    transform: scale(1.1);
+}
+
+button {
+    transition: transform 0.2s;
+    border: none;
+    display: inline-block;
+}
+
+td:first-child {
+    margin-right: 1%;
+}
+
+form {
+    margin: 0;
+    width: 100%;
+}
+
+  td:last-child {
+    margin-left: 1%;
+}
+
+td>img {
+    width: 70%;
+    margin: 5% 0;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+  p {
+    display: inline-block;
+}

@@ -20,16 +20,14 @@ require_once(__DIR__ . '/../libs/database-functions.php');
       echo "<script>alert('Des articles ne sont plus en stock : , ".getProductUnavailable()."');</script>";
     } ?>
     <h1>Base de données</h1>
-    <ul id="indexAdminTables">Tables
-        <li><a href="admin-client.php"><img src="../img/admin-icone-client.png">client</a> - données des clients (Identifiant, nom, prenom, mdp, mail, isAdmin).</li>
-        <li><a href="admin-comptabilite.php"><img src="../img/admin-icone-comptabilite.png">comptabilite</a> - (Ventes, chiffre d'affaires réalisé, achats et leurs montant, bénéfice et déficit).</li>
-        <li><a href="admin-facturation.php">facturation</a> (Identifiant du panier, date de création, nom, prénom, email de l'acheteur, liste des produits, prix HT et TTC, TVA)
-=> prixTotal, prixHT, prixTTC, TVA
-)</li>
-        <li><a href="admin-fournisseur.php">fournisseur</a></li>
-        <li><a href="admin-gestion_stock.php">gestion_stock</a></li>
-        <li><a href="admin-marque.php">marque</a></li>
-        <li><a href="admin-produit.php">produit</a></li>
+    <ul id="indexAdminTables"><h2>Tables</h2>
+        <li><a href="admin-client.php"><img src="../img/admin-icone-client.png">client</a> (Identifiant, nom, prenom, mot de passe, adresse e-mail, isAdmin).</li>
+        <li><a href="admin-comptabilite.php"><img src="../img/admin-icone-comptabilite.png">comptabilite</a> (Identifiant, ventes et leurs montant, chiffre d'affaires réalisé, achats et leurs montant, année).</li>
+        <li><a href="admin-facturation.php"><img src="../img/admin-icone-facturation.png">facturation</a> (Identifiant du panier, liste des articles(Identifiant de l'article, quantité, prix), nom, prénom et email de l'acheteur, prix HT, prix TTC et TVA)</li>
+        <li><a href="admin-fournisseur.php"><img src="../img/admin-icone-fournisseur.png">fournisseur</a> (Identifiant, nom de l'entreprise, adresse e-mail, mot de passe, autres informations)</li>
+        <li><a href="admin-gestion_stock.php"><img src="../img/admin-icone-gestion_stock.png">gestion_stock</a> (Identifiant, référence du produit, référence du fournisseur, quantité)</li>
+        <li><a href="admin-marque.php"><img src="../img/admin-icone-marque.png">marque</a> (Identifiant, nom de la marque)</li>
+        <li><a href="admin-produit.php"><img src="../img/admin-icone-produit.png">produit</a> (Identifiant, nom, prix public, prix d'achat, taille, couleur, nom de l'image, nom de l'icone, titre, référence de la marque)</li>
     </ul>
   </main>
 </body>

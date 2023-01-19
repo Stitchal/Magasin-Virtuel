@@ -21,6 +21,8 @@
 </head>
 <body>  
         <nav>
+        <div class="logoSite"><a href="../index.php" title="Cliquez ici pour contempler le Minetaverse"><img src="../img/logo-blanc-minetazon-paysage.png"></a></div>
+
             <input type="checkbox" id="bouton" />
             <label id = "labelMenu" for="bouton">
                 <img src="../img/icone-menu.png" alt="Ouvrir le menu" id="boutonMenu" title="Menu" />
@@ -53,16 +55,16 @@
                         <?php if($GLOBALS["page"] == "deconnexion.php") : ?> <!-- Si on est sur la page déconnexion -->
                             <li><a href="../others/connexion.php" title="Cliquez ici pour vous connecter">Se connecter</a></li>
                         <?php elseif($GLOBALS["page"] == "compte.php") : ?> <!-- Si on est sur la page compte-->
-                            <li><a href="../others/deconnexion.php" title="Cliquez ici pour vous déconnecter"><img src="../img/icone-deconnexion.png" alt="image deconnexion" id="imgDeconnexion"></a></li>
+                            <li class="imageDeconnexion"><a href="../others/deconnexion.php" title="Cliquez ici pour vous déconnecter"><!--<img src="../img/icone-deconnexion.png" alt="image deconnexion" id="imgDeconnexion">--></a></li>
                             <li class="imageCompteFocus"> <a href="../others/compte.php" title="Cliquez ici pour accéder à votre compte" class="compte"><!--<img src="../img/icone-compte.png" alt="image compte" id="imgCompte">--></a> </li>
                         <?php else : ?> <!-- Si on est pas sur la page déconnexion ou compte -->
-                            <li><a href="../others/deconnexion.php" title="Cliquez ici pour vous déconnecter"><img src="../img/icone-deconnexion.png" alt="image deconnexion" id="imgDeconnexion"></a></li>
+                            <li class="imageDeconnexion"><a href="../others/deconnexion.php" title="Cliquez ici pour vous déconnecter"><!--<img src="../img/icone-deconnexion.png" alt="image deconnexion" id="imgDeconnexion">--></a></li>
                             <li class="imageCompte"><a href="../others/compte.php" title="Cliquez ici pour accéder à votre compte"><!--<img src="../img/icone-compte.png" alt="image compte" id="imgCompte">--></a> </li>
                         <?php endif; ?>
                     <?php else : ?> <!-- Si on est pas admin-->
                         <?php if($GLOBALS["page"] == "client-article.php") : ?> <!-- Si on est sur la page articles.php -->
                             <li><a href="../client/client-article.php" class="articles" title="Cliquez ici pour voir les articles">Articles</a></li>
-                            <li><a href="../others/deconnexion.php" title="Cliquez ici pour vous déconnecter"><img src="../img/icone-deconnexion.png" alt="image deconnexion" id="imgDeconnexion"></a></li>
+                            <li class="imageDeconnexion"><a href="../others/deconnexion.php" title="Cliquez ici pour vous déconnecter"><!--<img src="../img/icone-deconnexion.png" alt="image deconnexion" id="imgDeconnexion">--></a></li>
                             <li class="imagePanier"><a href="../client/client-panier.php" title="Cliquez ici pour consulter votre panier"><!--<img src="../img/panier.png" alt="image panier" id="imgPanier">-->
                                 <?php if ($_SESSION['nbArticle'] != 0){ ?>
                                     <span id="panier-badge" style="text-align: center;" > <?php echo $_SESSION['nbArticle']; ?> </span>
@@ -83,12 +85,15 @@
                             <?php if($GLOBALS["page"] == "deconnexion.php") : ?> <!-- Si on est sur la page déconnexion -->
                                 <li><a href="../others/connexion.php" title="Cliquez ici pour vous connecter">Se connecter</a></li>
                             <?php elseif($GLOBALS["page"] == "compte.php") : ?> <!-- Si on est sur la page compte-->
-                                <li><a href="../others/deconnexion.php" title="Cliquez ici pour vous déconnecter"><img src="../img/icone-deconnexion.png" alt="image deconnexion" id="imgDeconnexion"></a></li>
-                                <li class="imagePanier"><a href="../client/client-panier.php" title="Cliquez ici pour consulter votre panier"><!--<img src="../img/panier.png" alt="image panier" id="imgPanier">--></a></li>
+                                <li class="imageDeconnexion"><a href="../others/deconnexion.php" title="Cliquez ici pour vous déconnecter"><!--<img src="../img/icone-deconnexion.png" alt="image deconnexion" id="imgDeconnexion">--></a></li>
+                                <li class="imagePanier"><a href="../client/client-panier.php" title="Cliquez ici pour consulter votre panier"><!--<img src="../img/panier.png" alt="image panier" id="imgPanier">-->
+                                <?php if ($_SESSION['nbArticle'] != 0){ ?>
+                                    <span id="panier-badge" style="text-align: center;" > <?php echo $_SESSION['nbArticle']; ?> </span>
+                                <?php } ?></a></li>
                                 <li class="imageCompteFocus"><a href="../others/compte.php" title="Cliquez ici pour accéder à votre compte" class="compte"><!--<img src="../img/icone-compte.png" alt="image compte" id="imgCompte">--></a> </li>
                             <?php else : ?> <!-- Si on est pas sur la page déconnexion ou compte -->
                                 <?php if($GLOBALS["page"] == "client-panier.php") : ?> <!-- Si on est sur la page panier -->
-                                    <li><a href="../deconnexion.php" title="Cliquez ici pour vous déconnecter"><img src="../img/icone-deconnexion.png" alt="image deconnexion" id="imgDeconnexion"></a></li>
+                                    <li class="imageDeconnexion"><a href="../others/deconnexion.php" title="Cliquez ici pour vous déconnecter"><!--<img src="../img/icone-deconnexion.png" alt="image deconnexion" id="imgDeconnexion">--></a></li>
                                     <li class="imagePanierFocus"><a href="../client/client-panier.php" class="panier" title="Cliquez ici pour consulter votre panier">
                                         <!--<img src="../img/panier.png" alt="image panier" id="imgPanier">-->
                                         <?php if ($_SESSION['nbArticle'] != 0){ ?>
@@ -97,7 +102,7 @@
                                     </a></li>
                                     <li class="imageCompte"><a href="../others/compte.php" title="Cliquez ici pour accéder à votre compte" ><!--<img src="../img/icone-compte.png" alt="image compte" id="imgCompte">--></a> </li>
                                 <?php else : ?>
-                                    <li><a href="../deconnexion.php" title="Cliquez ici pour vous déconnecter"><img src="../img/icone-deconnexion.png" alt="image deconnexion" id="imgDeconnexion"></a></li>
+                                    <li class="imageDeconnexion"><a href="../deconnexion.php" title="Cliquez ici pour vous déconnecter"><!--<img src="../img/icone-deconnexion.png" alt="image deconnexion" id="imgDeconnexion">--></a></li>
                                     <li class="imagePanier"><a href="../client/client-panier.php" title="Cliquez ici pour consulter votre panier"><!--<img src="../img/panier.png" alt="image panier" id="imgPanier">--></a></li>
                                     <li class="imageCompte"><a href="../others/compte.php" title="Cliquez ici pour accéder à votre compte" ><!--<img src="../img/icone-compte.png" alt="image compte" id="imgCompte">--></a> </li>
                                 <?php endif; ?>

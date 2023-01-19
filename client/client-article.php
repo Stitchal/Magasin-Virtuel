@@ -31,6 +31,7 @@ require_once(__DIR__.'/../libs/functions.php');
   <meta charset="UTF-8">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/client-articles.css">
   <title>Magasin Virtuel</title>
 </head>
 
@@ -79,10 +80,10 @@ require_once(__DIR__.'/../libs/functions.php');
             if(!empty($_SESSION['nom'])){
               echo '<br>';
               echo '<button onclick="decrementer(\'' . $nomProduit . '\', \'' . $maxProduit . '\' );"> <img src="../img/icone-reduire-nb-article.png" id = "imageQuantiteMoins"></button>';
-              echo '<p id="' . $nomProduit . '"> <span id="chiffre">0 </span></p>';
+              echo '<p style="display: inline-block;" id="' . $nomProduit . '"> <span id="chiffre">0 </span></p>';
               echo '<button class="augmenter" onclick="augmenter(\'' . $nomProduit . '\', \'' . $maxProduit . '\');"> <img src="../img/icone-augmenter-nb-article.png" id="imageQuantitePlus"></button>';
             }
-              echo '<br><div class="prix"><p>'.$prix.'€</p></div>';
+              echo '<br><div class="prix"><p style="display: inline-block;" >'.$prix.'€</p></div>';
               if(!empty($_SESSION['nom'])){
               echo '<form method="post" action="client-traitement-panier.php">';
               echo '<input type="hidden" id="nom" name="nomProduit" value="' . $nomProduit . '">';
@@ -105,7 +106,15 @@ require_once(__DIR__.'/../libs/functions.php');
           if((isset($_SESSION['ajoutPanier'])) && ($_SESSION['ajoutPanier'] != "")) {
             $nomArticle = $_SESSION['ajoutPanier'];
             //setTimeout(function() { alert("L'article vient d'être ajouté au panier"); }, 100);
-            echo '<script language="javascript"> setTimeout(function() { alert("L\'article '.$nomArticle.' vient d\'être ajouté au panier");}, 200)</script>';
+            //echo '<script language="javascript"> setTimeout(function() { alert("L\'article '.$nomArticle.' vient d\'être ajouté au panier");}, 100)</script>';
+            echo '<script language="javascript"> window.addEventListener("load", function() { setTimeout(function(){ alert("L\'article '.$nomArticle.' vient d\'être ajouté au panier");}, 150);});</script>';
+            /*window.addEventListener("load", function() {
+              setTimeout(function(){
+                  alert("Hello, welcome to my website!");
+              }, 50);
+          });*/
+
+
             $_SESSION['ajoutPanier'] = "";
           }
           ?>
@@ -152,53 +161,7 @@ require_once(__DIR__.'/../libs/functions.php');
           </script>
 
           <style>
-            #imageQuantiteMoins {
-              width: 2em;
-              height: 2em;
-              cursor: pointer;
-            }
-
-            #imageQuantitePlus {
-              width: 2em;
-              height: 2em;
-              cursor: pointer;
-            }
-
-            button {
-              display: inline-block;
-            }
-
-            td:first-child {
-              margin-right: 1%;
-            }
-
-            form {
-              margin: 0;
-              width: 100%;
-            }
-
-            td:last-child {
-              margin-left: 1%;
-            }
-
-            td>img {
-              width: 70%;
-              margin: 5% 0;
-            }
-
-            button {
-              border: none;
-              background-color: white;
-              display: inline-block;
-            }
-
-            button:hover {
-              cursor: pointer;
-            }
-
-            p {
-              display: inline-block;
-            }
+             
           </style>
         </tbody>
       </table>

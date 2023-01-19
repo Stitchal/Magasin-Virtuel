@@ -24,7 +24,7 @@ if (!empty($_POST['nom']) and !empty($_POST['prenom'])) {
             header('Location: ../admin/index-admin.php');
             exit;
         } else {
-            header('Location: ../index.php');
+            header('Location: ../client/client-article.php');
             exit;
         }
     } else {

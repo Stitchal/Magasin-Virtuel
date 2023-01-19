@@ -4,6 +4,14 @@ $GLOBALS["page"] = "admin-reapprovisionnement.php";
 require_once(__DIR__ . '/../libs/database-functions.php');
 require_once(__DIR__ . '/../libs/functions.php');
 
+$prix = getPrixArticleGestion($_SESSION['idReappro']);
+
+if (isset($_POST["payer"]) && $_POST["qtReappro"] != '0') {
+    $_SESSION["montantPayer"] = $_POST["qtReappro"] * $prix;
+    $_SESSION["quantitePayer"] = $_POST["qtReappro"];
+    header('Location: admin-payer.php');
+    exit;
+}
 
 
 require_once(__DIR__ . '/../includes/nav.php');
@@ -27,13 +35,15 @@ require_once(__DIR__ . '/../includes/nav.php');
         }
     </style>
     <script>
-        var prix = <?= json_encode($_SESSION["prix"]) ?>;
+        var prix = <?= $prix ?>;
+
         function updateTotal(prix) {
             const quantity = document.getElementById("quantity").value;
             const total = document.getElementById("total");
             if (quantity > 0) {
                 // Use the value of the prix variable passed as parameter
-                total.innerHTML = "Montant total : " + (quantity * prix);
+                var montantTotal = (quantity * prix).toFixed(2);
+                total.innerHTML = "Montant total : " + montantTotal;
             }
         }
     </script>
@@ -46,16 +56,15 @@ require_once(__DIR__ . '/../includes/nav.php');
             <form id="formAjouter" method="post">
                 <fieldset>
                     <label for="quantity">Quantite de produit a commander</label>
-                    <input type="number" name="qtReappro" id="quantity" value="1" min="<?php echo getStockProduct($_SESSION['idReappro']) ?>" max="99" oninput="updateTotal(prix)" required>
+                    <input type="number" name="qtReappro" id="quantity" value="1" min="1" max="99" oninput="updateTotal(prix)" required>
                 </fieldset>
                 <p> Fournisseur : <?php echo getFournisseur($_SESSION['idReappro']) ?></p>
-                <p id="total"> Montant total : 0</p>
+                <p id="total"> Montant total : <?php echo $prix ?></p>
                 <div>
-                    <a href="admin-payer.php" id="passerCommande" title="Cliquez ici passer la commande">Commander et payer</a>
+                    <input name='payer' class='payerCommande' type='submit' value='payer'>
                 </div>
-
             </form>
-            <p><a class="retourPage" href="admin-facturation.php" title="Cliquez ici pour retourner à la page des factures">←Retourner à la page des factures</a></p>
+            <p><a class="retourPage" href="admin-gestion_stock.php" title="Cliquez ici pour retourner à la page des factures">←Retourner à la page des factures</a></p>
     </main>
     </a>
 </body>

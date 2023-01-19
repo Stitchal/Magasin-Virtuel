@@ -63,6 +63,38 @@ require_once(__DIR__ . '/../includes/menu-admin.php');
             unset($_SESSION["recherche"]);
           }
 
+          echo '<table class="bdd" id="produitTD">
+          <tbody>
+          <tr>
+            <td>id</td>
+            <td>nom</td>
+            <td>prixPublic</td>
+            <td>prixAchat</td>
+            <td>taille</td>
+            <td>couleur</td>
+            <td>image</td>
+            <td>icone</td>
+            <td>titre</td>
+            <td>refMarque</td>
+            <td></td>
+          </tr>';
+          foreach ($result as $article) {
+            echo   "<tr>
+                      <td>".$article["id"]."</td>
+                      <td>" . $article["nom"] . "</td>
+                      <td>" . $article["prixPublic"] . "</td>
+                      <td>" . $article["prixAchat"] . "</td>
+                      <td>" . $article["taille"] . "</td>
+                      <td>" . $article["couleur"] . "</td>
+                      <td>" . $article["image"] . "</td>
+                      <td>" . $article["icone"] . "</td>
+                      <td>" . $article["titre"] . "</td>
+                      <td>" . $article["refMarque"] . "</td>
+                    </tr>";
+          }
+
+          echo "</tbody></table><table>";
+
           foreach ($result as $article) {
             $nomProduit = $article["nom"];
 

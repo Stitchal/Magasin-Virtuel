@@ -14,7 +14,6 @@ if (isset($_POST['boutonRechercher'])) {
   exit();
 }
 
-require_once('includes/nav.php');
 require_once('libs/database-functions.php');
 
 ?>
@@ -26,21 +25,10 @@ require_once('libs/database-functions.php');
   <link rel="stylesheet" href="css/responsive.css">
   <title>Magasin Virtuel</title>
 </head>
-<body>
-  <style>
-      body {
-        background-image: url("img/indexBackground.jpg");
-        background-position: center;
-        width: 100%;
-        height: 100vh;
-        background-size : cover;
-        background-repeat: no-repeat;
-        overflow: hidden;
-      }
-    </style>
-    <div class="accueilButton">
-    <a href="../client/client-article.php" id="boutonMineta">Deviens un héros comme Mineta</a>
-    </div>
+<body id="minetaBackground">
+  <div class="accueilButton">
+  <a href="../client/client-article.php" id="boutonMineta">Deviens un héros comme Mineta</a>
+  </div>
 </body>
 
 </html>

@@ -1,10 +1,26 @@
 <?php
 session_start();
+
+require_once(__DIR__ . '/../libs/verifySession.php');
+$verifSession = new VerifSession();
+if(!$verifSession->verifConnection()){
+    header('Location: ../client-article.php');
+    exit;
+}
+
+if(!$verifSession->verifPaiementClient()){
+    header('Location: client-article.php');
+    exit;
+}
+
+
+
+
+
 require_once(__DIR__ . '/../libs/database-functions.php');
 require_once(__DIR__.'/../libs/functions.php');
 require_once(__DIR__.'/../libs/mail.php');
 
-$_SESSION["clientPayer"] += 1;
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +36,6 @@ $_SESSION["clientPayer"] += 1;
 <body>
     <main>
         <?php
-        if ($_SESSION["clientPayer"] == 1) {
             $date = date('d-m-Y');
             generateFacturation($_SESSION["panier"], $_SESSION["nom"], $_SESSION["prenom"], $_SESSION["email"], $_SESSION["totalPaiement"]);
             updateGestionStock($_SESSION["panier"]);
@@ -29,7 +44,7 @@ $_SESSION["clientPayer"] += 1;
             } else {
                 createComptabiliteVente($_SESSION["totalPaiement"], $_SESSION["panier"]);
             }
-        } ?>
+            ?>
         <p>Votre commande a été effectuée.</p>
         <div id="facturation">
             <table class="divCompte">
@@ -38,7 +53,6 @@ $_SESSION["clientPayer"] += 1;
                     <tr>
                         <td>id</td>
                         <td><?php
-                            if ($_SESSION["clientPayer"] == 1) {
                                 getIDFacturation(getDateAjd(), $_SESSION["nom"]);
                                 $_SESSION["idFact"] = getIDFacturation(getDateAjd(), $_SESSION["nom"]);
 
@@ -46,8 +60,7 @@ $_SESSION["clientPayer"] += 1;
                                 sendEmail($_SESSION["email"], "facture-commande@minetazon.com");
                                 sendEmail("alexis.rosset06@gmail.com", "facture-commande-effectuee");
                                 sendEmail("leo0678q@gmail.com", "facture-commande-effectuee");
-                            }
-                            echo $_SESSION["idFact"]; ?></td>
+                                echo $_SESSION["idFact"]; ?></td>
 
                     </tr>
                     <tr>
@@ -86,6 +99,8 @@ $_SESSION["clientPayer"] += 1;
         <p><a id="retourPageArticle" href="../index.php" title="Cliquez ici pour retourner à la page des articles">←Retourner à la page des articles</a></p>
         <?php
         unset($_SESSION['panier']);
+        unset($_SESSION["totalPaiement"]);
+        unset($_SESSION["nbArticle"]);
         ?>
     </main>
 </body>

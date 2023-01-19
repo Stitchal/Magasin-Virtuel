@@ -55,7 +55,7 @@ require_once(__DIR__ . '/../includes/menu-admin.php');
     }
 
     echo '<table class="bdd" id="facturationTD"><tbody>
-            <tr><td>idFacturation</td><td>articles</td><td>date</td><td>nom </td><td> prenom</td><td> email </td> <td> prixHT </td> <td> TVA </td> <td> prixTTC </td> <td> </td>';
+            <tr><td>idFacturation</td><td>articles</td><td>date</td><td>nom</td><td>prenom</td><td>email</td><td>prixHT</td><td>TVA</td><td>prixTTC</td><td></td>';
     foreach ($result as $facturation) {
       $idFacturation = $facturation["id"];
       $articlesFacturation = $facturation["articles"];

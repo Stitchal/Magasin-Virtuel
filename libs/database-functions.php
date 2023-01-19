@@ -3,7 +3,15 @@
 require_once('database.php');
 
 
-
+/**
+ * Ajoute un fournisseur à la BDD
+ *
+ * @param [type] $nom
+ * @param [type] $prenom
+ * @param [type] $email
+ * @param [type] $password
+ * @return boolean
+ */
 function addFournisseur($nom, $prenom, $email, $password)
 {
     ConnexionDB::getInstance();
@@ -11,6 +19,19 @@ function addFournisseur($nom, $prenom, $email, $password)
     ConnexionDB::getInstance()->execute($sql);
 }
 
+/**
+ * Ajoute un produit à la BDD
+ *
+ * @param [type] $id
+ * @param [type] $nom
+ * @param [type] $prixPublic
+ * @param [type] $prixAchat
+ * @param [type] $taille
+ * @param [type] $couleur
+ * @param [type] $refMarque
+ * @param [type] $titre
+ * @return boolean
+ */
 function addProduct($id, $nom, $prixPublic, $prixAchat, $taille, $couleur, $refMarque, $titre, $icone = "default.png", $image = "default.png")
 {
     ConnexionDB::getInstance();
@@ -446,11 +467,23 @@ function updateComptabiliteVente($montantTransaction, $listeProd){
     }
     $ancienneVente = getVentesComptabilite($date);
     $nvVente = $ancienneVente . ";" . $articlesString;
-    $sql = "UPDATE comptabilite SET montantVentes = montantVentes + :montantTransaction, chiffreAffaire = chiffreAffaire + :montantTransaction, ventes = :listeProd WHERE annee=:annee";
+    $sql = "UPDATE comptabilite SET montantVentes = montantVentes + :montantTransaction, chiffreAffaire = chiffreAffaire + :montantTransaction, ventes = :listeProd  WHERE annee=:annee";
     $params = array(
         ':montantTransaction' => $montantTransaction,
         ':annee' => strval($date),
         ':listeProd' => $nvVente
+    );
+    $db->execute($sql, $params);
+
+}
+
+function updateComptabiliteAchat($montantTransaction){
+    $date = date('Y');
+    $db = ConnexionDB::getInstance();
+    $sql = "UPDATE comptabilite SET montantAchats = montantAchats + :montantTransaction, chiffreAffaire = chiffreAffaire - :montantTransaction WHERE annee=:annee";
+    $params = array(
+        ':montantTransaction' => $montantTransaction,
+        ':annee' => strval($date)
     );
     $db->execute($sql, $params);
 
@@ -469,6 +502,16 @@ function updateGestionStock($articles){
         $db->execute($sql, $params);
     }
 }
+
+function augmenteStock($idArticle, $quantite){
+    $db = ConnexionDB::getInstance();
+        $sql = "UPDATE gestion_stock SET quantite = quantite + :valeur WHERE refProduit=:id";
+        $params = array(
+            ':valeur' => $quantite,
+            ':id' => $idArticle
+        );
+        $db->execute($sql, $params);
+    }
 
 /**
  * Récupère les ventes de la comptabilité de l'année actuelle
@@ -496,13 +539,34 @@ function createComptabiliteVente($montantTransaction, $listeProd){
         $articlesString .= $valeur . "_";
         $articlesString .= $prix . ", ";
     }
-    $sql = "INSERT INTO comptabilite (ventes, montantVentes, chiffreAffaire, annee) VALUES
-        (:ventes, :montantVentes, :chiffreAffaire, :annee)";
+    $montantAchat = 0;
+    $sql = "INSERT INTO comptabilite (ventes, montantVentes, chiffreAffaire, montantAchats, annee) VALUES
+        (:ventes, :montantVentes, :chiffreAffaire, :montantAchats, :annee)";
     $params = array(
         ':ventes' => $articlesString,
         ':montantVentes' => $montantTransaction,
         ':chiffreAffaire' => $montantTransaction,
+        ':montantAchats' => $montantAchat,
         ':annee' => $date
+    );
+
+    $db->execute($sql, $params);
+}
+
+function createComptabiliteAchat($montantTransaction){
+    $date = date('Y');
+    $montantVentes = 0;
+    $ventes = "";
+    $db = ConnexionDB::getInstance();
+    $sql = "INSERT INTO comptabilite (montantAchats, chiffreAffaire, annee, montantVentes, ventes) VALUES
+        (:montantAchats, :chiffreAffaire, :annee, :montantVentes, :ventes)";
+    $params = array(
+        ':ventes' => $ventes,
+        ':montantAchats' => $montantTransaction,
+        ':chiffreAffaire' => -$montantTransaction,
+        ':annee' => $date,
+        ':montantVentes' => $montantVentes,
+        ':ventes' => $ventes
     );
 
     $db->execute($sql, $params);
@@ -529,4 +593,17 @@ function getFournisseur($idGestionStock){
     $res = ConnexionDB::getInstance()->querySelect($requeteFournisseur);
     return$res[0]['nomEntreprise'];
 }
+
+
+function getPrixArticleGestion($idGestionStock){
+    $requeteGestionStock = "SELECT refProduit FROM gestion_stock WHERE id = '$idGestionStock'";
+    $resRequete = ConnexionDB::getInstance()->querySelect($requeteGestionStock);
+    $produitID = $resRequete[0]['refProduit'];
+    $requeteFournisseur = "SELECT prixAchat FROM produit WHERE id = '$produitID'";
+    $res = ConnexionDB::getInstance()->querySelect($requeteFournisseur);
+    return$res[0]['prixAchat'];
+
+}
+
+
 

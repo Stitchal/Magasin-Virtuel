@@ -50,7 +50,7 @@ require_once(__DIR__ . '/../includes/nav.php');
                 </fieldset>
                 <fieldset>
                     <label for="quantite">quantite</label>
-                    <input placeholder="quantite" type="text" name="quantite" id="quantite" required>
+                    <input value="1" type="number" name="quantite" id="quantite" min = "1" required>
                 </fieldset>
                 <fieldset>
                     <input type="submit" name="submit" value="Ajouter la gestion du stock">

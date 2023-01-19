@@ -96,11 +96,11 @@ table {
     width: 100%;
 }
 
-table#tabArticle td:first-child {
+table#tabArticles td:first-child {
     margin-right: 1%;
 }
 
-table#tabArticle td:last-child {
+table#tabArticles td:last-child {
     margin-left: 1%;
 }
 
@@ -497,6 +497,7 @@ label#labelMenu {
     background-color: #212529;
     padding: 0.2em;
     border-radius: 1em;
+    transition-duration: 0.2s;
 
     /*background-image: url('../img/fleche_haut.png');*/
 }
@@ -512,9 +513,10 @@ label#labelMenu {
 }*/
 
 div#haut_page img:hover {
-    transition-duration: 0.1s;
+    transition-duration: 0.2s;
     background-color: rgb(41, 101, 212);
-    width: 3.1em;
+    transition-duration: 0.2s;
+    transform: scale(1.1);
 }
 
 #haut_page:hover {
@@ -626,11 +628,14 @@ p.prix {
     background-color: #212529;
     padding: 1%;
     border-radius: 0.75em;
+    transition-duration: 0.2s;
+    transition: transform 0.2s;
 }
 
 .ajouterPanier:hover {
+    background-color: #202a33;
     transition-duration: 0.2s;
-    background-color: rgb(41, 101, 212);
+    transform: scale(1.1);
 }
 
 form fieldset button.ajouterPanier {
@@ -1061,6 +1066,42 @@ table#clientTD td:hover {
     overflow: auto;
 }
 
+table#produitTD td {
+    width: calc(100%/11.1);
+    table-layout: fixed;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+table#produitTD tr:first-child td:hover {
+    text-overflow: ellipsis;
+    overflow: visible;
+}
+
+table#produitTD td:hover {
+    text-overflow: clip;
+    overflow: auto;
+}
+
+table#comptabiliteID td {
+    width: calc(100%/8.1);
+    table-layout: fixed;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+table#comptabiliteID tr:first-child td:hover {
+    text-overflow: ellipsis;
+    overflow: visible;
+}
+
+table#comptabiliteID td:hover {
+    text-overflow: clip;
+    overflow: auto;
+}
+
 table#facturationTD td {
     width: calc(100%/10.1);
     table-layout: fixed;
@@ -1068,6 +1109,7 @@ table#facturationTD td {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
 
 table#facturationTD tr:first-child td:hover {
     text-overflow: ellipsis;
@@ -1152,17 +1194,18 @@ form.formBDD {
 }
 
 span#panier-badge{
+    font-weight: bold;
     display: float;
     text-align: right;
     position: absolute;
-    width: 1em;
-    height: 1em;
-    border-radius: 1em;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 1.5em;
     display: float;
     float: right;
     text-align: right;
     background-color: white;
-    color: black;
+    color: #2965D4;
 }
 
 nav ul li.imageCompte a{
@@ -1218,15 +1261,72 @@ nav ul li.imagePanierFocus a{
     background-repeat: no-repeat;
 }
 
+
+nav ul li.imagePanierFocus a:hover span#panier-badge{
+    transition-duration: 0.2s;
+    background-color: #212529;
+}
+
+nav ul li.imagePanierFocus a:hover{
+    background-image: url("../img/icone-panier.png");
+}
+
 nav ul li.imagePanier a:hover{
     background-image: url("../img/icone-panier.png");
 }
 
-nav ul li.imagePanier{
-    height: 100%;
+nav ul li.imagePanier a:hover span#panier-badge{
+    transition-duration: 0.2s;
+    background-color: #212529;
 }
 
 nav ul li.imagePanier a:hover{
     background-image: url("../img/icone-panier-hover.png");
 }
 
+/*deconnexion*/
+nav ul li.imageDeconnexion a{
+    display: inline-block;
+    background-image: url("../img/icone-deconnexion.png");
+    background-size: 1.82em;
+    padding: 2em;
+    overflow: hidden;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+nav ul li.imageDeconnexion a:hover{
+    background-image: url("../img/icone-deconnexion-hover.png");
+}
+
+nav ul li.imageDeconnexion{
+    height: 100%;
+}
+
+body#minetaBackground {
+    background-image: url("../img/indexBackground.jpg");
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+    background-size : cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.logoSite img{
+    position: absolute;
+    width: 9em;
+    margin: 1em 45% 0 45%;
+    top: 0;
+    z-index: 1;
+    transition-duration: 0.2s;
+}
+
+.logoSite img:hover{
+    transition-duration: 0.2s;
+    transform: scale(1.1);
+}
+
+td#urgenceReappro{
+    background-color: red;
+}

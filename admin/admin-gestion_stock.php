@@ -12,8 +12,9 @@ if (isset($_POST["suppr"])) {
 }
 
 if(isset($_POST["reappro"])){
-  $_SESSION['idReappro'] = $_POST["reappro"];
-  header('Location: ../admin/reapprovisionnement.php');
+  $_SESSION['idReappro'] = $_POST["idSuppression"];
+  $_SESSION['idProdReappro'] = $_POST["supprimer"];
+  header('Location: ../admin/admin-reapprovisionnement.php');
   exit();
 }
 
@@ -66,7 +67,12 @@ require_once(__DIR__ . '/../includes/menu-admin.php');
       $refProduit = $gestion_stock["refProduit"];
       $refFournisseur = $gestion_stock["refFournisseur"];
       $quantite = $gestion_stock["quantite"];
-      echo "<tr><td>" . $idGestionStock . "</td><td>" . $refProduit . "</td><td>" . $refFournisseur . "</td><td>" . $quantite . "</td><td>";
+      if ($quantite  == 0){
+        echo "<tr><td>" . $idGestionStock . "</td><td>" . $refProduit . "</td><td>" . $refFournisseur . "</td><td id='urgenceReappro'>" . $quantite . "</td><td>";
+      }
+      else {
+        echo "<tr><td>" . $idGestionStock . "</td><td>" . $refProduit . "</td><td>" . $refFournisseur . "</td><td>" . $quantite . "</td><td>";
+      }
       echo '<form method = "post" class="formBDD">';
       echo '<fieldset>';
       echo "<input type='hidden' name='supprimer' value=$refProduit>";
