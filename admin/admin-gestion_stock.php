@@ -2,6 +2,16 @@
 session_start();
 $GLOBALS["page"] = "admin-gestion_stock.php";
 require_once(__DIR__ . '/../libs/database.php');
+require_once(__DIR__ . '/../libs/verifySession.php');
+require_once(__DIR__ . '/../libs/functions.php');
+require_once('../libs/database-functions.php');
+
+$verifyAdmin = new VerifSession();
+if (!$verifyAdmin->verifConnection() || (!checkAdmin($_SESSION["nom"], $_SESSION["prenom"], $_SESSION["email"]))) {
+  header('Location: ../others/connexion.php');
+  exit();
+}
+
 
 if (isset($_POST["suppr"])) {
   $_SESSION['suppr'] = $_POST["supprimer"];
@@ -11,7 +21,7 @@ if (isset($_POST["suppr"])) {
   exit();
 }
 
-if(isset($_POST["reappro"])){
+if (isset($_POST["reappro"])) {
   $_SESSION['idReappro'] = $_POST["idSuppression"];
   $_SESSION['idProdReappro'] = $_POST["supprimer"];
   header('Location: ../admin/admin-reapprovisionnement.php');
@@ -53,7 +63,7 @@ require_once(__DIR__ . '/../includes/menu-admin.php');
     if (isset($_SESSION['recherche'])) {
       $critere = $_SESSION['recherche'];
       $result = ConnexionDB::getInstance()->querySelect("SELECT * FROM gestion_stock WHERE id LIKE '%$critere%'");
-      }  else {
+    } else {
       $result = ConnexionDB::getInstance()->querySelect("SELECT * FROM gestion_stock");
     }
 
@@ -67,10 +77,9 @@ require_once(__DIR__ . '/../includes/menu-admin.php');
       $refProduit = $gestion_stock["refProduit"];
       $refFournisseur = $gestion_stock["refFournisseur"];
       $quantite = $gestion_stock["quantite"];
-      if ($quantite  == 0){
+      if ($quantite  == 0) {
         echo "<tr><td>" . $idGestionStock . "</td><td>" . $refProduit . "</td><td>" . $refFournisseur . "</td><td id='urgenceReappro'>" . $quantite . "</td><td>";
-      }
-      else {
+      } else {
         echo "<tr><td>" . $idGestionStock . "</td><td>" . $refProduit . "</td><td>" . $refFournisseur . "</td><td>" . $quantite . "</td><td>";
       }
       echo '<form method = "post" class="formBDD">';

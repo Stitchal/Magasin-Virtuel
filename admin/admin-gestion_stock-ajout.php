@@ -3,6 +3,15 @@ session_start();
 $GLOBALS["page"] = "admin-gestion_stock.php";
 require_once(__DIR__ . '/../libs/database-functions.php');
 require_once(__DIR__ . '/../libs/functions.php');
+require_once(__DIR__ . '/../libs/verifySession.php');
+require_once('../libs/database-functions.php');
+
+$verifyAdmin = new VerifSession();
+if (!$verifyAdmin->verifConnection() || (!checkAdmin($_SESSION["nom"], $_SESSION["prenom"], $_SESSION["email"]))) {
+    header('Location: ../others/connexion.php');
+    exit();
+}
+
 
 if (isset($_POST["submit"]) && isset($_POST["refProduit"]) && isset($_POST["refFournisseur"]) && isset($_POST["quantite"])) {
     createGestionStock($_POST["refProduit"], $_POST["refFournisseur"], $_POST["quantite"]);
@@ -20,7 +29,7 @@ require_once(__DIR__ . '/../includes/nav.php');
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <title>FOURNISSEUR</title>
+    <title>Ajout de gestion_stock</title>
     <style>
         input[type=submit]#ajouterItem {
             background-color: rgb(1, 71, 1);
@@ -50,7 +59,7 @@ require_once(__DIR__ . '/../includes/nav.php');
                 </fieldset>
                 <fieldset>
                     <label for="quantite">quantite</label>
-                    <input value="1" type="number" name="quantite" id="quantite" min = "1" required>
+                    <input value="1" type="number" name="quantite" id="quantite" min="1" required>
                 </fieldset>
                 <fieldset>
                     <input type="submit" name="submit" value="Ajouter la gestion du stock">

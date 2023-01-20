@@ -3,6 +3,16 @@ session_start();
 $GLOBALS["page"] = "admin-produit.php";
 $GLOBALS["pageSuppression"] = "admin-produit.php";
 require_once(__DIR__ . '/../libs/database.php');
+require_once(__DIR__ . '/../libs/verifySession.php');
+require_once(__DIR__ . '/../libs/functions.php');
+require_once('../libs/database-functions.php');
+
+$verifyAdmin = new VerifSession();
+if (!$verifyAdmin->verifConnection() || (!checkAdmin($_SESSION["nom"], $_SESSION["prenom"], $_SESSION["email"]))) {
+  header('Location: ../others/connexion.php');
+  exit();
+}
+
 
 
 if (isset($_POST["suppr"])) {
@@ -80,7 +90,7 @@ require_once(__DIR__ . '/../includes/menu-admin.php');
           </tr>';
           foreach ($result as $article) {
             echo   "<tr>
-                      <td>".$article["id"]."</td>
+                      <td>" . $article["id"] . "</td>
                       <td>" . $article["nom"] . "</td>
                       <td>" . $article["prixPublic"] . "</td>
                       <td>" . $article["prixAchat"] . "</td>
@@ -107,7 +117,7 @@ require_once(__DIR__ . '/../includes/menu-admin.php');
             //print_r($res2[0]['image']);
             $_SESSION[$nomProduit] = 0;
             $idProduit = $article['id'];
-            $link = "../img/" . $res2[0]['image'];
+            $link = "../produits-img/" . $res2[0]['image'];
             //echo $link;
             echo '<td> ';
             echo "<img src=$link>";

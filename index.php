@@ -23,7 +23,8 @@ require_once('libs/database-functions.php');
   <meta charset="UTF-8">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
-  <title>Magasin Virtuel</title>
+  <link rel="icon" href="../img/favicon.ico">
+  <title>Minetazon</title>
 </head>
 <body id="minetaBackground">
   <div class="accueilButton">

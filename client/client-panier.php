@@ -28,7 +28,7 @@ require_once(__DIR__.'/../includes/nav.php');
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/responsive.css">
-    <title>Magasin Virtuel</title>
+    <title>Mon panier</title>
 </head>
 
 <body>
@@ -53,7 +53,7 @@ require_once(__DIR__.'/../includes/nav.php');
                     $sous_total += $prixProd * $valeur;
                     $img = "SELECT image FROM produit WHERE nom = '$clef'";
                     $res2 = ConnexionDB::getInstance()->querySelect($img);
-                    $link = "../img/" . $res2[0]['image'];
+                    $link = "../produits-img/" . $res2[0]['image'];
                     echo "<img src=$link>";
                     echo '</td>';
                     echo '<td>';

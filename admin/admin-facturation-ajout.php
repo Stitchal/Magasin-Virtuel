@@ -2,8 +2,15 @@
 session_start();
 $GLOBALS["page"] = "admin-facturation.php";
 require_once(__DIR__ . '/../libs/database-functions.php');
-require_once(__DIR__.'/../libs/functions.php');
+require_once(__DIR__ . '/../libs/functions.php');
 
+require_once(__DIR__ . '/../libs/verifySession.php');
+$verifyAdmin = new VerifSession();
+
+if (!$verifyAdmin->verifConnection() || (!checkAdmin($_SESSION["nom"], $_SESSION["prenom"], $_SESSION["email"]))) {
+    header('Location: ../others/connexion.php');
+    exit();
+}
 
 $verify = new Verification();
 
@@ -12,11 +19,9 @@ if (isset($_POST["submit"]) && isset($_POST["articles"]) && isset($_POST["nom"])
         createFacturation($_POST["articles"], $_POST["nom"], $_POST["prenom"], $_POST["email"], $_POST["prixHT"], $_POST["TVA"]);
         header("Location: ../admin/admin-facturation.php");
         exit();
-    }
-    else if($verify->verificationMail($_POST["email"])){
+    } else if ($verify->verificationMail($_POST["email"])) {
         $error = "erreur mail";
-    }
-    else {
+    } else {
         $error = "erreur format liste article,  ex : 1_1_1, 2_2_2, ";
     }
     header("Location: ../admin/admin-facturation-ajout.php?error=" . urlencode($error));
@@ -33,7 +38,7 @@ require_once(__DIR__ . '/../includes/nav.php');
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <title>FACTURATION</title>
+    <title>Ajout de facturation</title>
     <style>
         input[type=submit]#ajouterItem {
             background-color: rgb(1, 71, 1);

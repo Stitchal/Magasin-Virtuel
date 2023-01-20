@@ -2,21 +2,21 @@
 session_start();
 
 require_once(__DIR__ . '/../libs/verifySession.php');
+require_once(__DIR__ . '/../libs/functions.php');
+require_once('../libs/database-functions.php');
+
 $verifSession = new VerifSession();
-if(!$verifSession->verifConnection()){
+if (!$verifSession->verifConnection()) {
     header('Location: ../index.php');
     exit;
 }
 
-if(!$verifSession->verifPaiementAdmin()){
+if (!$verifSession->verifPaiementAdmin()) {
     header('Location: index-admin.php');
     exit;
 }
 
 
-
-require_once(__DIR__ . '/../libs/database-functions.php');
-require_once(__DIR__ . '/../libs/functions.php');
 
 
 ?>
@@ -28,7 +28,7 @@ require_once(__DIR__ . '/../libs/functions.php');
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/responsive.css">
-    <title>Magasin Virtuel</title>
+    <title>Paiement admin</title>
 </head>
 
 <body>
@@ -39,8 +39,8 @@ require_once(__DIR__ . '/../libs/functions.php');
         } else {
             createComptabiliteAchat($_SESSION["montantPayer"]);
         }
-        augmenteStock($_SESSION["idProdReappro"],$_SESSION["quantitePayer"]);
-        
+        augmenteStock($_SESSION["idProdReappro"], $_SESSION["quantitePayer"]);
+
         ?>
         <p>Votre commande a été effectuée.</p>
         <div id="facturation">

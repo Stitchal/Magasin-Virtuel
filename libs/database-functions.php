@@ -53,25 +53,20 @@ function addProduct($nom, $prixPublic, $prixAchat, $taille, $couleur, $refMarque
     ConnexionDB::getInstance()->execute($sql, $params);
 }
 
-
-
-
 /**
  * Vérifie si le client existe dans la base de données
  *
  * @param [type] $email
- * @param [type] $nom
- * @param [type] $prenom
+ * @param [type] $mdp
  * @return boolean
  */
-function checkClientExistant($email, $nom, $prenom)
+function checkClientExistant($email, $mdp)
 {
     ConnexionDB::getInstance();
-    $sql = "SELECT id FROM client WHERE mail = :mail AND nom = :nom AND prenom = :prenom";
+    $sql = "SELECT id FROM client WHERE mail = :mail AND mdp = :mdp";
     $params = array(
         ':mail' => $email,
-        ':nom' => $nom,
-        ':prenom' => $prenom
+        ':mdp' => $mdp
     );
 
     $result = ConnexionDB::getInstance()->querySelect($sql, $params);
@@ -82,6 +77,16 @@ function checkClientExistant($email, $nom, $prenom)
     }
 }
 
+/**
+ * Insere client dans BDD
+ *
+ * @param [string] $nom
+ * @param [string] $prenom
+ * @param [string] $email
+ * @param [string] $password
+ * @param [int] $isAdmin
+ * @return void
+ */
 function createClient($nom, $prenom, $email, $password, $isAdmin = 0)
 {
     ConnexionDB::getInstance();
@@ -96,6 +101,15 @@ function createClient($nom, $prenom, $email, $password, $isAdmin = 0)
     ConnexionDB::getInstance()->execute($sql, $params);
 }
 
+/**
+ * Insere fournisseur dans BDD
+ *
+ * @param [string] $nomEntreprise
+ * @param [string] $email
+ * @param [string] $mdp
+ * @param [string] $infos
+ * @return void
+ */
 function createFournisseur($nomEntreprise, $mail, $mdp, $infos){
     ConnexionDB::getInstance();
     $sql = "INSERT INTO fournisseur (nomEntreprise, mail, mdp, infos) VALUES (:nomEntreprise, :mail, :mdp, :infos)";
@@ -108,6 +122,12 @@ function createFournisseur($nomEntreprise, $mail, $mdp, $infos){
     ConnexionDB::getInstance()->execute($sql, $params);
 }
 
+/**
+ * Insere marque dans BDD
+ *
+ * @param [string] $nomMarque
+ * @return void
+ */
 function createMarque($nomMarque){
     ConnexionDB::getInstance();
     $sql = "INSERT INTO marque (nom) VALUES (:nomMarque)";
@@ -117,6 +137,14 @@ function createMarque($nomMarque){
     ConnexionDB::getInstance()->execute($sql, $params);
 }
 
+/**
+ * Insere gestion_stock dans BDD
+ *
+ * @param [string] $refProduit
+ * @param [string] $refFournisseur
+ * @param [string] $quantite
+ * @return void
+ */
 function createGestionStock($refProduit, $refFournisseur, $quantite){
     ConnexionDB::getInstance();
     $sql = "INSERT INTO gestion_stock (refProduit, refFournisseur, quantite) VALUES (:refProduit, :refFournisseur, :quantite)";
@@ -128,7 +156,17 @@ function createGestionStock($refProduit, $refFournisseur, $quantite){
     ConnexionDB::getInstance()->execute($sql, $params);
 }
 
-
+/**
+ * Insere facturation dans BDD
+ *
+ * @param [string] $articles
+ * @param [string] $nom
+ * @param [string] $prenom
+ * @param [string] $email
+ * @param [int] $prixHT
+ * @param [int] $TVA
+ * @return void
+ */
 function createFacturation($articles, $nom, $prenom, $email, $prixHT, $TVA){
     ConnexionDB::getInstance();
     $dateFact = getDateAjd();
@@ -146,7 +184,13 @@ function createFacturation($articles, $nom, $prenom, $email, $prixHT, $TVA){
     ConnexionDB::getInstance()->execute($sql, $params);
 }
 
-//TODO -> corriger la fonction en concordance avec la base de données
+/**
+ * Verifie si la quantite est disponible
+ *
+ * @param [string] $idGestionStock
+ * @param [int] $quantite
+ * @return boolean
+ */
 function checkStockProduct($id, $number)
 {
     ConnexionDB::getInstance();
@@ -164,6 +208,12 @@ function checkStockProduct($id, $number)
     }
 }
 
+/**
+ * Obtiens quantite produit
+ *
+ * @param [int] $idGestionStock
+ * @return int
+ */
 function getStockProduct($id)
 {
     ConnexionDB::getInstance();
@@ -175,9 +225,14 @@ function getStockProduct($id)
     return $result[0]['quantite'];
 }
 
-
-
-
+/**
+ * Verifie si client est admin
+ *
+ * @param [string] $nom
+ * @param [string] $prenom
+ * @param [string] $mail
+ * @return boolean
+ */
 function checkAdmin($nom, $prenom, $mail)
 {
     ConnexionDB::getInstance();
@@ -195,8 +250,13 @@ function checkAdmin($nom, $prenom, $mail)
     return false;
 }
 
-
-//TODO -> corriger problème contraint violation
+/**
+ * Supprime element dans table demandee
+ *
+ * @param [int]] $idElement
+ * @param [string] $nomTable
+ * @return void
+ */
 function deleteElement($id, $nomTable)
 {
     $db = ConnexionDB::getInstance();
@@ -553,6 +613,12 @@ function createComptabiliteVente($montantTransaction, $listeProd){
     $db->execute($sql, $params);
 }
 
+/**
+ * Creer une comptabilite pour un achat
+ *
+ * @param [string] $montantTransaction
+ * @return void
+ */
 function createComptabiliteAchat($montantTransaction){
     $date = date('Y');
     $montantVentes = 0;
@@ -572,6 +638,11 @@ function createComptabiliteAchat($montantTransaction){
     $db->execute($sql, $params);
 }
 
+/**
+ * Retourne la liste des produits qui ne sont plus en stock
+ *
+ * @return string
+ */
 function getProductUnavailable(){
     $result = ConnexionDB::getInstance()->querySelect("SELECT refProduit FROM gestion_stock WHERE quantite = 0");
     
@@ -584,6 +655,12 @@ function getProductUnavailable(){
     return $StringRésultat;
 }
 
+/**
+ * Retourne l'id du fournisseur depuis un id de gestion_stock
+ *
+ * @param [string] $idGestionStocl
+ * @return int
+ */
 function getFournisseur($idGestionStock){
     $requeteGestionStock = "SELECT refFournisseur FROM gestion_stock WHERE id = '$idGestionStock'";
     $resRequete = ConnexionDB::getInstance()->querySelect($requeteGestionStock);
@@ -595,18 +672,43 @@ function getFournisseur($idGestionStock){
 }
 
 
+/**
+ * Retourne le prix d'un article depuis l'idée de gestion_stock
+ *
+ * @param [string] $idGestionStock
+ * @return integer
+ */
 function getPrixArticleGestion($idGestionStock){
     $requeteGestionStock = "SELECT refProduit FROM gestion_stock WHERE id = '$idGestionStock'";
     $resRequete = ConnexionDB::getInstance()->querySelect($requeteGestionStock);
     $produitID = $resRequete[0]['refProduit'];
     $requeteFournisseur = "SELECT prixAchat FROM produit WHERE id = '$produitID'";
     $res = ConnexionDB::getInstance()->querySelect($requeteFournisseur);
-    return$res[0]['prixAchat'];
+    return $res[0]['prixAchat'];
 
 }
 
+/**
+ * Retourne toutes les infos d'un produit
+ *
+ * @param [string] $nomProduit
+ * @return array
+ */
 function getInfoProd($nomProduit){
     $requete = "SELECT * FROM produit WHERE nom = '$nomProduit'";
+    $resRequete = ConnexionDB::getInstance()->querySelect($requete);
+    return $resRequete[0];
+}
+
+/**
+ * Retourne toutes les infos d'un client
+ *
+ * @param [string] $mailClient
+ * @param [string] $mdpClient
+ * @return array
+ */
+function getInfoClient($mail, $mdp){
+    $requete = "SELECT * FROM client WHERE mail = '$mail' AND mdp = '$mdp'";
     $resRequete = ConnexionDB::getInstance()->querySelect($requete);
     return $resRequete[0];
 }

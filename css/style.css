@@ -96,12 +96,12 @@ table {
     width: 100%;
 }
 
-table#tabArticles td:first-child {
+table#tabArticles td {
     margin-right: 1%;
 }
 
 table#tabArticles td:last-child {
-    margin-left: 1%;
+    margin-right: 0%;
 }
 
 td>img {
@@ -274,14 +274,18 @@ input[type=submit] {
     margin-right: 10.5%;
     transition-duration: 0.3s;
     border: 2px solid white;
+    transition: transform 0.2s;
 }
 
 input[type=submit]:hover {
     background-color: rgb(41, 101, 212);
     color: #212529;
     cursor: pointer;
-    transition-duration: 0.3s;
+    transition-duration: 0.2s;
     border: 2px solid #212529;
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+    box-shadow: 22 black;
 }
 
 .createCompte {
@@ -654,6 +658,15 @@ table#tabArticles tr td {
     display: inline-block;
     width: calc(93%/3);
     margin-top: 1%;
+}
+
+table#tabArticles tr td a img{
+    transition: transform 0.2s;
+}
+
+table#tabArticles img:hover{
+    -webkit-transform: scale(1.04);
+    transform: scale(1.04);
 }
 
 a#passerCommande {
@@ -1329,4 +1342,12 @@ body#minetaBackground {
 
 td#urgenceReappro{
     background-color: red;
+}
+
+footer{
+    background-color: #212529;
+    width: 100%;
+    text-align: center;
+    height: 5vh;
+    display: flex;
 }

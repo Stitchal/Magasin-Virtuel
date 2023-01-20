@@ -1,6 +1,13 @@
 <?php
 class Verification
 {
+
+    /**
+     * Vérifie si le mail est bien construit
+     *
+     * @param [string] $mail
+     * @return void
+     */
     public function verificationMail($phrase)
     {
         $nbPoint = 0;
@@ -13,7 +20,7 @@ class Verification
                 if ($phrase[$i + 1] == "@" or $phrase[$i + 2] == "@") {
                     $res = false;
                 }
-            } else if ($phrase[$i] == "@") {
+            } else if ($phrase[$i] == "@" && ($i + 1) < strlen($phrase) && ($i + 2) < strlen($phrase)) {
                 $nbHashtag++;
                 if ($phrase[$i + 1] == "." or $phrase[$i + 2] == ".") {
                     $res = false;
@@ -30,7 +37,15 @@ class Verification
         return false;
     }
 
-    public function verifieListeArticles($articles){
+
+    /**
+     * Vérifie si le format donné est correct
+     *
+     * @param [string] $listeArticles
+     * @return boolean
+     */
+    public function verifieListeArticles($articles)
+    {
         $pattern = '/^(([0-9]+)_([0-9]+)_([0-9]+),\s?)+$/';
         return preg_match($pattern, $articles);
     }
@@ -48,5 +63,4 @@ class Verification
         }
         return $finalArray;
     }
-
 }

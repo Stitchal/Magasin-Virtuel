@@ -3,6 +3,15 @@ session_start();
 $GLOBALS["page"] = "admin-facturation.php";
 
 require_once(__DIR__ . '/../libs/database.php');
+require_once(__DIR__ . '/../libs/functions.php');
+require_once(__DIR__ . '/../libs/verifySession.php');
+require_once('../libs/database-functions.php');
+
+$verifyAdmin = new VerifSession();
+if (!$verifyAdmin->verifConnection() || (!checkAdmin($_SESSION["nom"], $_SESSION["prenom"], $_SESSION["email"]))) {
+  header('Location: ../others/connexion.php');
+  exit();
+}
 
 if (isset($_POST["suppr"])) {
   $_SESSION['suppr'] = $_POST["idSuppression"];

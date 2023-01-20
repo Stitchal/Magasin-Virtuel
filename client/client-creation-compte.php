@@ -36,7 +36,7 @@ require_once(__DIR__.'/../includes/nav.php');
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/responsive.css">
-    <title>Créer un compte </title>
+    <title>Créer un compte</title>
 </head>
 
 <body>

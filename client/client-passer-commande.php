@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/responsive.css">
-    <title>Magasin Virtuel</title>
+    <title>Commande</title>
 </head>
 
 <body>

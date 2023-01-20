@@ -32,7 +32,9 @@ require_once(__DIR__.'/../libs/functions.php');
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/responsive.css">
   <link rel="stylesheet" href="../css/client-articles.css">
-  <title>Magasin Virtuel</title>
+  <title>Mon panier</title>
+    <style>
+    </style>
 </head>
 
 <body>
@@ -67,7 +69,7 @@ require_once(__DIR__.'/../libs/functions.php');
             $img = "SELECT image FROM produit WHERE nom = '$nomProduit'";
             $res2 = ConnexionDB::getInstance()->querySelect($img);
             //print_r($res2[0]['image']);
-            $link = "../img/" . $res2[0]['image'];
+            $link = "../produits-img/" . $res2[0]['image'];
             //echo $link;
             echo '<td> ';
             echo '<a href="client-article-description.php?nomProduit=' . $nomProduit . '">';
@@ -87,7 +89,7 @@ require_once(__DIR__.'/../libs/functions.php');
             }
               echo '<br><div class="prix"><p style="display: inline-block;" >'.$prix.'€</p></div>';
               if(!empty($_SESSION['nom'])){
-              echo '<form method="post" action="client-traitement-panier.php">';
+              echo '<form method="post" action="client-traitement-panier.php" style="margin: 0;">';
               echo '<input type="hidden" id="nom" name="nomProduit" value="' . $nomProduit . '">';
               echo '<input type="hidden" id="quantite-'.$nomProduit.'" name="quantite" value="">';
               echo '<fieldset>';

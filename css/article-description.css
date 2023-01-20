@@ -61,9 +61,10 @@ nav{
     max-width: 50%;
     height: auto;
     border-radius: 20px;
-    border: 1px solid black;
+    background-color: white;
     cursor: pointer;
     transition: transform 0.2s;
+    padding: 1%;
 }
 
 .article-image:hover {

@@ -1,6 +1,15 @@
 <?php
 session_start();
 require_once(__DIR__ . '/../libs/database-functions.php');
+require_once(__DIR__ . '/../libs/verifySession.php');
+require_once(__DIR__ . '/../libs/functions.php');
+
+$verifyAdmin = new VerifSession();
+if(!$verifyAdmin->verifConnection() || (!checkAdmin($_SESSION["nom"], $_SESSION["prenom"], $_SESSION["email"]))){
+    header('Location: ../others/connexion.php');
+    exit();
+}
+
 
 if(isset($_POST["submit"]) && isset($_POST["icone"]) && isset($_POST["image"])){
     addProduct($_POST["nom"], $_POST["prixPublic"], $_POST["prixAchat"], $_POST["taille"], $_POST["couleur"],$_POST["refMarque"],  $_POST["titre"], $_POST["icone"],  $_POST["image"], $_POST["description"]);

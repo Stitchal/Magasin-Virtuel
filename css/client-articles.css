@@ -28,17 +28,9 @@ button {
     display: inline-block;
 }
 
-td:first-child {
-    margin-right: 1%;
-}
-
 form {
     margin: 0;
     width: 100%;
-}
-
-  td:last-child {
-    margin-left: 1%;
 }
 
 td>img {

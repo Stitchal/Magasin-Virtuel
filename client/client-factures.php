@@ -13,7 +13,7 @@ require_once(__DIR__ . '/../libs/database-functions.php');
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/responsive.css">
-    <title>Informations du compte</title>
+    <title>Mes factures</title>
 </head>
 
 <body>

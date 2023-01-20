@@ -26,7 +26,7 @@ if (checkAdmin($_SESSION['nom'], $_SESSION['prenom'], $_SESSION['email'])) {
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <title>Informations du compte</title>
+    <title>Mon compte</title>
 </head>
 
 <body>

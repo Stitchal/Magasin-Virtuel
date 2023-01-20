@@ -2,7 +2,17 @@
 session_start();
 $GLOBALS["page"] = "admin-fournisseur.php";
 require_once(__DIR__ . '/../libs/database-functions.php');
-require_once(__DIR__.'/../libs/functions.php');
+require_once(__DIR__ . '/../libs/functions.php');
+require_once('../libs/database-functions.php');
+require_once(__DIR__ . '/../libs/verifySession.php');
+require_once('../libs/database-functions.php');
+
+$verifyAdmin = new VerifSession();
+if (!$verifyAdmin->verifConnection() || (!checkAdmin($_SESSION["nom"], $_SESSION["prenom"], $_SESSION["email"]))) {
+    header('Location: ../others/connexion.php');
+    exit();
+}
+
 
 $verify = new Verification();
 
@@ -27,7 +37,7 @@ require_once(__DIR__ . '/../includes/nav.php');
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <title>FOURNISSEUR</title>
+    <title>Ajout de fournisseur</title>
     <style>
         input[type=submit]#ajouterItem {
             background-color: rgb(1, 71, 1);

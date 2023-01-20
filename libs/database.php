@@ -23,14 +23,12 @@ private function __construct() {
     if(!self::$pdo) { 
         self::$pdo = new PDO(self::$dsn, self::$login, self::$password); 
         self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
-        //Activer le mode ASSOC pour les résultats du SELECT
         self::$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC); 
     }
     
 }
 
-//exécute la requête (modification, création, suppression) mise en paramètre
-//
+//execute la requete (modification, creation, suppression) mise en parametre
 public function execute($sql, $params = null) {
     $sth = self::$pdo->prepare($sql);
     if(is_array($params)) {
@@ -39,8 +37,7 @@ public function execute($sql, $params = null) {
     return $sth->execute();			
 }
   
-//exécute la requête (consultation) mise en paramètre et remplit la matrice résultat
-//
+//execute la requete (consultation) mise en parametre et remplit la matrice resultat
 public function querySelect($sql, $params = null) {
     $sth = self::$pdo->prepare($sql);
     if(is_array($params)) {

@@ -4,8 +4,15 @@ $GLOBALS["page"] = "admin-client.php";
 
 require_once(__DIR__ . '/../libs/functions.php');
 require_once(__DIR__ . '/../libs/database-functions.php');
-
+require_once(__DIR__ . '/../libs/verifySession.php');
 $verify = new Verification();
+$verifyAdmin = new VerifSession();
+
+if (!$verifyAdmin->verifConnection() || (!checkAdmin($_SESSION["nom"], $_SESSION["prenom"], $_SESSION["email"]))) {
+    header('Location: ../others/connexion.php');
+    exit();
+}
+
 
 if (isset($_POST["submit"]) && isset($_POST["nom"]) && isset($_POST["prenom"]) && isset($_POST["mail"]) && isset($_POST["mdp"])) {
     if ($verify->verificationMail($_POST["mail"])) {
@@ -34,7 +41,7 @@ require_once(__DIR__ . '/../includes/nav.php');
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <title>ADMIN</title>
+    <title>Ajout de client</title>
     <style>
         input[type=submit] {
             background-color: rgb(1, 71, 1);

@@ -6,8 +6,8 @@ $compteCree = 0;
 
 require_once(__DIR__ . '/../libs/database-functions.php');
 
-if (!empty($_POST['nom']) and !empty($_POST['prenom'])) {
-    if (checkClientExistant($_POST['email'], $_POST['nom'], $_POST['prenom'])) {
+if (!empty($_POST['email']) and !empty($_POST['mdp'])) {
+    if (checkClientExistant($_POST['email'], $_POST['mdp'])) {
         if (isset($_POST['souvenir'])) {
             $timeout = 10000;
             session_abort();
@@ -17,9 +17,10 @@ if (!empty($_POST['nom']) and !empty($_POST['prenom'])) {
             $s_name = session_name();
             setcookie($s_name, $_COOKIE[$s_name], time() + $timeout, '/');
         }
-            $_SESSION['nom'] = $_POST['nom'];
-            $_SESSION['prenom'] = $_POST['prenom'];
-            $_SESSION['email'] = $_POST['email'];
+            $infos = getInfoClient($_POST['email'], $_POST["mdp"]);
+            $_SESSION['nom'] = $infos["nom"];
+            $_SESSION['prenom'] = $infos['prenom'];
+            $_SESSION['email'] = $infos['mail'];
         if (checkAdmin($_SESSION['nom'], $_SESSION['prenom'], $_SESSION['email'])) {
             header('Location: ../admin/index-admin.php');
             exit;
@@ -49,18 +50,12 @@ require_once(__DIR__ . '/../includes/nav.php');
     <main>
         <form class="connexion_creercompte" method="post">
             <fieldset>
-                <label for="nom">Nom</label>
-                <input placeholder="Nom" type="text" name="nom" id="nom" required>
-            </fieldset>
-
-            <fieldset>
-                <label for="prenom">Prénom</label>
-                <input placeholder="Prénom" type="text" name="prenom" id="prenom" required>
-            </fieldset>
-
-            <fieldset>
                 <label for="email">Email</label>
                 <input placeholder="Adresse email" type="mail" name="email" id="email" required>
+            </fieldset>
+            <fieldset>
+                <label for="mdp">Mdp</label>
+                <input placeholder="mdp" type="password" name="mdp" id="mdp" required>
             </fieldset>
             <fieldset class="fieldsetResterConnecte">
                 <input type="checkbox" name="souvenir[]" value="souvenir">
