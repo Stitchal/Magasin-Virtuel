@@ -2,13 +2,13 @@
 session_start();
 require_once(__DIR__ . '/../libs/database-functions.php');
 
-if(isset($_POST["submit"]) && isset($_POST["icon"]) && isset($_POST["image"])){
-    addProduct($_POST["id"], $_POST["nom"], $_POST["prixPublic"], $_POST["prixAchat"], $_POST["taille"], $_POST["couleur"],$_POST["refMarque"],  $_POST["titre"], $_POST["icone"],  $_POST["image"]);
+if(isset($_POST["submit"]) && isset($_POST["icone"]) && isset($_POST["image"])){
+    addProduct($_POST["nom"], $_POST["prixPublic"], $_POST["prixAchat"], $_POST["taille"], $_POST["couleur"],$_POST["refMarque"],  $_POST["titre"], $_POST["icone"],  $_POST["image"], $_POST["description"]);
     header("Location: ../admin/admin-produit.php");
     exit();
 }
 else if(isset($_POST["submit"])){
-    addProduct($_POST["id"], $_POST["nom"], $_POST["prixPublic"], $_POST["prixAchat"], $_POST["taille"], $_POST["couleur"],  $_POST["refMarque"], $_POST["titre"]);
+    addProduct($_POST["nom"], $_POST["prixPublic"], $_POST["prixAchat"], $_POST["taille"], $_POST["couleur"],  $_POST["refMarque"], $_POST["titre"], $_POST["description"]);
     header("Location: ../admin/admin-produit.php");
     exit();
 }
@@ -76,11 +76,6 @@ require_once(__DIR__.'/../includes/nav.php');
         <div id="divInformations">
             <div id="divGauche">
                 <fieldset>
-                    <label for="id">id</label>
-                    <input placeholder="id" type="text" name="id" id="id" required>
-                </fieldset>
-
-                <fieldset>
                     <label for="nom">Nom</label>
                     <input placeholder="Nom" type="text" name="nom" id="nom" required>
                 </fieldset>
@@ -98,6 +93,11 @@ require_once(__DIR__.'/../includes/nav.php');
                 <fieldset>
                     <label for="taille">taille</label>
                     <input placeholder="Taille" type="text" name="taille" id="taille" required>
+                </fieldset>
+
+                <fieldset>
+                    <label for="description">id</label>
+                    <input placeholder="Description" type="text" name="description" id="description" required>
                 </fieldset>
             </div>
 

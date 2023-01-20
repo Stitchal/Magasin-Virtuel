@@ -32,14 +32,13 @@ function addFournisseur($nom, $prenom, $email, $password)
  * @param [type] $titre
  * @return boolean
  */
-function addProduct($id, $nom, $prixPublic, $prixAchat, $taille, $couleur, $refMarque, $titre, $icone = "default.png", $image = "default.png")
+function addProduct($nom, $prixPublic, $prixAchat, $taille, $couleur, $refMarque, $titre, $icone = "default.png", $image = "default.png", $description = "pas de description")
 {
     ConnexionDB::getInstance();
 
-    $sql = "INSERT INTO produit (id, nom, prixPublic, prixAchat, taille, couleur, refMarque, titre, icone, image) VALUES
-        (:id, :nom, :prixPublic, :prixAchat, :taille, :couleur, :marqueId, :titre, :icone, :image)";
+    $sql = "INSERT INTO produit (nom, prixPublic, prixAchat, taille, couleur, refMarque, titre, icone, image, description) VALUES
+        (:nom, :prixPublic, :prixAchat, :taille, :couleur, :marqueId, :titre, :icone, :image, :description)";
     $params = array(
-        ':id' => strval($id),
         ':nom' => strval($nom),
         ':prixPublic' => strval($prixPublic),
         ':prixAchat' => strval($prixAchat),
@@ -48,7 +47,8 @@ function addProduct($id, $nom, $prixPublic, $prixAchat, $taille, $couleur, $refM
         ':marqueId' => strval($refMarque),
         ':titre' => strval($titre),
         ':icone' => strval($icone),
-        ':image' => strval($image)
+        ':image' => strval($image),
+        ':description' => strval($description)
     );
     ConnexionDB::getInstance()->execute($sql, $params);
 }

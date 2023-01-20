@@ -24,7 +24,7 @@ $link = "../img/" . $result['image']; ?>
 <div class="container">
     <img class="article-image" src="<?= $link ?>" alt="Article Image">
     <h2 class="article-title"> <?= $result["titre"] ?></h2>
-    <p class="article-text"> ................. </p>
+    <p class="article-text"> <?= $result["description"] ?> </p>
     <p class="article-info"> Prix d'achat : <?= $result["prixPublic"] ?>  Couleur : <?= $result["couleur"] ?>?></p>
     <a href="client-article.php" class="back-button">Retour aux articles</a>
 </div>
