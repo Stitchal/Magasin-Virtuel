@@ -86,6 +86,7 @@ require_once(__DIR__ . '/../includes/menu-admin.php');
             <td>icone</td>
             <td>titre</td>
             <td>refMarque</td>
+            <td>description</td>
             <td></td>
           </tr>';
           foreach ($result as $article) {
@@ -100,6 +101,7 @@ require_once(__DIR__ . '/../includes/menu-admin.php');
                       <td>" . $article["icone"] . "</td>
                       <td>" . $article["titre"] . "</td>
                       <td>" . $article["refMarque"] . "</td>
+                      <td>" . $article["description"] . "</td>
                     </tr>";
           }
 
