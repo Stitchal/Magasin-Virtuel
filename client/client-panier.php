@@ -11,8 +11,10 @@ if (isset($_POST["suppr"])) {
 
 if (isset($_POST["modifier"])) {
     if (checkStockProduct(getIDProduct($_POST["modify"]), $_POST['quantite'])) {
+        $_SESSION['nbArticle'] = $_SESSION['nbArticle'] - $_SESSION['panier'][$_POST["modify"]] + $_POST['quantite'];
         $_SESSION['panier'][$_POST["modify"]] = $_POST['quantite'];
     }
+    
 }
 
 require_once(__DIR__.'/../includes/nav.php');

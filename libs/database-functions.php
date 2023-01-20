@@ -605,5 +605,11 @@ function getPrixArticleGestion($idGestionStock){
 
 }
 
+function getInfoProd($nomProduit){
+    $requete = "SELECT * FROM produit WHERE nom = '$nomProduit'";
+    $resRequete = ConnexionDB::getInstance()->querySelect($requete);
+    return $resRequete[0];
+}
+
 
 
